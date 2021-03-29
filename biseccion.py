@@ -62,4 +62,3 @@ def Bisec(func, x1, x2, es):
 #x2=float(input("ingrese el valor de x2\n"))
 #a = Bisec(func, x1, x2, 0.01 )
 #print(a)
-

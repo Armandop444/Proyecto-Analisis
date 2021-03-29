@@ -2,16 +2,16 @@ from sympy import *
 import pandas as pd
 import numpy as np
 
-ecuacion=input("ingrese la funcion\n")
+#ecuacion=input("ingrese la funcion\n")
 # funcion que se evaluara
 x = symbols('x') # declaramos que x es un simbolo
 
 #esto es del ccodigo de alejandro
-if"^"in ecuacion:
-    ecuacion=ecuacion.replace("^","**")
+#if"^"in ecuacion:
+#    ecuacion=ecuacion.replace("^","**")
 #aqui termina el codigo del ale
 
-func = parse_expr(ecuacion)# funcion que evaluaremos
+#func = parse_expr(ecuacion)# funcion que evaluaremos
 
 
 # metodo de la biseccion
@@ -49,7 +49,7 @@ def FalsaP(func, x1, x2, es):
             x2 = xr
         elif test > 0:
             x1 = xr
-         
+        
         else:
             ea = 0
     # representamos datos en pandas
@@ -61,8 +61,7 @@ def FalsaP(func, x1, x2, es):
     tabla = pd.concat([iteracion, x1, x2, xr, ea], axis=1)  # unimos en columnas
     return tabla
 
-x1=float(input("ingrese el valor de x1\n"))
-x2=float(input("ingrese el valor de x2\n"))
-a = FalsaP(func, x1, x2, 0.00001)
-print(a)
-
+#x1=float(input("ingrese el valor de x1\n"))
+#x2=float(input("ingrese el valor de x2\n"))
+#a = FalsaP(func, x1, x2, 0.00001)
+#print(a)
