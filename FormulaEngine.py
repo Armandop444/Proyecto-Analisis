@@ -7,6 +7,9 @@ def parentesis_iguales(formula: str):
     else:
         return False
 
+def cifras(c: float):
+    c=0.5*(10**(2-c))
+    return c
 
 def convertir_funcion(formula: str):
     if parentesis_iguales(formula):
@@ -29,7 +32,7 @@ def convertir_funcion(formula: str):
             formula = formula.replace("ln", "ln")
         if "log" in formula:
             formula = formula.replace("log", "log")
-                
+
         #convertir potencias
         if "e^" in formula:
             formula = formula.replace("e^", "exp")
