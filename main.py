@@ -2,10 +2,6 @@ from FormulaEngine import *
 from biseccion import *
 from falsaP import *
 import os
-if os.name == "posix":
-    var = "clear"       
-elif os.name == "ce" or os.name == "nt" or os.name == "dos":
-    car = "cls"
 
 #Metodo para sacar ES
 def ess (es:float):
@@ -20,7 +16,6 @@ def ess (es:float):
             valor=float(input("Ingrese Error de tolerancia: "))
             banderaError = 1
         elif (valor==0):
-            os.system(var)
             print("\n  --------------------------------------------------------------\n",
             "|No ha seleccionado ninguna opcion por favor intente nuevamente|\n",
             " --------------------------------------------------------------\n")
@@ -39,7 +34,6 @@ while (opcion>=1 and opcion<=5):
         print("Contenido de unidad 1 que aun no hay nada xD")
 
     if (opcion==2): #Unidad 2
-        os.system(var)
         tema=int(input("\nSeleccione Tema\n{}\n{}".format("1-Bisección","2-Falsa Posición")))
         bandera=0
         if (tema==1): #Biseccion
@@ -52,7 +46,6 @@ while (opcion>=1 and opcion<=5):
                     bandera=1
                     formula=parse_expr(formula)
                 else:
-                    os.system(var)
                     print("\n  -------------------------------------------------------------------------\n",
                     "|La funcion no esta definida correctamente con la agrupacion de parentesis|\n",
                     " -------------------------------------------------------------------------\n")
@@ -77,7 +70,6 @@ while (opcion>=1 and opcion<=5):
                     bandera=1
                     formula=parse_expr(formula)
                 else:
-                    os.system(var)
                     print("\n  -------------------------------------------------------------------------\n",
                     "|La funcion no esta definida correctamente con la agrupacion de parentesis|\n",
                     " -------------------------------------------------------------------------\n")
