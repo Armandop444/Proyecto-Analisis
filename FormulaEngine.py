@@ -1,45 +1,33 @@
-def raiz(radicando, indice):
-    return radicando**(1/indice)
-
-def parentesis_iguales(formula: str):
-    if formula.count("(") == formula.count(")"):
+from Utilidades import ParentesisError
+def validar_parentesis(funcion: str):
+    if funcion.count("(") == funcion.count(")"):
         return True
     else:
         return False
-
-def cifras(c: float):
-    c=0.5*(10**(2-c))
-    return c
-
-def convertir_funcion(formula: str):
-    if parentesis_iguales(formula):
-        #convertir funciones trigonometricas
+    
+def convertir_funcion(formula: str, var_o = "x", var_n = "x"):
+    if validar_parentesis(formula):
+        #Cambiamos la variable original por la que se va a evaluar
+        formula = formula.replace(var_o, var_n)
+        
+        #Convertir funciones trigonometricas
         if "sen" in formula:
             formula = formula.replace("sen", "sin")
-        if "cos" in formula:
-            formula = formula.replace("cos", "cos")
-        if "tan" in formula:
-            formula = formula.replace("tan", "tan")
         if "cot" in formula:
             formula = formula.replace("cot", "1/tan")
         if "sec" in formula:
             formula = formula.replace("sec", "1/cos")
         if "csc" in formula:
             formula = formula.replace("sec", "1/sin")
-        
-        #convertir logaritmos    
-        if "ln" in formula:
-            formula = formula.replace("ln", "ln")
-        if "log" in formula:
-            formula = formula.replace("log", "log")
-
+        if "asen" in formula:
+            formula = formula.replace("asen", "asin")
+            
         #convertir potencias
         if "e^" in formula:
             formula = formula.replace("e^", "exp")
         if "^" in formula:
             formula = formula.replace("^", "**")
-        
-        #reemplazar las variables por los parametros ejemp: e^(x) -> e**(r)
+            
         return formula
     else:
-        return "Error"
+        raise ParentesisError("La funcion no tiene la agrupacion correcta de parentesis")
