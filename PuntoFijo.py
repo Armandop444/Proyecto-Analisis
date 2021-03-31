@@ -12,6 +12,7 @@ def PuntoFijo(funcion, es, x):
         xn = eval(funcion)
         ea = abs((xn-x)/xn) * 100
         contenido.append([i,x,xn,ea])
+        print(f"{x}  | {xn}   | {ea}")
         x = xn
         i += 1
     print(tabulate(contenido, headers= ["Iteracion", "X","g(X)","EA"],tablefmt="orgtbl"))
