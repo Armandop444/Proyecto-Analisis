@@ -1,5 +1,5 @@
 from FormulaEngine import convertir_funcion
-from math import *
+from math import cos, sin, tan, asin, log, exp
 from tabulate import tabulate
 from Utilidades import raiz
 
@@ -12,7 +12,6 @@ def PuntoFijo(funcion, es, x):
         xn = eval(funcion)
         ea = abs((xn-x)/xn) * 100
         contenido.append([i,x,xn,ea])
-        print(f"{x}  | {xn}   | {ea}")
         x = xn
         i += 1
     print(tabulate(contenido, headers= ["Iteracion", "X","g(X)","EA"],tablefmt="orgtbl"))

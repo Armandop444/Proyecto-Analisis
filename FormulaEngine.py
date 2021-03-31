@@ -1,4 +1,5 @@
 from Utilidades import ParentesisError
+
 def validar_parentesis(funcion: str):
     if funcion.count("(") == funcion.count(")"):
         return True
