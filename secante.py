@@ -7,16 +7,16 @@ import numpy as np
 # funcion que se evaluara
 #x = symbols('x') # declaramos que x es un simbolo
 
-ecuacion=input("ingrese la funcion\n")
+#ecuacion=input("ingrese la funcion\n")
 #funcion que se evaluara
 x = symbols('x') # declaramos que x es un simbolo
 
 #esto es del ccodigo de alejandro
-if"^"in ecuacion:
-    ecuacion=ecuacion.replace("^","**")
+#if"^"in ecuacion:
+#    ecuacion=ecuacion.replace("^","**")
 #aqui termina el codigo del ale
 
-func = parse_expr(ecuacion)# funcion que evaluaremos
+#func = parse_expr(ecuacion)# funcion que evaluaremos
 
 
 def Sec(func, xnmenos, xn, es):
@@ -35,7 +35,7 @@ def Sec(func, xnmenos, xn, es):
     funcion2=func.subs(x,xn)
     funcion=float(funcion1*funcion2)
     if(funcion<0.00):
-        print(f"Raiz existente: {funcion}")
+        #print(f"Raiz existente: {funcion}")
         while ea>es:
             #xanterior=xnmenos
             funcion1=func.subs(x,xnmenos)
@@ -54,8 +54,8 @@ def Sec(func, xnmenos, xn, es):
             #si se cumple lo anterior se da el cambio de valores
             xnmenos=float(xn)
             xn=float(xnmas)
-        print(f"El valor de la raiz es: {xnmas}")
-        print(f"Con un error de : {ea}")
+        print(f"\nEl valor de la raiz es: {xnmas}")
+        print(f"Con un error de : {ea}\n")
         #representamos datos en panda
         iteracion = pd.Series(v_itera, name="Iteracion")
         xnmenos = pd.Series(v_xnmenos, name="xn-1")
@@ -68,5 +68,5 @@ def Sec(func, xnmenos, xn, es):
     else:
         print("No existe raiz")
 
-a=Sec(func,0,1, 0.00001)
-print(a)
+#a=Sec(func,0,1, 0.00001)
+#print(a)

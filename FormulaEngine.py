@@ -31,4 +31,4 @@ def convertir_funcion(formula: str, var_o = "x", var_n = "x"):
             
         return formula
     else:
-        raise ParentesisError("La funcion no tiene la agrupacion correcta de parentesis")
+        return "Error"
