@@ -104,8 +104,7 @@ while (opcion>=1 and opcion<=5):
                 x=float(input("Ingrese el valor de X: "))
                 cualerror=int(input("Seleccione como ingresara el error:\n{}\n{}".format("1-Cifras significativas","2-Error de tolerancia")))
                 es=ess(cualerror)
-                p=PuntoFijo(formula,es,x)
-                print(p)
+                PuntoFijo(formula,es,x)
             except ValueError as e:
                 print("Error: ",e)
 
