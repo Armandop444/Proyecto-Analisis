@@ -1,5 +1,18 @@
 from tabulate import tabulate
 
+
+#Excepciones necesarias para mostrar el tipo de error
+class MathError(Exception):
+    pass
+
+class ParentesisError(Exception):
+    pass
+
+class InfiniteLoop(Exception):
+    pass
+
+
+# clase para generar tablas chivas
 class tablita:
     def __init__(self, cabeceros):
         self.contenido = []
@@ -17,13 +30,9 @@ class tablita:
         
     def get_tabla(self, estilo = "github"):
         return tabulate(self.contenido, headers=self.cabeceros,tablefmt=estilo)
-        
-class MathError(Exception):
-    pass
 
-class ParentesisError(Exception):
-    pass
 
+# funciones utiles
 def raiz(radicando, indice = 2):
     if not type(indice) == int:
         raise MathError(f"Error en funcion raiz({radicando},{indice}) Solo indices naturales mayor o igual a 1")
