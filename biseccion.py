@@ -1,6 +1,6 @@
 from sympy import *
 import numpy as np
-from tabulate import tabulate
+from Utilidades import tablita
 
 #ecuacion=input("ingrese la funcion\n")
 # funcion que se evaluara
@@ -16,8 +16,7 @@ x = symbols('x') # declaramos que x es un simbolo
 
 # metodo de la biseccion
 def Bisec(func, x1, x2, es):
-    contenido = []
-    i = 1  # Variable que controla el numero de iteraciones
+    tabla = tablita(["X1", "X2", "Xr", "EA"])
     xr = 0
     ea = 100
     f1 = func.subs(x,x1)  # reamplazmos x por x1 y evaluamos la funcion
@@ -32,9 +31,7 @@ def Bisec(func, x1, x2, es):
         test = f1 * fr
         
         # agregamos valores a la fila de cada iteracion
-        contenido.append([i,x1,x2,xr,ea])
-        i += 1
-        
+        tabla.add_fila([x1,x2,xr,ea]) 
         if test < 0:
             x2 = xr
         elif test > 0:
@@ -42,7 +39,7 @@ def Bisec(func, x1, x2, es):
             f1 = fr
         else:
             ea = 0
-    return tabulate(contenido, headers=["Iteracion", "X1", "X2", "Xr", "EA"],tablefmt="orgtbl")
+    return tabla.get_tabla()
 
 #x1=float(input("ingrese el valor de x1\n"))
 #x2=float(input("ingrese el valor de x2\n"))

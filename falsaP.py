@@ -1,6 +1,6 @@
 from sympy import *
 import numpy as np
-from tabulate import tabulate
+from Utilidades import tablita
 
 #ecuacion=input("ingrese la funcion\n")
 # funcion que se evaluara
@@ -16,8 +16,7 @@ x = symbols('x') # declaramos que x es un simbolo
 
 # metodo de la biseccion
 def FalsaP(func, x1, x2, es):
-    itera = 1
-    contenido = []
+    tabla = tablita(["X1","X2","Xr","EA"])
     
     xr = 0
     ea = 100
@@ -37,8 +36,7 @@ def FalsaP(func, x1, x2, es):
         test = f1 * fr
         
         # agregamos valores a la fila de la iteracion
-        contenido.append([itera, x1,x2,xr,ea])
-        itera += 1
+        tabla.add_fila([x1,x2,xr,ea])
 
         if test < 0:
             x2 = xr
@@ -47,7 +45,7 @@ def FalsaP(func, x1, x2, es):
         else:
             ea = 0
 
-    return tabulate(contenido, headers=["Iteracion","X1","X2","Xr","EA"],tablefmt="orgtbl")
+    return tabla.get_tabla()
 
 #x1=float(input("ingrese el valor de x1\n"))
 #x2=float(input("ingrese el valor de x2\n"))

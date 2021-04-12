@@ -1,6 +1,7 @@
 from sympy import *
 import numpy as np
 from tabulate import tabulate
+from Utilidades import tablita
 
 
 #ecuacion=input("ingrese la funcion\n")
@@ -20,7 +21,7 @@ x = symbols('x') # declaramos que x es un simbolo
 
 
 def Sec(func, xnmenos, xn, es):
-    contenido = []
+    tabla = tablita(["Xn-1","Xn","Xn+1","EA"])
     itera=1
     xnmas = 0
     ea=100.00
@@ -43,7 +44,7 @@ def Sec(func, xnmenos, xn, es):
                 ea = float(abs((xnmas - xn) / xnmas) * 100)
                 
             # agregamos valores a la fila de la iteracion
-            contenido.append([itera,xnmenos,xn,xnmas,ea])
+            tabla.add_fila([xnmenos,xn,xnmas,ea])
             itera +=1
             
             #si se cumple lo anterior se da el cambio de valores
@@ -53,7 +54,7 @@ def Sec(func, xnmenos, xn, es):
         print(f"\nEl valor de la raiz es: {xnmas}")
         print(f"Con un error de : {ea}\n")
 
-        return tabulate(contenido,headers=["Iteracion","Xn-1","Xn","Xn+1","EA"],tablefmt="orgtbl")
+        return tabla.get_tabla()
         
     else:
         print("No existe raiz")
