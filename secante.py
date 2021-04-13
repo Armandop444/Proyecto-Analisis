@@ -51,8 +51,8 @@ def Sec(func, xnmenos, xn, es):
             xnmenos=float(xn)
             xn=float(xnmas)
             
-        print(f"\nEl valor de la raiz es: {xnmas}")
-        print(f"Con un error de : {ea}\n")
+        #print(f"\nEl valor de la raiz es: {xnmas}")
+        #print(f"Con un error de : {ea}\n")
 
         return tabla.get_tabla()
         

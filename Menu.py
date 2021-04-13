@@ -1,9 +1,17 @@
 from os import name,system
 from simple_term_menu import TerminalMenu
+from sympy import parse_expr
+
+
 from FormulaEngine import validar_parentesis, convertir_funcion
 from Utilidades import cifras_significativas, ValueError, OperacionDetenida, MathError
+
 from biseccion import Bisec
-from sympy import parse_expr
+from falsaP import FalsaP
+from PuntoFijo import PuntoFijo
+from newtonRaphson import NewtonR
+from secante import Sec
+
 
 #Permite limpiar la pantalla
 def limpiar():
@@ -52,13 +60,20 @@ def pedir_error(historial: list):
                 print("No es un numero")
             else:
                 return cifras_significativas(int(cifras))
+        if opcion == 1:
+            print("Escribir 'cancelar' para volver al menu")
+            cifras = input("Escriba el error de tolerancia  ")
             
+            if cifras.lower() == "cancelar":
+                raise OperacionDetenida("Cancelado")
+            else:
+                return float(cifras)
 
-def pedir_funcion():
+def pedir_funcion(tema: str):
     limpiar()
     while True:
         print("Escriba 'cancelar' para volver al menu")
-        funcion = input("Ingrese la funcion:  ")
+        funcion = input("{} Ingrese la funcion:  ".format(tema))
         
         if funcion == "cancelar":
             raise OperacionDetenida("Cancelado")
@@ -108,8 +123,8 @@ while True:
                 '[1] Biseccion',
                 '[2] Falsa Posicion',
                 '[3] Punto Fijo',
-                '[4] Secante',
-                '[5] Newton Raphson',
+                '[4] Newton Raphson',
+                '[5] Secante',
                 '[a] Ayuda',
                 '[s] Volver al menu principal'
             ],
@@ -122,12 +137,12 @@ while True:
         """
         while True:
             opcion = menu_2.show()
-            if opcion == 0:
+            if opcion == 0: #Biseccion
                 try:
-                    funcion = pedir_funcion()
-                    x1 = pedir_valores("Ingrese el valor del intervalo inferior x1:  ",
+                    funcion = pedir_funcion("[Biseccion]")
+                    x1 = pedir_valores("[Biseccion] Ingrese el valor del intervalo inferior x1:  ",
                                     [f"Funcion: {funcion}"])
-                    x2 = pedir_valores("Ingrese el valor del intervalo inferior x2:  ",
+                    x2 = pedir_valores("[Biseccion] Ingrese el valor del intervalo inferior x2:  ",
                                     [f"Funcion: {funcion}",
                                         f"X1: {x1}"])
                     es = pedir_error([f"Funcion: {funcion}",
@@ -135,7 +150,8 @@ while True:
                                         f"X2: {x2}"
                                         ])
                     limpiar()
-                    print_final(f"Funcion: {funcion},  X1: {x1},  X2: {x2},  ES: {es}",Bisec(parse_expr(funcion),x1,x2,es))
+                    print_final(f"Funcion: {funcion},  X1: {x1},  X2: {x2},  ES: {es}",
+                                Bisec(parse_expr(funcion),x1,x2,es))
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -146,30 +162,94 @@ while True:
                 except Exception as e:
                     print(f"Algo ha salido mal {e}")
                     input("Presione cualquier tecla para continuar")
-            elif opcion == 1:
-                #pedir funcion
-                #pedir error de tolerancia por cifras significativas o el valor
-                #los valores del intervalo
-                #llamar el metodo de Falsa Posicion
-                pass
-            elif opcion == 2:
-                #pedir funcion
-                #pedir error de tolerancia por cifras significativas o el valor
-                #los valores del intervalo
-                #llamar el metodo de Punto Fijo
-                pass
-            elif opcion == 3:
-                #pedir funcion
-                #pedir error de tolerancia por cifras significativas o el valor
-                #los valores iniciales
-                #llamar el metodo de Secante
-                pass
-            elif opcion == 4:
-                #pedir funcion
-                #pedir error de tolerancia por cifras significativas o el valor
-                #los valores del intervalo
-                #llamar el metodo de Punto Fijo
-                pass
+
+            elif opcion == 1: #Falsa Posicion
+                try:
+                    funcion = pedir_funcion("[Falsa Posicion]")
+                    x1 = pedir_valores("[Falsa Posicion] Ingrese el valor del intervalo inferior x1:  ",
+                                        [f"Funcion:{funcion}"])
+                    x2 = pedir_valores("[Falsa Posicion] Ingrese el valor del intervalo inferior x2:  ",
+                                        [f"Funcion:{funcion}",
+                                        f"X1: {funcion}"])
+                    es = pedir_error([f"Funcion: {funcion}",
+                                        f"X1: {x1}",
+                                        f"X2: {x2}"])
+                    limpiar()
+                    print_final(f"Funcion: {funcion}, X1: {x1}, X2: {x2}, ES: {es}",
+                                FalsaP(parse_expr(funcion),x1,x2,es))
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+
+            elif opcion == 2: #Punto Fijo
+                try:
+                    funcion= pedir_funcion("[Punto Fijo]")
+                    x = pedir_valores("[Punto Fijo] Ingrese el valor de x: ",
+                                    [f"Funcion: {funcion}"])
+                    es = pedir_error([f"Funcion: {funcion}",
+                                    f"X: {x}"])
+                    limpiar()
+                    print_final(f"Funcion: {funcion}, X: {x} ES: {es}",PuntoFijo(funcion,es,x))
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+                
+            elif opcion == 3: #Newton Raphson
+                try:
+                    funcion = pedir_funcion("[Newton Raphson]")
+                    xi = pedir_valores("[Newton Raphson] Ingrese el valor de xi: ",
+                                    [f"Funcion: {funcion}"])
+                    es = pedir_error([f"Funcion: {funcion}",
+                                    f"X: {xi}"])
+                    limpiar()
+                    print_final(f"Funcion: {funcion}, XI: {xi} ES: {es}",
+                                NewtonR(parse_expr(funcion),xi,es))
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+
+            elif opcion == 4: #Secante
+                try:
+                    funcion = pedir_funcion("[Secante]")
+                    xnmenos = pedir_valores("[Secante] Ingrese el valor de xn-1: ",
+                                            [f"Funcion: {funcion}"])
+                    xn = pedir_valores("[Secante] Ingrese el valor de xn: ",
+                                            [f"Funcion: {funcion}",
+                                            f"Xn-1:{xnmenos}"])
+                    es = pedir_error([f"Funcion: {funcion}",
+                                    f"Xn-1:{xnmenos}",
+                                    f"Xn:{xn}"])
+                    limpiar()
+                    print_final(f"Funcion: {funcion}, Xn-1: {xnmenos}, Xn: {xn}, ES: {es}",
+                                Sec(parse_expr(funcion),xnmenos,xn,es))
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+                
             elif opcion == 5:
                 limpiar()
                 #imprimir ayuda
