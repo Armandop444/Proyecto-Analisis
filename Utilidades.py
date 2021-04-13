@@ -5,12 +5,11 @@ from tabulate import tabulate
 class MathError(Exception):
     pass
 
-class ParentesisError(Exception):
+class ValueError(Exception):
     pass
 
-class InfiniteLoop(Exception):
+class OperacionDetenida(Exception):
     pass
-
 
 # clase para generar tablas chivas
 class tablita:

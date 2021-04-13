@@ -41,7 +41,7 @@ def Bisec(func, x1, x2, es):
             ea = 0
     return tabla.get_tabla()
 
-#x1=float(input("ingrese el valor de x1\n"))
-#x2=float(input("ingrese el valor de x2\n"))
-#a = Bisec(func, x1, x2, 0.01 )
+#x1=0
+#x2=1
+#a = Bisec("e^(-x)-x", x1, x2, 0.05 )
 #print(a)
