@@ -59,6 +59,7 @@ class Menu():
             # pedir opcion
             nopcion = input("Seleccione una opcion ")
             if nopcion in self.validos:
+                self.limpiar()
                 return self.validos.index(nopcion)
             else:
                 self.limpiar()
