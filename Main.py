@@ -74,7 +74,7 @@ def pedir_funcion(tema: str):
     while True:
         print("Escriba 'cancelar' para volver al menu")
         funcion = input("{} Ingrese la funcion:  ".format(tema))
-        
+        funcion = funcion.lower()
         if funcion == "cancelar":
             raise OperacionDetenida("Cancelado")
         
@@ -130,7 +130,7 @@ while True:
                 '[a] Ayuda',
                 '[s] Volver al menu principal'
             ],
-            titulo= "Metedos de la unidad 2",
+            titulo= "Metodos de la unidad 2",
             metodo_seleccion='atajo'
         )
         """
