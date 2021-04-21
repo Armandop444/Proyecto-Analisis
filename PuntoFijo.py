@@ -1,7 +1,6 @@
 from FormulaEngine import convertir_funcion
-from math import cos, sin, tan, asin, log, exp
-from tabulate import tabulate
 from Utilidades import raiz, tablita
+from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan
 
 def PuntoFijo(funcion: str, es: float, x: float):
     ea = 100

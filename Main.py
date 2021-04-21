@@ -1,9 +1,7 @@
 from os import name,system
 import Menu
-from sympy import parse_expr
 
-
-from FormulaEngine import validar_parentesis, convertir_funcion
+from FormulaEngine import validar_parentesis
 from Utilidades import cifras_significativas, ValueError, OperacionDetenida, MathError
 
 from biseccion import Bisec
@@ -84,7 +82,7 @@ def pedir_funcion(tema: str):
             continue
         
         if validar_parentesis(funcion):
-            return convertir_funcion(funcion)
+            return funcion
         else:
             limpiar()
             print("La funcion no esta correctamente escrita")
@@ -153,7 +151,7 @@ while True:
                                         ])
                     limpiar()
                     print_final(f"Funcion: {funcion},  X1: {x1},  X2: {x2},  ES: {es}",
-                                Bisec(parse_expr(funcion),x1,x2,es))
+                                Bisec(funcion,x1,x2,es))
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -178,7 +176,7 @@ while True:
                                         f"X2: {x2}"])
                     limpiar()
                     print_final(f"Funcion: {funcion}, X1: {x1}, X2: {x2}, ES: {es}",
-                                FalsaP(parse_expr(funcion),x1,x2,es))
+                                FalsaP(funcion,x1,x2,es))
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -217,7 +215,7 @@ while True:
                                     f"X: {xi}"])
                     limpiar()
                     print_final(f"Funcion: {funcion}, XI: {xi} ES: {es}",
-                                NewtonR(parse_expr(funcion),xi,es))
+                                NewtonR(funcion,xi,es))
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -241,7 +239,7 @@ while True:
                                     f"Xn:{xn}"])
                     limpiar()
                     print_final(f"Funcion: {funcion}, Xn-1: {xnmenos}, Xn: {xn}, ES: {es}",
-                                Sec(parse_expr(funcion),xnmenos,xn,es))
+                                Sec(funcion,xnmenos,xn,es))
                 except OperacionDetenida:
                     limpiar()
                     continue

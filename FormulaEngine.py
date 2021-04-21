@@ -12,12 +12,6 @@ def convertir_funcion(formula: str, var_o = "x", var_n = "x"):
         #Convertir funciones trigonometricas
         if "sen" in formula:
             formula = formula.replace("sen", "sin")
-        if "cot" in formula:
-            formula = formula.replace("cot", "1/tan")
-        if "sec" in formula:
-            formula = formula.replace("sec", "1/cos")
-        if "csc" in formula:
-            formula = formula.replace("sec", "1/sin")
         if "asen" in formula:
             formula = formula.replace("asen", "asin")
             
