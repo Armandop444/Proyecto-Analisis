@@ -113,10 +113,10 @@ limpiar()
 while True:
     opcion = menu_principal.show()
     
-    if opcion == 0:
+    if opcion == 0: #UNIDAD 1
         pass
     
-    elif opcion == 1:
+    elif opcion == 1: #UNIDAD 2
         menu_2 = Menu.Menu(
             [
                 '[1] Biseccion',
@@ -142,7 +142,7 @@ while True:
                     funcion = pedir_funcion("[Biseccion]")
                     x1 = pedir_valores("[Biseccion] Ingrese el valor del intervalo inferior x1:  ",
                                     [f"Funcion: {funcion}"])
-                    x2 = pedir_valores("[Biseccion] Ingrese el valor del intervalo inferior x2:  ",
+                    x2 = pedir_valores("[Biseccion] Ingrese el valor del intervalo superior x2:  ",
                                     [f"Funcion: {funcion}",
                                         f"X1: {x1}"])
                     es = pedir_error([f"Funcion: {funcion}",
@@ -259,13 +259,13 @@ while True:
                 break
                 
         
-    elif opcion == 2:
+    elif opcion == 2: #UNIDAD 3
         pass
     
-    elif opcion == 3:
+    elif opcion == 3: #UNIDAD 4
         pass
     
-    elif opcion == 4:
+    elif opcion == 4: #UNIDAD 5
         pass
     
     elif opcion == 5:

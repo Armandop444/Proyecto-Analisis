@@ -1,10 +1,10 @@
-from sympy import *
-import numpy as np
-from Utilidades import tablita
+from FormulaEngine import convertir_funcion
+from Utilidades import raiz, tablita
+from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan
 
 #ecuacion=input("ingrese la funcion\n")
 # funcion que se evaluara
-x = symbols('x') # declaramos que x es un simbolo
+
 
 #esto es del ccodigo de alejandro
 #if"^"in ecuacion:
@@ -19,13 +19,13 @@ def Bisec(func, x1, x2, es):
     tabla = tablita(["X1", "X2", "Xr", "EA"])
     xr = 0
     ea = 100
-    f1 = func.subs(x,x1)  # reamplazmos x por x1 y evaluamos la funcion
+    f1 = eval(convertir_funcion(func, var_n="x1"))  # reamplazmos x por x1 y evaluamos la funcion
     # inicio del bucle
     while ea > es:
 
         xanterior = xr
         xr = (x1 + x2) / 2
-        fr = func.subs(x,xr)
+        fr = eval(convertir_funcion(func,var_n="xr"))
         if xr != 0:
             ea = abs((xr - xanterior) / xr) * 100
         test = f1 * fr

@@ -1,16 +1,13 @@
-from sympy import *
-import numpy as np
-from tabulate import tabulate
-from Utilidades import tablita
+from FormulaEngine import convertir_funcion
+from Utilidades import raiz, tablita
+from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan
 
 
 #ecuacion=input("ingrese la funcion\n")
 # funcion que se evaluara
-#x = symbols('x') # declaramos que x es un simbolo
 
 #ecuacion=input("ingrese la funcion\n")
 #funcion que se evaluara
-x = symbols('x') # declaramos que x es un simbolo
 
 #esto es del ccodigo de alejandro
 #if"^"in ecuacion:
@@ -29,15 +26,15 @@ def Sec(func, xnmenos, xn, es):
     #f1 = func.subs(x,xnmenos)  # reamplazmos x por x1xnmenos y evaluamos la funcion
     # incio del bucle
     
-    funcion1=func.subs(x,xnmenos)
-    funcion2=func.subs(x,xn)
+    funcion1=eval(convertir_funcion(func,var_n="xnmenos"))
+    funcion2=eval(convertir_funcion(func,var_n="xn"))
     funcion=float(funcion1*funcion2)
     
     if(funcion<0.00):
         while ea>es:
             #xanterior=xnmenos
-            funcion1=func.subs(x,xnmenos)
-            funcion2=func.subs(x,xn)
+            funcion1=eval(convertir_funcion(func,var_n="xnmenos"))
+            funcion2=eval(convertir_funcion(func,var_n="xn"))
             xnmas=float(xn-(funcion2*((xn-xnmenos)/(funcion2-funcion1))))
             #print(xnmas)
             if xnmas !=0 and itera!=0:
