@@ -9,6 +9,7 @@ from falsaP import FalsaP
 from PuntoFijo import PuntoFijo
 from newtonRaphson import NewtonR
 from secante import Sec
+from muller import muller
 
 
 #Permite limpiar la pantalla
@@ -124,6 +125,7 @@ while True:
                 '[3] Punto Fijo',
                 '[4] Newton Raphson',
                 '[5] Secante',
+                '[6] Muller',
                 Menu.Separador(),
                 '[a] Ayuda',
                 '[s] Volver al menu principal'
@@ -250,11 +252,39 @@ while True:
                     print(f"Algo ha salido mal {e}")
                     input("Presione cualquier tecla para continuar")
                 
-            elif opcion == 5:
+            elif opcion == 5: #Muller
+                try:
+                    funcion = pedir_funcion("[Muller]")
+                    x0 = pedir_valores("[Muller] Ingrese el valor de x0: ",
+                                        [f"Funcion: {funcion}"])
+                    x1 = pedir_valores("[Muller] Ingrese el valor de x1: ",
+                                            [f"Funcion: {funcion}",
+                                            f"X0= {x0}"])
+                    x2 = pedir_valores("[Muller] Ingrese el valor de x2: ",
+                                            [f"Funcion: {funcion}",
+                                            f"X0 = {x0}",
+                                            f"X! = {x1}"])
+                    es = pedir_error([f"Funcion: {funcion}",
+                                        f"X0 = {x0}",
+                                        f"X1 = {x1}",
+                                        f"X2 = {x2}"])
+                    limpiar()
+                    print_final(f"Funcion: {funcion}, X0: {x0}, X1: {x1}, X2: {x2}, ES: {es}",
+                                muller(funcion,x0,x1,x2,es))
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+            elif opcion == 6:
                 limpiar()
                 #imprimir ayuda
                 print("Aqui va la ayuda :v")
-            elif opcion == 6:
+            elif opcion == 7:
                 #Opcion terminar
                 break
                 
