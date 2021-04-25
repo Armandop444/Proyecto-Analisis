@@ -24,11 +24,11 @@ def muller(f, x0, x1, x2, tol):
         a= ((x1 - x2) * (fx0 - fx2) - (x0 - x2) *
              (fx1 - fx2)) / ((x0 - x2) * (x1 - x2) * (x0 - x1))
         x3 = x2 - (2 * c) / (b + sign(b) * sqrt(b**2 - 4 * a * c))
-        error = abs(x3 - x2)*100
+        error = abs((x3 - x2)/x3)*100
         x0 = x1
         x1 = x2
         x2 = x3
-        tabla.add_fila([x1, x2, x3, error])
+        tabla.add_fila([x0,x1, x2, x3, error])
 
     return tabla.get_tabla()
 
