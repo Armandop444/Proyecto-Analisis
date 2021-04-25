@@ -4,12 +4,12 @@ import Menu
 from FormulaEngine import validar_parentesis
 from Utilidades import cifras_significativas, ValueError, OperacionDetenida, MathError
 
-from biseccion import Bisec
-from falsaP import FalsaP
-from PuntoFijo import PuntoFijo
-from newtonRaphson import NewtonR
-from secante import Sec
-from muller import muller
+from Unidad2.biseccion import Bisec
+from Unidad2.falsaP import FalsaP
+from Unidad2.PuntoFijo import PuntoFijo
+from Unidad2.newtonRaphson import NewtonR
+from Unidad2.secante import Sec
+from Unidad2.muller import muller
 
 
 #Permite limpiar la pantalla

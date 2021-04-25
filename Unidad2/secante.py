@@ -1,5 +1,5 @@
 from FormulaEngine import convertir_funcion
-from Utilidades import raiz, tablita
+from Utilidades import tablita, raiz
 from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan
 
 
