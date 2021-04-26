@@ -170,9 +170,9 @@ while True:
                     funcion = pedir_funcion("[Falsa Posicion]")
                     x1 = pedir_valores("[Falsa Posicion] Ingrese el valor del intervalo inferior x1:  ",
                                         [f"Funcion:{funcion}"])
-                    x2 = pedir_valores("[Falsa Posicion] Ingrese el valor del intervalo inferior x2:  ",
+                    x2 = pedir_valores("[Falsa Posicion] Ingrese el valor del intervalo superior x2:  ",
                                         [f"Funcion:{funcion}",
-                                        f"X1: {funcion}"])
+                                        f"X1: {x1}"])
                     es = pedir_error([f"Funcion: {funcion}",
                                         f"X1: {x1}",
                                         f"X2: {x2}"])
