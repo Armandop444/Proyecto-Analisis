@@ -7,7 +7,7 @@ from Utilidades import cifras_significativas, ValueError, OperacionDetenida, Mat
 from Unidad2.biseccion import Bisec
 from Unidad2.falsaP import FalsaP
 from Unidad2.PuntoFijo import PuntoFijo
-from Unidad2.newtonRaphson import NewtonR
+from Unidad2.newtonRaphson import NewtonRaphson
 from Unidad2.secante import Sec
 from Unidad2.muller import muller
 
@@ -217,7 +217,7 @@ while True:
                                     f"X: {xi}"])
                     limpiar()
                     print_final(f"Funcion: {funcion}, XI: {xi} ES: {es}",
-                                NewtonR(funcion,xi,es))
+                                NewtonRaphson(funcion,xi,es))
                 except OperacionDetenida:
                     limpiar()
                     continue
