@@ -10,6 +10,7 @@ from Unidad2.PuntoFijo import PuntoFijo
 from Unidad2.newtonRaphson import NewtonRaphson
 from Unidad2.secante import Sec
 from Unidad2.muller import muller
+from Unidad2.bairstow import bairstow
 
 
 #Permite limpiar la pantalla
@@ -34,6 +35,22 @@ def pedir_valores(mensaje: str, historial: list):
                 print("No es un numero")
                 continue
 
+def pedir_grado(mensaje: str, historial: list):
+    limpiar()
+    while True:
+        for h in historial:
+            print(h)
+        print("Escribir 'cancelar' para volver al menu")
+        valor = input(mensaje)
+        if valor.lower() == "cancelar":
+            raise OperacionDetenida("Cancelado")
+        else:
+            try:
+                return int(valor)
+            except:
+                limpiar()
+                print("No es un numero")
+                continue
 
 def pedir_error(historial: list):
     limpiar()
@@ -126,6 +143,7 @@ while True:
                 '[4] Newton Raphson',
                 '[5] Secante',
                 '[6] Muller',
+                '[7] Bairstow',
                 Menu.Separador(),
                 '[a] Ayuda',
                 '[s] Volver al menu principal'
@@ -280,11 +298,41 @@ while True:
                 except Exception as e:
                     print(f"Algo ha salido mal {e}")
                     input("Presione cualquier tecla para continuar")
-            elif opcion == 6:
+
+            elif opcion == 6: #Bairstow
+                try:
+                    r = pedir_valores("[Bairstow] Ingrese el valor de r: ", "")
+                    s = pedir_valores("[Bairstow] Ingrese el valor de s:", 
+                                        [f"r= {r}"])
+                    es = pedir_error([f"r= {r}",
+                                        f"s= {s}"])
+                    grado = pedir_grado("[Bairstow] Ingrese el grado del polinomio al cual desea calcularle las raices: ", 
+                                        [f"r= {r}",
+                                        f"s= {s}",
+                                        f"es= {es}"])
+                    coe = []
+                    rango = range(0, grado + 1)
+                    for i in rango:
+                        coe.append(float(pedir_valores("[Bairstow] Ingrese el coeficiente x"+ str(i)+": ",[f"r= {r}",
+                                        f"s= {s}",
+                                        f"Coeficientes (Mayor a menor): {coe}"])))
+                    limpiar()
+                    print_final(f"r: {r}, s: {s}, Coeficientes: {coe}", 
+                                bairstow(r, s, coe, es))
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+            elif opcion == 7:
                 limpiar()
                 #imprimir ayuda
                 print("Aqui va la ayuda :v")
-            elif opcion == 7:
+            elif opcion == 8:
                 #Opcion terminar
                 break
                 
