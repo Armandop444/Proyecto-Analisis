@@ -64,22 +64,22 @@ def bairstow(r, s, a, errorA):
 
             if len(b) != 0:
                 listaRaices.append(-b[1] / b[0])
-                tablaD.add_fila([listaRaices[i]])
+                tablaD.add_fila([str(listaRaices[i])])
             else:
                 listaRaices.extend(cuadratica2(a[0], a[1], a[2]))
-                tablaD.add_fila([listaRaices[i]])
+                tablaD.add_fila([str(listaRaices[i])])
             grado -= 1
             i+=1
         elif grado == 2:
 
             if len(b) != 0:
                 listaRaices.extend(cuadratica2(b[0], b[1], b[2]))
-                tablaD.add_fila([listaRaices[i]])
-                tablaD.add_fila([listaRaices[i+1]])
+                tablaD.add_fila([str(listaRaices[i])])
+                tablaD.add_fila([str(listaRaices[i+1])])
             else:
                 listaRaices.extend(cuadratica2(a[0], a[1], a[2]))
-                tablaD.add_fila([listaRaices[i]])
-                tablaD.add_fila([listaRaices[i+1]])
+                tablaD.add_fila([str(listaRaices[i])])
+                tablaD.add_fila([str(listaRaices[i+1])])
             grado -= 2
             i+=2
         else:
