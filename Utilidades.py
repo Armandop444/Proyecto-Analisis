@@ -14,16 +14,19 @@ class OperacionDetenida(Exception):
 
 # clase para generar tablas chivas
 class tablita:
-    def __init__(self, cabeceros):
+    def __init__(self, cabeceros, show_iteracion = True):
         self.contenido = []
-        cabeceros.insert(0,"Iteracion")
+        if show_iteracion:
+            cabeceros.insert(0,"Iteracion")
+            self.iterador = 1
+            self.show_iteracion = show_iteracion
         self.cabeceros = cabeceros
-        self.iterador = 1
         
     def add_fila(self, fila: list):
-        fila.insert(0,self.iterador)
-        self.iterador += 1
-        self.contenido.append(fila)
+        if self.show_iteracion:
+            fila.insert(0,self.iterador)
+            self.iterador += 1
+        self.contenido.append(str(elemento) for elemento in fila)
         
     def print_table(self, estilo = "github"):
         print(tabulate(self.contenido, headers=self.cabeceros,tablefmt=estilo))
