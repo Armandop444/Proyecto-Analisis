@@ -1,53 +1,51 @@
-import sympy as sp
-from Utilidades import tablita
+from sympy import *
 
-#x=sp.Symbol(x)
-
-def hermiteDD(n):
-    listalista=[]
-    nmas1=n+1
-    avancehorizontal=1
-    # for i in range(n):
-    #     xn=float(input("ingrese el valor n {0} de xn".format(i)))
-    #     a=float(input("ingrese el valor de n {0} para fx".format(i)))
-    #     lista=[]
-    #     lista.append(i)
-    #     lista.append(xn)
-    #     lista.append(a)
-    #     listalista.append(lista)
-    # for i in range(1,n,2):
-    #     dxn=float(input("ingrese el valor de {0} para dfx: ".format(listalista[i][0])))
-    #     lista=listalista[i]
-    #     lista.append(dxn)
-    #     listalista[i]=lista
-    # for i in range(2,n,2):
-    #     dfxn=((listalista[i][2])-(listalista[i-1][2]))/((listalista[i][1])-(listalista[i-1][1]))
-    #     lista=listalista[i]
-    #     lista.append(dfxn)
-    #     listalista[i]=lista
-    # z=2
-    # for i in range(4,(nmas1+1),1):
-    #     for j in range(z,n,1):
-    #         h=((listalista[j][i-1])-(listalista[j-1][i-1]))/((listalista[j][1])-(listalista[j-2][1]))
-    #         lista=listalista[j]
-    #         lista.append(h)
-    #         listalista[j]=lista
-    #     z=z+1
-    xdatos=int(input("ingrese la cantidad de puntos (x0, x1, xn)"))
-
-    for i in range(0,xdatos,1):
-        xn=float(input())
-
-    for i in range(0,n,1):
-        print(listalista[i])
-    polinomio=""
-    
-
-    
+def hermiteDD(xn,fxn,dfxn,grado,punto):
+    ls=[]
+    lsdiff=[]
+    h=[]
+    hvar=parse_expr("1")
+    hgorritovar=parse_expr("1")
+    hgorrito=[]
+    x=Symbol("x")
+    grado=grado+1
+    polhermite=0
+    l=parse_expr("1")
+    for i in range(grado):
+        for k in range(grado):
+            if k!=i:
+                l=l*((x-xn[k])/(xn[i]-xn[k]))
+        l=l.expand()
+        ls.append(l)
+        lsdiff.append(l.diff(x))
+        print(l)
+        l=parse_expr("1")
+    print(ls)
+    print(lsdiff)
+    for i in range(grado):
+        hvar=(1-2*(x-xn[i])*((lsdiff[i]).subs(x,xn[i])))*((ls[i])**2)
+        hgorritovar=(x-xn[i])*((ls[i])**2)
+        hvar=hvar.expand()
+        hgorritovar=hgorritovar.expand()
+        h.append(hvar)
+        hgorrito.append(hgorritovar)
+    print(h)
+    print(hgorrito)
+    for i in range(grado):
+        polhermite=polhermite+((fxn[i])*(h[i]))+((dfxn[i])*(hgorrito[i]))
+    polhermite=polhermite.expand()
+    print(polhermite)
+    if punto!="":
+        print((polhermite.subs(x,punto)).expand())
+    return 0
 
 
-n=int(input("inserte el valor de n: "))
-uwu=hermiteDD(n)
+
+
+xn=[1.3,1.6,1.9]
+fxn=[0.6200860,0.4554022,0.2818186]
+dfxn=[-0.5220232,-0.5698959,-0.5811571]
+uwu=hermiteDD(xn,fxn,dfxn,2,1.5)
 print(uwu)
 
 
