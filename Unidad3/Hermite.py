@@ -1,90 +1,71 @@
-from Utilidades import limpiar, tablita
-from sympy import symbols
-from sympy import poly_from_expr
-'''
-pedir los valores por fila
-|   x |   y |   y' |
-|-----|-----|------|
-|  -2 | -12 |   22 |
-|   1 |   9 |   10 |
-'''
-def pedir_valores():
-    valores = {}
-    n = 0
-    total_datos = 0
-    while True:
-        limpiar()
-        print("Presione 'T' para terminar de ingresar valores")
-        xn = input(f"\t Ingrese el valor de X{n} ")
-        fila = []
-        if xn.upper() == "T":
-            valores["total"] = total_datos
-            return valores
-        else:
-            d = 0
-            while True:
-                limpiar()
-                
-                print("Presione 'T' para terminar de ingresar valores")
-                print("Presione 'S' para terminar de ingresar datos de la fila")
-                valor = input(f"\t Ingrese el valor de f(X{n}) " if d == 0 else f"\t Ingrese el valor de la {d}ª derivada para X{n} ")
-                if valor.upper() == "T":
-                    valores[xn]=fila
-                    valores["total"] = total_datos
-                    return valores
-                elif valor.upper() == "S":
-                    n += 1
-                    valores[xn]=fila
-                    break
-                else:
-                    fila.append(float(valor))
-                    total_datos += 1
-                    d += 1
+from sympy import *
+#el grado de una funcion mediante polinomios de hermite es dado por 2n+1
+def hermite(xn,fxn,dfxn,punto):
+    ls=[]
+    lsdiff=[]
+    h=[]
+    hvar=parse_expr("1")
+    hgorritovar=parse_expr("1")
+    hgorrito=[]
+    x=Symbol("x")
+    grado=0
+    for i in xn:
+        grado=grado+1
+    print("se obtendrá una funcion de grado {0}, debido a que son {1} datos en xn".format(((2*(grado-1))+1),grado))
+    #grado=grado+1
+    polhermite=0
+    l=parse_expr("1")
+    for i in range(grado):
+        for k in range(grado):
+            if k!=i:
+                l=l*((x-xn[k])/(xn[i]-xn[k]))
+        l=l.expand()
+        ls.append(l)
+        lsdiff.append(l.diff(x))
+        #print(l)
+        l=parse_expr("1")
+    #print(ls)
+    #print(lsdiff)
+    for i in range(grado):
+        hvar=(1-2*(x-xn[i])*((lsdiff[i]).subs(x,xn[i])))*((ls[i])**2)
+        hgorritovar=(x-xn[i])*((ls[i])**2)
+        hvar=hvar.expand()
+        hgorritovar=hgorritovar.expand()
+        h.append(hvar)
+        hgorrito.append(hgorritovar)
+    #print(h)
+    #print(hgorrito)
+    for i in range(grado):
+        polhermite=polhermite+((fxn[i])*(h[i]))+((dfxn[i])*(hgorrito[i]))
+    polhermite=polhermite.expand()
+    print("el polinomio es: ")
+    print(polhermite)
+    print("")
+    if punto!="":
+        print("el valor del punto dado ({0}) en el polinomio de hermite es: ".format(punto))
+        print((polhermite.subs(x,punto)).expand())
+    return 0
 
-def Hermite():
-    #cargar datos
-    datos = pedir_valores()
-    
-    #crear tabla
-    cabezero = ["Zk","f(Zk)"]
-    for _ in range(datos["total"] -1):
-        cabezero.append("")
-    tabla = tablita(cabezero, show_iteracion=False)
-    
-    #cargar matriz principal
-    matriz = []
-    for xn, fx in datos.items():
-        if not xn == "total":
-            for i in range(len(fx)):
-                fila = [float(xn)]
-                fila.append(fx[0])
-                for _ in range(datos["total"]-1):
-                    fila.append(float())
-                matriz.append(fila)
-    
-    #calcular
-    #j,i
-    for i in range(2,datos["total"]+1):
-        for j in range(i-1,len(matriz)):
-            #print(f"({j},{i})")
-            if not (matriz[j][0] - matriz[j-(i-1)][0]) == 0:
-                matriz[j][i] = (matriz[j][i-1] - matriz[j-1][i-1]) / (matriz[j][0] - matriz[j-(i-1)][0])
-            else:
-                matriz[j][i] = datos[str(matriz[j][0])][i-1]
-    
-    polinomio = f"{matriz[0][1]}"
-    temp = ""
-    for j in range(1,len(matriz)):
-        #print(f"{matriz[j][0]} {matriz[j][j+1]}")
-        temp += f"*(x-{matriz[j-1][0]})"
-        polinomio += f"+({matriz[j][j+1]}){temp}"
-        
-    x,_ = poly_from_expr(polinomio)
-    
-    for fila in matriz:
-        tabla.add_fila(fila)
-        
-    print(f"{'*'*5} Resultado del polinomio de Hermite {'*'*5} \n")
-    tabla.print_table()
-    print(f"\nPolinomio: {str(x.expr).replace('**','^')}")
-    print("\n","*"*50)
+
+
+
+xn=[1.3,1.6,1.9]
+fxn=[0.6200860,0.4554022,0.2818186]
+dfxn=[-0.5220232,-0.5698959,-0.5811571]
+uwu=hermite(xn,fxn,dfxn,1.5)
+print(uwu)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
