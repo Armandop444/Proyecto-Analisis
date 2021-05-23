@@ -1,5 +1,4 @@
 from Utilidades import limpiar, tablita
-from sympy import symbols
 from sympy import poly_from_expr
 '''
 pedir los valores por fila
