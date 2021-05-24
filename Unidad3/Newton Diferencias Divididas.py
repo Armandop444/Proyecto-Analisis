@@ -4,6 +4,8 @@ import sympy as sym
 # INGRESO , Datos de prueba
 #xi = np.array([4, -4, 7,6,2])
 #fi = np.array([278, -242, 1430, 908,40])
+grado =int(input("Ingrese el grado del polinomio"))
+
 def InterpolacionNewtondDivididas(grado):
     cont = 0
     numero = 0
@@ -86,5 +88,5 @@ def InterpolacionNewtondDivididas(grado):
     print(evaluar)
     print(tabla)
 
-#Prueba de funcion
-#InterpolacionNewtondDivididas(2)
+#Prueba de funcion aquie agregar el grado del polinomio
+InterpolacionNewtondDivididas(grado)
