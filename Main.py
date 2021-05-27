@@ -184,6 +184,15 @@ while True:
                 except Exception as e:
                     print(f"Algo ha salido mal {e}")
                     input("Presione cualquier tecla para continuar")
+            elif opcion == 2:
+                pass
+            elif opcion == 3:
+                limpiar()
+                #imprimir ayuda
+                print("Aqui va la ayuda :v")
+            elif opcion == 4:
+                #Opcion terminar
+                break
 
 
     
