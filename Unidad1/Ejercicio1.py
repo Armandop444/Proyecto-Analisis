@@ -10,7 +10,7 @@ def ejercicio1(xn,Es):
     xn0 = 1.0
     #print(xn0)
     xn1 = 0.0
-    tabla.add_fila([xn0,Ea])
+    tabla.add_fila([xn0,"-"])
     i=2
     while Ea>=Es:
         if i % 2 != 0:
