@@ -4,6 +4,8 @@ import Menu
 from FormulaEngine import validar_parentesis
 from Utilidades import cifras_significativas, ValueError, OperacionDetenida, MathError
 
+from Unidad1.Ejercicio1 import ejercicio1
+from Unidad1.Ejercicio2 import ejercicio2
 from Unidad2.biseccion import Bisec
 from Unidad2.falsaP import FalsaP
 from Unidad2.PuntoFijo import PuntoFijo
@@ -132,7 +134,58 @@ while True:
     opcion = menu_principal.show()
     
     if opcion == 0: #UNIDAD 1
-        pass
+        menu_1 = Menu.Menu(
+            [
+                '[1] Ln(e+x)',
+                '[2] e^(x^2)',
+                '[3] Sen(x)',
+                Menu.Separador(),
+                '[a] Ayuda',
+                '[s] Volver al menu principal'
+            ],
+            titulo= "Ejercicios de la unidad 1 por metodo de taylor",
+            metodo_seleccion='atajo'
+        )
+        while True:
+            opcion=menu_1.show()
+            if opcion==0:#Ln(e+x)
+                try:
+                    xn = pedir_valores("[Ln(e+x)] Ingrese el valor del intervalo x:  ",
+                                    [f""])
+                    es = pedir_error(["Funcion: Ln(e+x)",xn])
+                    limpiar()
+                    print_final(f"Funcion: Ln(e+x), XN: {xn}, ES: {es}",
+                                ejercicio1(xn,es))
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+            elif (opcion==1): #e^x^2
+                try:
+                    xn = pedir_valores("[e^(x^2)] Ingrese el valor del intervalo x:  ",
+                                    [f""])
+                    es = pedir_error(["Funcion: e^(x^2)",xn])
+                    limpiar()
+                    print_final(f"Funcion: e^(x^2), XN: {xn}, ES: {es}",
+                                ejercicio2(xn,es))
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+
+
     
     elif opcion == 1: #UNIDAD 2
         menu_2 = Menu.Menu(
