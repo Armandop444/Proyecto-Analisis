@@ -20,6 +20,7 @@ def pedir_valores():
             valores["total"] = total_datos
             return valores
         else:
+            xn = float(xn)
             d = 0
             while True:
                 limpiar()
@@ -28,12 +29,12 @@ def pedir_valores():
                 print("Presione 'S' para terminar de ingresar datos de la fila")
                 valor = input(f"\t Ingrese el valor de f(X{n}) " if d == 0 else f"\t Ingrese el valor de la {d}ª derivada para X{n} ")
                 if valor.upper() == "T":
-                    valores[xn]=fila
+                    valores[str(xn)]=fila
                     valores["total"] = total_datos
                     return valores
                 elif valor.upper() == "S":
                     n += 1
-                    valores[xn]=fila
+                    valores[str(xn)]=fila
                     break
                 else:
                     fila.append(float(valor))
