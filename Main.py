@@ -3,12 +3,13 @@ import Menu
 
 from FormulaEngine import validar_parentesis
 from Utilidades import cifras_significativas, ValueError, OperacionDetenida, MathError
-
+#Unidad 1 
 from Unidad1.Ejercicio1 import ejercicio1
 from Unidad1.Ejercicio2 import ejercicio2
 from Unidad1.Ejercicio3 import ejercicio3
 from Unidad1.Ejercicio4 import ejercicio4
 from Unidad1.Ejercicio5 import ejercicio5
+#Unidad 2 
 from Unidad2.biseccion import Bisec
 from Unidad2.falsaP import FalsaP
 from Unidad2.PuntoFijo import PuntoFijo
@@ -16,6 +17,8 @@ from Unidad2.newtonRaphson import NewtonRaphson
 from Unidad2.secante import Sec
 from Unidad2.muller import muller
 from Unidad2.bairstow import bairstow
+#Unidad 3 
+from Unidad3.HermiteDiferencias import HermiteD
 
 
 #Permite limpiar la pantalla
@@ -251,7 +254,6 @@ while True:
                 #Opcion terminar
                 break
 
-
     
     elif opcion == 1: #UNIDAD 2
         menu_2 = Menu.Menu(
@@ -456,8 +458,57 @@ while True:
                 break
                 
         
-    elif opcion == 2: #UNIDAD 3
-        pass
+    elif opcion == 2: #UNIDAD 3 
+        menu_3 = Menu.Menu(
+            [
+                '[1] Lagrange',
+                '[2] Interpolacion de Newton',
+                '[3] Diferencias Divididas',
+                '[4] Polinomio de Hermite',
+                Menu.Separador(),
+                '[a] Ayuda',
+                '[s] Volver al menu principal'
+            ],
+            titulo= "Metodos de la unidad 2",
+            metodo_seleccion='atajo'
+        )
+
+        while True:
+            opcion = menu_3.show()
+            if opcion ==0: #Lagrange
+                pass
+            elif opcion==1: #Newton Recursivo
+                pass
+            elif opcion==2: #Diferencias Divididas
+                menu_mini= Menu.Menu(
+                    [
+                        '[1] Interpolacion de Newton',
+                        '[2] Polinomio de Hermite',
+                        Menu.Separador(),
+                        '[s] Volver al menu principal'
+                    ],
+                    titulo="Metodos por Diferencias Divididas",
+                    metodo_seleccion='atajo'
+                )
+                while True:
+                    opcion2=menu_mini.show()
+                    if opcion2==0:#Newton Diferencias
+                        pass
+                    elif opcion2==1:#Hermite Diferencias
+                        pass
+
+                    elif opcion2==2:
+                        #Opcion terminar
+                        break
+            elif opcion==3: #Hermite normal
+                pass
+            elif opcion == 4:
+                limpiar()
+                #imprimir ayuda
+                print("Aqui va la ayuda :v")
+            elif opcion == 5:
+                #Opcion terminar
+                break
     
     elif opcion == 3: #UNIDAD 4
         pass
