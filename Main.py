@@ -6,6 +6,9 @@ from Utilidades import cifras_significativas, ValueError, OperacionDetenida, Mat
 
 from Unidad1.Ejercicio1 import ejercicio1
 from Unidad1.Ejercicio2 import ejercicio2
+from Unidad1.Ejercicio3 import ejercicio3
+from Unidad1.Ejercicio4 import ejercicio4
+from Unidad1.Ejercicio5 import ejercicio5
 from Unidad2.biseccion import Bisec
 from Unidad2.falsaP import FalsaP
 from Unidad2.PuntoFijo import PuntoFijo
@@ -139,6 +142,8 @@ while True:
                 '[1] Ln(e+x)',
                 '[2] e^(x^2)',
                 '[3] Sen(x)',
+                '[4] Cos(x)',
+                '[5] e^x',
                 Menu.Separador(),
                 '[a] Ayuda',
                 '[s] Volver al menu principal'
@@ -184,13 +189,65 @@ while True:
                 except Exception as e:
                     print(f"Algo ha salido mal {e}")
                     input("Presione cualquier tecla para continuar")
-            elif opcion == 2:
-                pass
-            elif opcion == 3:
+            elif opcion == 2: #Sen(x)
+                try:
+                    xn = pedir_valores("[Sen(x)] Ingrese el valor del intervalo x en grados:  ",
+                                    [f""])
+                    es = pedir_error(["Funcion: Sen(x)",xn])
+                    limpiar()
+                    print_final(f"Funcion: Sen(x), XN: {xn}, ES: {es}",
+                                ejercicio3(xn,es))
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+            elif opcion == 3: #Cos(x)
+                try:
+                    xn = pedir_valores("[Cos(x)] Ingrese el valor del intervalo x en grados:  ",
+                                    [f""])
+                    es = pedir_error(["Funcion: Cos(x)",xn])
+                    limpiar()
+                    print_final(f"Funcion: Cos(x), XN: {xn}, ES: {es}",
+                                ejercicio4(xn,es))
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+            elif opcion == 4: #e^x
+                try:
+                    xn = pedir_valores("[e^x] Ingrese el valor del intervalo x:  ",
+                                    [f""])
+                    es = pedir_error(["Funcion: e^x",xn])
+                    limpiar()
+                    print_final(f"Funcion: e^x, XN: {xn}, ES: {es}",
+                                ejercicio5(xn,es))
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+            elif opcion == 5:
                 limpiar()
                 #imprimir ayuda
                 print("Aqui va la ayuda :v")
-            elif opcion == 4:
+            elif opcion == 6:
                 #Opcion terminar
                 break
 
