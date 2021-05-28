@@ -495,7 +495,17 @@ while True:
                     if opcion2==0:#Newton Diferencias
                         pass
                     elif opcion2==1:#Hermite Diferencias
-                        pass
+                        try:
+                            HermiteD()
+                        except OperacionDetenida:
+                            limpiar()
+                            continue
+                        except MathError as e:
+                            print("MathError: " + e)
+                            input("Presione cualquier tecla para continuar")
+                        except Exception as e:
+                            print(f"Algo ha salido mal {e}")
+                            input("Presione cualquier tecla para continuar")
 
                     elif opcion2==2:
                         #Opcion terminar
