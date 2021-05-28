@@ -14,6 +14,7 @@ from Unidad2.biseccion import Bisec
 from Unidad2.falsaP import FalsaP
 from Unidad2.PuntoFijo import PuntoFijo
 from Unidad2.newtonRaphson import NewtonRaphson
+from Unidad2.NewtonTuneado import NewtonTuneado
 from Unidad2.secante import Sec
 from Unidad2.muller import muller
 from Unidad2.bairstow import bairstow
@@ -262,9 +263,10 @@ while True:
                 '[2] Falsa Posicion',
                 '[3] Punto Fijo',
                 '[4] Newton Raphson',
-                '[5] Secante',
-                '[6] Muller',
-                '[7] Bairstow',
+                '[5] Newton Raphson Modificado',
+                '[6] Secante',
+                '[7] Muller',
+                '[8] Bairstow',
                 Menu.Separador(),
                 '[a] Ayuda',
                 '[s] Volver al menu principal'
@@ -366,8 +368,27 @@ while True:
                 except Exception as e:
                     print(f"Algo ha salido mal {e}")
                     input("Presione cualquier tecla para continuar")
+            elif opcion == 4: #Newton Raphson Modificado
+                try:
+                    funcion = pedir_funcion("[Newton Raphson M]")
+                    xi = pedir_valores("[Newton Raphson M] Ingrese el valor de xi: ",
+                                    [f"Funcion: {funcion}"])
+                    es = pedir_error([f"Funcion: {funcion}",
+                                    f"X: {xi}"])
+                    limpiar()
+                    print_final(f"Funcion: {funcion}, XI: {xi} ES: {es}",
+                                NewtonTuneado(funcion,xi,es))
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
 
-            elif opcion == 4: #Secante
+            elif opcion == 5: #Secante
                 try:
                     funcion = pedir_funcion("[Secante]")
                     xnmenos = pedir_valores("[Secante] Ingrese el valor de xn-1: ",
@@ -391,7 +412,7 @@ while True:
                     print(f"Algo ha salido mal {e}")
                     input("Presione cualquier tecla para continuar")
                 
-            elif opcion == 5: #Muller
+            elif opcion == 6: #Muller
                 try:
                     funcion = pedir_funcion("[Muller]")
                     x0 = pedir_valores("[Muller] Ingrese el valor de x0: ",
@@ -420,7 +441,7 @@ while True:
                     print(f"Algo ha salido mal {e}")
                     input("Presione cualquier tecla para continuar")
 
-            elif opcion == 6: #Bairstow
+            elif opcion == 7: #Bairstow
                 try:
                     r = pedir_valores("[Bairstow] Ingrese el valor de r: ", "")
                     s = pedir_valores("[Bairstow] Ingrese el valor de s:", 
@@ -449,11 +470,11 @@ while True:
                 except Exception as e:
                     print(f"Algo ha salido mal {e}")
                     input("Presione cualquier tecla para continuar")
-            elif opcion == 7:
+            elif opcion == 8:
                 limpiar()
                 #imprimir ayuda
                 print("Aqui va la ayuda :v")
-            elif opcion == 8:
+            elif opcion == 9:
                 #Opcion terminar
                 break
                 
