@@ -86,7 +86,7 @@ def grange():
     print("Polinomio simplificado:",reconvertir_funcion(str(px)),"\n")
     
     if punto !="" and funcion!="":
-        n=len(xi)
+        n=len(xi)-1
         error=0.0
         fac=factorial(n)
         f=convertir_funcion(funcion)
