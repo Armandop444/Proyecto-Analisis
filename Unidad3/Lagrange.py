@@ -72,18 +72,18 @@ def grange():
         l=fi[i]
         for k in range(grado):
             if k!=i:
-                #print("FI:",l)
                 l=l*((x-xi[k])/(xi[i]-xi[k]))
-                #print("xi:",xi[i])
-                #print("xi2:",xi[k])
-                #print("Polinomio: \n",l)
         px=px+l
-    print("Tabla")
-    print("xi:",xi)
-    print("fi:",fi)
-    print("Polinomio sin simplificar:\n",px,"\n")
+
+    #Tabla
+    xi.insert(0, "xi")
+    fi.insert(0, "fi")
+    tabla=tablita("",show_iteracion=False)
+    tabla.add_fila(xi)
+    tabla.add_fila(fi)
+    tabla.print_table()
     px=px.expand()
-    print("Polinomio simplificado:",px,"\n")
+    print("Polinomio simplificado:",reconvertir_funcion(str(px)),"\n")
     
     if punto !="" and funcion!="":
         n=len(xi)
@@ -97,8 +97,9 @@ def grange():
         m=mul(punto,n)
         mayor=0
         for i in range(len(xi)):
-            if mayor<abs(xi[i]):
-                mayor=xi[i]
+            if i!=0:
+                if mayor<abs(xi[i]):
+                    mayor=xi[i]
         fderivada=derivada.subs(x,mayor)
         error=(fderivada/fac)*m
         px=eval(convertir_funcion(str(px),var_n="punto"))
@@ -106,5 +107,3 @@ def grange():
         print()
         print("Derivada:",reconvertir_funcion(str(derivada)))
         print("Error",error)
-
-grange()
