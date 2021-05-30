@@ -30,3 +30,15 @@ def convertir_funcion(formula: str, var_o = "x", var_n = "x"):
         return formula
     else:
         return "Error"
+
+def reconvertir_funcion(formula: str):
+    if validar_parentesis(formula):            
+        #convertir potencias
+        if "exp" in formula:
+            formula = formula.replace("exp", "e^")
+        if "**" in formula:
+            formula = formula.replace("**", "^")
+        
+        return formula
+    else:
+        return "Error"
