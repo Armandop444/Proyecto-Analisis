@@ -1,4 +1,49 @@
 from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan, Symbol,factorial, diff
+from Utilidades import limpiar, tablita
+from FormulaEngine import convertir_funcion, reconvertir_funcion
+
+def pedir_valores():
+    valores = {}
+    total=1
+    total_datos = 0
+    d = 0
+    while True:
+        limpiar()
+        xn = "xi"
+        if xn=="xi" and total_datos!=0:
+            xn="fi"
+        fila = []
+        if xn.upper() == "T":
+            valores["total"] = total_datos
+            return valores
+        else:
+            #xn = float(xn)
+            n = 0
+            while True:
+                limpiar()
+                if d!=0:
+                    print("Valores\nxi:",valores["xi"])
+                    if n!=0:
+                        print("fi:",fila)
+                else:
+                    print("Presione 'S' para terminar de ingresar datos de la fila")
+                valor = input(f"\t Ingrese el valor de X{n} " if d == 0 else f"\t Ingrese el valor de la Fi(x{n})")
+                if (n/total)==1 and xn=="fi" :
+                    if (n/total)==1:
+                        fila.append(float(valor))
+                        total_datos += 1
+                    valores[str(xn)]=fila
+                    valores["total"] = total_datos
+                    return valores
+                elif valor.upper() == "S":
+                    valores[str(xn)]=fila
+                    total=total_datos-1
+                    d = 1
+                    break
+                else:
+                    fila.append(float(valor))
+                    total_datos += 1
+                    n += 1
 
 
 def mul(b,n):
@@ -8,11 +53,20 @@ def mul(b,n):
     return m
 
 
-def grange(xi,fi,funcion,punto,grado):
-
+def grange():
+    limpiar()
     x=Symbol("x")
-
-    grado=grado+1
+    funcion=""
+    punto=""
+    opcion=input("¿Ingresara una funcion para evaluar en un punto? 1.Si 2.No")
+    if opcion=="1":
+        funcion=input("Ingrese la funcion\n")
+        punto=float(input("Ingrese el punto a evaluar\n"))
+    dic=pedir_valores()
+    limpiar()
+    xi=dic["xi"]
+    fi=dic["fi"]
+    grado=(int(dic["total"]/2))
     px=0
     for i in range(grado):
         l=fi[i]
@@ -24,7 +78,9 @@ def grange(xi,fi,funcion,punto,grado):
                 #print("xi2:",xi[k])
                 #print("Polinomio: \n",l)
         px=px+l
-    
+    print("Tabla")
+    print("xi:",xi)
+    print("fi:",fi)
     print("Polinomio sin simplificar:\n",px,"\n")
     px=px.expand()
     print("Polinomio simplificado:",px,"\n")
@@ -33,7 +89,7 @@ def grange(xi,fi,funcion,punto,grado):
         n=len(xi)
         error=0.0
         fac=factorial(n)
-        f=funcion
+        f=convertir_funcion(funcion)
         derivada=""
         for i in range(n):
             derivada=diff(f)
@@ -45,49 +101,10 @@ def grange(xi,fi,funcion,punto,grado):
                 mayor=xi[i]
         fderivada=derivada.subs(x,mayor)
         error=(fderivada/fac)*m
-        px=px.subs(x,punto)
+        px=eval(convertir_funcion(str(px),var_n="punto"))
         print("Evaluacion:",px)
         print()
-        print("Derivada:",derivada)
+        print("Derivada:",reconvertir_funcion(str(derivada)))
         print("Error",error)
 
-
-
-    return 0
-
-"""
-xi = [0,0.5,1]
-fi = [1,1.64,2.71]
-g=grange(xi,fi,"2.71**x",0.25,2)
-print(g)"""
-
-
-cont = 0
-numero = 0
-final = input("Ingrese el grado del polinomio \n")
-final = int(final)
-xi = [""]*(final+1)
-while cont < final+1:
-    mensaje = "Ingrese el valor de Xi para la posicion: {0} \n".format(cont+1)
-    numero = float(input(mensaje))
-    xi[cont] = numero
-    cont = cont+1
-print(xi)
-cont = 0
-fi = [""]*(final+1)
-while cont < final+1:
-    #print("estoy en segundo bucle con el contador en {0}".format(cont))
-    mensaje = "Ingrese el valor de fi para la posicion: {0} \n".format(cont+1)
-    numero = float(input(mensaje))
-    fi[cont] = numero
-    cont = cont+1
-print(fi)
-
-funcion=0
-punto=0
-opcion=input("¿Ingresara una funcion para evaluar en un punto? 1.Si 2.No")
-if opcion==1:
-    funcion=input("Ingrese la funcion a evaluar")
-    punto= input("Ingrese el punto a evaluar con la funcion {}".format(funcion))
-
-g=grange(xi,fi,funcion,punto,final)
+grange()
