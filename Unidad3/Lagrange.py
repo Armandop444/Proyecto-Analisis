@@ -1,4 +1,4 @@
-from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan, Symbol,factorial, diff
+from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan, Symbol,factorial, diff, parse_expr, Abs
 from Utilidades import limpiar, tablita
 from FormulaEngine import convertir_funcion, reconvertir_funcion
 
@@ -102,8 +102,13 @@ def grange():
                     mayor=xi[i]
         fderivada=derivada.subs(x,mayor)
         error=(fderivada/fac)*m
-        px=eval(convertir_funcion(str(px),var_n="punto"))
+        px=float(eval(convertir_funcion(str(px),var_n="punto")))
+        funcion=float(eval(convertir_funcion(funcion,var_n="punto")))
+        print(funcion)
+        print(px)
+        errorT=Abs((funcion-px)/(funcion))*100
         print("Evaluacion:",px)
         print()
         print("Derivada:",reconvertir_funcion(str(derivada)))
-        print("Error",error)
+        print("Error Porcentual:",errorT)
+        print("Error Teorico",error)
