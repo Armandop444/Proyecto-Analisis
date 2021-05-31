@@ -104,8 +104,6 @@ def grange():
         error=(fderivada/fac)*m
         px=float(eval(convertir_funcion(str(px),var_n="punto")))
         funcion=float(eval(convertir_funcion(funcion,var_n="punto")))
-        print(funcion)
-        print(px)
         errorT=Abs((funcion-px)/(funcion))*100
         print(f"Evaluacion en f({punto}):",px)
         print()
