@@ -494,7 +494,7 @@ while True:
                 '[a] Ayuda',
                 '[s] Volver al menu principal'
             ],
-            titulo="Metodos de la unidad 2",
+            titulo="Metodos de la unidad 3",
             metodo_seleccion='atajo'
         )
 
