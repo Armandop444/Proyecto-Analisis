@@ -107,7 +107,7 @@ def grange():
         print(funcion)
         print(px)
         errorT=Abs((funcion-px)/(funcion))*100
-        print("Evaluacion:",px)
+        print(f"Evaluacion en f({punto}):",px)
         print()
         print("Derivada:",reconvertir_funcion(str(derivada)))
         print("Error Porcentual:",errorT)
