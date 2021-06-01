@@ -20,7 +20,7 @@ from Unidad2.muller import muller
 from Unidad2.bairstow import bairstow
 # Unidad 3
 from Unidad3.Lagrange import grange
-from Unidad3.interpolacion_newton_recurciva import newton
+from Unidad3.NewtonRecursiva import newton
 from Unidad3.HermiteDiferencias import HermiteD
 
 
