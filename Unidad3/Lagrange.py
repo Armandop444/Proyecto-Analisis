@@ -58,6 +58,7 @@ def grange():
     x=Symbol("x")
     funcion=""
     punto=""
+    grado=int(input("Que grado de polinomio desea encontrar\n"))
     opcion=input("¿Ingresara una funcion para evaluar en un punto? 1.Si 2.No")
     if opcion=="1":
         funcion=input("Ingrese la funcion\n")
@@ -66,7 +67,6 @@ def grange():
     limpiar()
     xi=dic["xi"]
     fi=dic["fi"]
-    grado=(int(dic["total"]/2))
     px=0
     for i in range(grado):
         l=fi[i]
@@ -110,3 +110,4 @@ def grange():
         print("Derivada:",reconvertir_funcion(str(derivada)))
         print("Error Porcentual:",errorT)
         print("Error Teorico",error)
+grange()
