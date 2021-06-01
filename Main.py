@@ -20,6 +20,7 @@ from Unidad2.muller import muller
 from Unidad2.bairstow import bairstow
 # Unidad 3
 from Unidad3.Lagrange import grange
+from Unidad3.interpolacion_newton_recurciva import newton
 from Unidad3.HermiteDiferencias import HermiteD
 
 
@@ -513,7 +514,17 @@ while True:
                     print(f"Algo ha salido mal {e}")
                     input("Presione cualquier tecla para continuar")
             elif opcion==1: #Newton Recursivo
-                pass
+                try:
+                    newton()
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
             elif opcion==2: #Diferencias Divididas
                 menu_mini= Menu.Menu(
                     [

@@ -110,4 +110,3 @@ def grange():
         print("Derivada:",reconvertir_funcion(str(derivada)))
         print("Error Porcentual:",errorT)
         print("Error Teorico",error)
-grange()
