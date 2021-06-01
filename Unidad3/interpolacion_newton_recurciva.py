@@ -1,4 +1,52 @@
-import sympy as sym
+from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan, Symbol,factorial, diff, parse_expr, Abs
+from Utilidades import limpiar, tablita
+from FormulaEngine import convertir_funcion, reconvertir_funcion
+
+def pedir_valores():
+    valores = {}
+    total=1
+    total_datos = 0
+    d = 0
+    while True:
+        limpiar()
+        xn = "xi"
+        if xn=="xi" and total_datos!=0:
+            xn="fi"
+        fila = []
+        if xn.upper() == "T":
+            valores["total"] = total_datos
+            return valores
+        else:
+            #xn = float(xn)
+            n = 0
+            while True:
+                limpiar()
+                if d!=0:
+                    print("Valores\nxi:",valores["xi"])
+                    if n!=0:
+                        print("fi:",fila)
+                else:
+                    print("Presione 'S' para terminar de ingresar datos de la fila")
+                valor = input(f"\t Ingrese el valor de X{n} " if d == 0 else f"\t Ingrese el valor de la Fi(x{n})")
+                if (n/total)==1 and xn=="fi" :
+                    if (n/total)==1:
+                        fila.append(float(valor))
+                        total_datos += 1
+                    valores[str(xn)]=fila
+                    valores["total"] = total_datos
+                    return valores
+                elif valor.upper() == "S":
+                    valores[str(xn)]=fila
+                    total=total_datos-1
+                    d = 1
+                    break
+                else:
+                    fila.append(float(valor))
+                    total_datos += 1
+                    n += 1
+
+
+
 
 def multiplicacion(b, i, listax):
     mul = 1
@@ -22,12 +70,28 @@ def muldiv(b, listax):
         div = div * (listax[b] - listax[i])
     return div
 
+def mul(b,n):
+    m=1.0
+    for i in range(n):
+        m=m*(b-i)
+    return m
 
-def newton(listax, listaf):
+def newton():
+    limpiar()
     listaA = []
     b = 0
-
-    iteracion = len(listax)
+    funcion=""
+    punto=""
+    iteracion = int(input("Ingrese el grado que desea del polinomio\n"))
+    opcion=input("¿Ingresara una funcion para evaluar? 1.Si 2.No")
+    if opcion=="1":
+        funcion=input("Ingrese la funcion\n")
+        punto=float(input("Ingrese el punto a evaluar\n"))
+    dic=pedir_valores()
+    limpiar()
+    listax=dic["xi"]
+    listaf=dic["fi"]
+    iteracion=iteracion+1
     for i in range(iteracion):
         if i == 0:
             listaA.append(listaf[b])
@@ -40,58 +104,69 @@ def newton(listax, listaf):
             bsub = (listaf[i] - restaTotal(listaA, b, listax)) / muldiv(b, listax)
 
             listaA.append(bsub)
-    return listaA
 
+    variablesB = listaA
 
-cont = 0
-numero = 0
-final = input("Ingrese el grado del polinomio \n")
-final = int(final)
-xi = [""]*(final+1)
-while cont < final+1:
-    mensaje = "Ingrese el valor de Xi para la posicion: {0} \n".format(cont+1)
-    numero = float(input(mensaje))
-    xi[cont] = numero
-    cont = cont+1
-print(xi)
-cont = 0
-fi = [""]*(final+1)
-while cont < final+1:
-    #print("estoy en segundo bucle con el contador en {0}".format(cont))
-    mensaje = "Ingrese el valor de fi para la posicion: {0} \n".format(cont+1)
-    numero = float(input(mensaje))
-    fi[cont] = numero
-    cont = cont+1
-print(fi)
-Valores=newton(xi,fi)
+    x = Symbol('x')
+    polinomio = listaf[0]
+    for j in range(1,iteracion,1):
+        factor = variablesB[j]
+        termino = 1
+        for k in range(0,j,1):
+                termino = termino*(x-listax[k])
+        polinomio = polinomio + termino*factor
 
-variablesB =Valores
+    polisimple = polinomio.expand()
+    
+    # SALIDA
+    #Tabla
+    listax.insert(0, "xi")
+    listaf.insert(0, "fi")
+    tabla=tablita("",show_iteracion=False)
+    tabla.add_fila(listax)
+    tabla.add_fila(listaf)
+    tabla.print_table()
+    print("\nTabla de valores de b")
+    cabezeros=[]
+    for i in range(len(variablesB)):
+        b="b"+str(i)
+        cabezeros.append(b)
+    tablaB=tablita(cabezeros,show_iteracion=False)
+    tablaB.add_fila(variablesB)
+    tablaB.print_table()
 
-x = sym.Symbol('x')
-polinomio = fi[0]
-for j in range(1,4,1):
-    factor = variablesB[j]
-    termino = 1
-    for k in range(0,j,1):
-        termino = termino*(x-xi[k])
-    polinomio = polinomio + termino*factor
+    print('\npolinomio simplificado: ' )
+    print(reconvertir_funcion(str(polisimple)),"\n")
 
-
-polisimple = polinomio.expand()
-
-
-
-
-# SALIDA
-
-print('valores de B: ')
-print(variablesB)
-print('polinomio: ')
-print(polinomio)
-print('polinomio simplificado: ' )
-print(polisimple)
-punto_a_evaluar=float(input("ingrese el punto a evaluar"))
-evaluar=polisimple.subs(x,punto_a_evaluar)
-print ("El valor aproximado de f(",punto_a_evaluar,") es: ", evaluar)
-
-
+    if punto !="" and funcion!="":
+        n=len(listax)-1
+        error=0.0
+        fac=factorial(n)
+        f=convertir_funcion(funcion)
+        derivada=""
+        for i in range(n):
+            derivada=diff(f)
+            f=str(derivada)
+        m=mul(punto,n)
+        mayor=0
+        for i in range(len(listax)):
+            if i!=0:
+                if mayor<abs(listax[i]):
+                    mayor=listax[i]
+        fderivada=derivada.subs(x,mayor)
+        error=(fderivada/fac)*m
+        px=float(eval(convertir_funcion(str(polisimple),var_n="punto")))
+        funcion=float(eval(convertir_funcion(funcion,var_n="punto")))
+        errorT=Abs((funcion-px)/(funcion))*100
+        print(f"Evaluacion en f({punto}):",px)
+        print()
+        print("Derivada:",reconvertir_funcion(str(derivada)))
+        print("Error Porcentual:",errorT)
+        print("Error Teorico",error)
+    else:
+        opcion=input("Desea interpolar en algun punto 1.SI 2.NO")
+        if opcion=="1":
+            punto=float(input("Ingrese el punto a interpolar"))
+            px=float(eval(convertir_funcion(str(polisimple),var_n="punto")))
+            print(f"Evaluacion en f({punto}):",px)
+newton()
