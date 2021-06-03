@@ -110,3 +110,9 @@ def grange():
         print("Derivada:",reconvertir_funcion(str(derivada)))
         print("Error Porcentual:",errorT)
         print("Error Teorico",error)
+    else:
+        opcion=input("Desea interpolar en algun punto 1.SI 2.NO")
+        if opcion=="1":
+            punto=float(input("Ingrese el punto a interpolar"))
+            px=float(eval(convertir_funcion(str(px),var_n="punto")))
+            print(f"Evaluacion en f({punto}):",px)
