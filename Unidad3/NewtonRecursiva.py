@@ -46,47 +46,100 @@ def pedir_valores():
                     n += 1
 
 
+
+
+def multiplicacion(b, i, listax):
+    mul = 1
+    for k in range(i):
+        resta = listax[b] - listax[k]
+        mul = mul * resta
+    return mul
+
+
+def restaTotal(listaA, b, listax):
+    tamanio = len(listaA)
+    total = 0
+    for i in range(tamanio):
+        total = total + (listaA[i] * multiplicacion(b, i, listax))
+    return total
+
+
+def muldiv(b, listax):
+    div = 1.0
+    for i in range(b):
+        div = div * (listax[b] - listax[i])
+    return div
+
 def mul(b,n):
     m=1.0
     for i in range(n):
         m=m*(b-i)
     return m
 
-
-def grange():
+def newton():
     limpiar()
-    x=Symbol("x")
+    listaA = []
+    b = 0
     funcion=""
     punto=""
-    grado=int(input("Que grado de polinomio desea encontrar\n"))
-    opcion=input("¿Ingresara una funcion para evaluar en un punto? 1.Si 2.No")
+    iteracion = int(input("Ingrese el grado que desea del polinomio\n"))
+    opcion=input("¿Ingresara una funcion para evaluar? 1.Si 2.No")
     if opcion=="1":
         funcion=input("Ingrese la funcion\n")
         punto=float(input("Ingrese el punto a evaluar\n"))
     dic=pedir_valores()
     limpiar()
-    xi=dic["xi"]
-    fi=dic["fi"]
-    px=0
-    for i in range(grado):
-        l=fi[i]
-        for k in range(grado):
-            if k!=i:
-                l=l*((x-xi[k])/(xi[i]-xi[k]))
-        px=px+l
+    listax=dic["xi"]
+    listaf=dic["fi"]
+    iteracion=iteracion+1
+    for i in range(iteracion):
+        if i == 0:
+            listaA.append(listaf[b])
+        elif i == 1:
+            bsub = (listaf[1] - listaf[0]) / (listax[1] - listax[0])
+            listaA.append(bsub)
+            b = b + 1
+        else:
+            b = b + 1
+            bsub = (listaf[i] - restaTotal(listaA, b, listax)) / muldiv(b, listax)
 
-    #Tabla
-    xi.insert(0, "xi")
-    fi.insert(0, "fi")
-    tabla=tablita("",show_iteracion=False)
-    tabla.add_fila(xi)
-    tabla.add_fila(fi)
-    tabla.print_table()
-    px=px.expand()
-    print("Polinomio simplificado:",reconvertir_funcion(str(px)),"\n")
+            listaA.append(bsub)
+
+    variablesB = listaA
+
+    x = Symbol('x')
+    polinomio = listaf[0]
+    for j in range(1,iteracion,1):
+        factor = variablesB[j]
+        termino = 1
+        for k in range(0,j,1):
+                termino = termino*(x-listax[k])
+        polinomio = polinomio + termino*factor
+
+    polisimple = polinomio.expand()
     
+    # SALIDA
+    #Tabla
+    listax.insert(0, "xi")
+    listaf.insert(0, "fi")
+    tabla=tablita("",show_iteracion=False)
+    tabla.add_fila(listax)
+    tabla.add_fila(listaf)
+    tabla.print_table()
+    print("\nTabla de valores de b")
+    cabezeros=[]
+    for i in range(len(variablesB)):
+        b="b"+str(i)
+        cabezeros.append(b)
+    tablaB=tablita(cabezeros,show_iteracion=False)
+    tablaB.add_fila(variablesB)
+    tablaB.print_table()
+
+    print('\npolinomio simplificado: ' )
+    print(reconvertir_funcion(str(polisimple)),"\n")
+
     if punto !="" and funcion!="":
-        n=len(xi)-1
+        n=len(listax)-1
         error=0.0
         fac=factorial(n)
         f=convertir_funcion(funcion)
@@ -96,13 +149,13 @@ def grange():
             f=str(derivada)
         m=mul(punto,n)
         mayor=0
-        for i in range(len(xi)):
+        for i in range(len(listax)):
             if i!=0:
-                if mayor<abs(xi[i]):
-                    mayor=xi[i]
+                if mayor<abs(listax[i]):
+                    mayor=listax[i]
         fderivada=derivada.subs(x,mayor)
         error=(fderivada/fac)*m
-        px=float(eval(convertir_funcion(str(px),var_n="punto")))
+        px=float(eval(convertir_funcion(str(polisimple),var_n="punto")))
         funcion=float(eval(convertir_funcion(funcion,var_n="punto")))
         errorT=Abs((funcion-px)/(funcion))*100
         print(f"Evaluacion en f({punto}):",px)
@@ -114,5 +167,5 @@ def grange():
         opcion=input("Desea interpolar en algun punto 1.SI 2.NO")
         if opcion=="1":
             punto=float(input("Ingrese el punto a interpolar"))
-            px=float(eval(convertir_funcion(str(px),var_n="punto")))
+            px=float(eval(convertir_funcion(str(polisimple),var_n="punto")))
             print(f"Evaluacion en f({punto}):",px)

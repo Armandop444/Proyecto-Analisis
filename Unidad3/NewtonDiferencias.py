@@ -1,50 +1,43 @@
 from Utilidades import limpiar, tablita
 from sympy import poly_from_expr
-'''
-pedir los valores por fila
-|   x |   y |   y' |
-|-----|-----|------|
-|  -2 | -12 |   22 |
-|   1 |   9 |   10 |
-'''
+
 def pedir_valores():
-    valores = {}
-    n = 0
-    total_datos = 0
+    total = 0
+    xi = []
     while True:
         limpiar()
-        print("Presione 'T' para terminar de ingresar valores")
-        xn = input(f"\t Ingrese el valor de X{n} ")
-        fila = []
-        if xn.upper() == "T":
-            valores["total"] = total_datos
-            return valores
+        print("Presione 'S' para pasar a ingresar los valores de fi")
+        print(f"\tXi ingresados: {xi}")
+        dato = input(f"\tIngrese el valor de x{len(xi)}: ")
+        if dato.upper() == "S":
+            break
         else:
-            xn = float(xn)
-            d = 0
-            while True:
-                limpiar()
-                
-                print("Presione 'T' para terminar de ingresar valores")
-                print("Presione 'S' para terminar de ingresar datos de la fila")
-                valor = input(f"\t Ingrese el valor de f(X{n}) " if d == 0 else f"\t Ingrese el valor de la {d}ª derivada para X{n} ")
-                if valor.upper() == "T":
-                    valores[str(xn)]=fila
-                    valores["total"] = total_datos
-                    return valores
-                elif valor.upper() == "S":
-                    n += 1
-                    valores[str(xn)]=fila
-                    break
-                else:
-                    fila.append(float(valor))
-                    total_datos += 1
-                    d += 1
-
-def HermiteD():
-    #cargar datos
-    datos = pedir_valores()
+            try:
+                xi.append(str(float(dato)))
+            except:
+                continue
+    fi = []
+    while True:
+        limpiar()
+        print("Presione 'S' para terminar")
+        print(f"\tXi ingresados: {xi}")
+        print(f"\tXi ingresados: {fi}")
+        dato = input(f"\tIngrese el valor de f{len(fi)}: ")
+        if dato.upper() == "S":
+            break
+        else:
+            try:
+                fi.append(float(dato))
+            except:
+                continue
+    valores = {}
+    for i in range(len(xi)):
+        valores[str(xi[i])] = [fi[i]]
+    valores['total'] = len(xi)
+    return valores
     
+def NewtonDD():
+    datos = pedir_valores()
     #crear tabla
     cabezero = ["Zk","f(Zk)"]
     for _ in range(datos["total"] -1):
@@ -88,3 +81,4 @@ def HermiteD():
     tabla.print_table()
     print(f"\nPolinomio: {str(x.expr).replace('**','^')}")
     print("\n","*"*50)
+    return str(x.expr) 
