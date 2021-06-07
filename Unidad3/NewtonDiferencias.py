@@ -1,5 +1,13 @@
 from Utilidades import limpiar, tablita
 from sympy import poly_from_expr
+from FormulaEngine import convertir_funcion, reconvertir_funcion
+from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan, Symbol,factorial, diff, parse_expr, Abs
+
+def mul(b,n):
+    m=1.0
+    for i in range(n):
+        m=m*(b-i)
+    return m
 
 def pedir_valores():
     total = 0
@@ -14,20 +22,24 @@ def pedir_valores():
         else:
             try:
                 xi.append(str(float(dato)))
+                total=total+1
             except:
                 continue
     fi = []
+    n=1
     while True:
         limpiar()
         print("Presione 'S' para terminar")
         print(f"\tXi ingresados: {xi}")
         print(f"\tXi ingresados: {fi}")
         dato = input(f"\tIngrese el valor de f{len(fi)}: ")
-        if dato.upper() == "S":
+        if total==n:
+            fi.append(float(dato))
             break
         else:
             try:
                 fi.append(float(dato))
+                n=n+1
             except:
                 continue
     valores = {}
@@ -37,27 +49,36 @@ def pedir_valores():
     return valores
     
 def NewtonDD():
+    funcion=""
+    punto=""
+    iteracion = int(input("Ingrese el grado que desea del polinomio\n"))
+    opcion=input("¿Ingresara una funcion para evaluar? 1.Si 2.No")
+    if opcion=="1":
+        funcion=input("Ingrese la funcion\n")
+        punto=float(input("Ingrese el punto a evaluar\n"))
     datos = pedir_valores()
+    limpiar()
     #crear tabla
     cabezero = ["Zk","f(Zk)"]
     for _ in range(datos["total"] -1):
         cabezero.append("")
     tabla = tablita(cabezero, show_iteracion=False)
-    
     #cargar matriz principal
     matriz = []
+
+    listax=[]
     for xn, fx in datos.items():
         if not xn == "total":
+            listax.append(xn)
             for i in range(len(fx)):
                 fila = [float(xn)]
                 fila.append(fx[0])
                 for _ in range(datos["total"]-1):
                     fila.append(float())
                 matriz.append(fila)
-    
     #calcular
     #j,i
-    for i in range(2,datos["total"]+1):
+    for i in range(2,iteracion+1):
         for j in range(i-1,len(matriz)):
             #print(f"({j},{i})")
             if not (matriz[j][0] - matriz[j-(i-1)][0]) == 0:
@@ -81,4 +102,37 @@ def NewtonDD():
     tabla.print_table()
     print(f"\nPolinomio: {str(x.expr).replace('**','^')}")
     print("\n","*"*50)
-    return str(x.expr) 
+
+    if punto !="" and funcion!="":
+        n=len(listax)-1
+        error=0.0
+        fac=factorial(n)
+        f=convertir_funcion(funcion)
+        derivada=""
+        for i in range(n):
+            derivada=diff(f)
+            f=str(derivada)
+        m=mul(punto,n)
+        mayor=0.0
+        for i in range(len(listax)):
+            if mayor<Abs((listax[i])):
+                mayor=float(listax[i])
+        fderivada=derivada.subs(x,mayor)
+        error=(fderivada/fac)*m
+        px=float(eval(convertir_funcion(str(x.expr),var_n="punto")))
+        funcion=float(eval(convertir_funcion(funcion,var_n="punto")))
+        errorT=Abs((funcion-px)/(funcion))*100
+        print(f"Evaluacion en f({punto}):",px)
+        print()
+        print("Derivada:",reconvertir_funcion(str(derivada)))
+        print("Error Porcentual:",errorT)
+        print("Error Teorico",error)
+    else:
+        opcion=input("Desea interpolar en algun punto 1.SI 2.NO")
+        if opcion=="1":
+            punto=float(input("Ingrese el punto a interpolar"))
+            px=float(eval(convertir_funcion(str(x.expr),var_n="punto")))
+            print(f"Evaluacion en f({punto}):",px)
+    #return str(x.expr) 
+
+NewtonDD()
