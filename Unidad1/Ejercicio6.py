@@ -1,5 +1,5 @@
 # Ejercicio6 Unidad1
-# sh x
+# ch x
 def ejercicio6():
     import math
     x = float(input("Ingrese el valor de x: "))
