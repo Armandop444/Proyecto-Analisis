@@ -17,7 +17,7 @@ def ejercicio5(x,Es):
         if Ea==0:
             break
         xn0=xn1
-        print("%-20d %-20s %-20s" % (i+1,xn1,Ea))
+        #print("%-20d %-20s %-20s" % (i+1,xn1,Ea))
         tabla.add_fila([xn1,Ea])
         i+=1
     return tabla.get_tabla()

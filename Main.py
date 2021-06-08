@@ -9,6 +9,8 @@ from Unidad1.Ejercicio2 import ejercicio2
 from Unidad1.Ejercicio3 import ejercicio3
 from Unidad1.Ejercicio4 import ejercicio4
 from Unidad1.Ejercicio5 import ejercicio5
+from Unidad1.Ejercicio6 import ejercicio6
+from Unidad1.Ejercicio7 import ejercicio7
 # Unidad 2
 from Unidad2.biseccion import Bisec
 from Unidad2.falsaP import FalsaP
@@ -155,6 +157,8 @@ while True:
                 '[3] Sen(x)',
                 '[4] Cos(x)',
                 '[5] e^x',
+                '[6] sh x ',
+                '[7] ch x',
                 Menu.Separador(),
                 '[a] Ayuda',
                 '[s] Volver al menu principal'
@@ -254,11 +258,47 @@ while True:
                 except Exception as e:
                     print(f"Algo ha salido mal {e}")
                     input("Presione cualquier tecla para continuar")
-            elif opcion == 5:
+            elif opcion == 5:  # sh x
+                try:
+                    xn = pedir_valores("[sh x] Ingrese el valor del intervalo x:  ",
+                                    [f""])
+                    es = pedir_error(["Funcion: sh x", xn])
+                    limpiar()
+                    print_final(f"Funcion: sh x, XN: {xn}, ES: {es}",
+                                ejercicio6(xn, es))
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+            elif opcion == 6:  # ch x
+                try:
+                    xn = pedir_valores("[ch x] Ingrese el valor del intervalo x:  ",
+                                    [f""])
+                    es = pedir_error(["Funcion: ch x", xn])
+                    limpiar()
+                    print_final(f"Funcion: ch x, XN: {xn}, ES: {es}",
+                                ejercicio7(xn, es))
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+            elif opcion == 7:
                 limpiar()
                 # imprimir ayuda
                 print("Aqui va la ayuda :v")
-            elif opcion == 6:
+            elif opcion == 8:
                 # Opcion terminar
                 break
 
