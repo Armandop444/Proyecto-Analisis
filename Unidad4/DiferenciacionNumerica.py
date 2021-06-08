@@ -1,5 +1,27 @@
 from sympy import *
 #hacia delante
+
+def pedir_valores(f,max):
+    lista=[]
+    total=1
+    while True:
+        limpiar()
+        if max=="":
+            print("Presione S para terminar de ingresar los datos en la lista")
+        print("Valores \n",lista)
+        dato= input(f"Ingrese el valor de {f}({len(lista)}): ")
+        if dato.upper()=="S" or (max==total and max!=""):
+            if dato.upper()!="S":
+                lista.append(float(dato))
+            return lista
+        else:
+            try:
+                lista.append(float(dato))
+                total+=1
+            except:
+                continue
+
+
 x=Symbol("x")
 def diffforwardfunc(funcion, xo, h, nivelderivada):
     #añadir convertir funciones
