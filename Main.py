@@ -11,6 +11,8 @@ from Unidad1.Ejercicio4 import ejercicio4
 from Unidad1.Ejercicio5 import ejercicio5
 from Unidad1.Ejercicio6 import ejercicio6
 from Unidad1.Ejercicio7 import ejercicio7
+from Unidad1.Ejercicio8 import ejercicio8
+from Unidad1.Ejercicio9 import ejercicio9
 # Unidad 2
 from Unidad2.biseccion import Bisec
 from Unidad2.falsaP import FalsaP
@@ -159,6 +161,8 @@ while True:
                 '[5] e^x',
                 '[6] sh x ',
                 '[7] ch x',
+                '[8] arcsen(x)',
+                '[9] ln(1+x)',
                 Menu.Separador(),
                 '[a] Ayuda',
                 '[s] Volver al menu principal'
@@ -294,11 +298,47 @@ while True:
                 except Exception as e:
                     print(f"Algo ha salido mal {e}")
                     input("Presione cualquier tecla para continuar")
-            elif opcion == 7:
+            elif opcion == 7:  # arcsen(x)
+                try:
+                    xn = pedir_valores("[arcsen(x)] Ingrese el valor del intervalo x:  ",
+                                    [f""])
+                    es = pedir_error(["Funcion: arcsen(x)", xn])
+                    limpiar()
+                    print_final(f"Funcion: arcsen(x), XN: {xn}, ES: {es}",
+                                ejercicio8(xn, es))
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+            elif opcion == 8:  # ln(1+x)
+                try:
+                    xn = pedir_valores("[ln(1+x)] Ingrese el valor del intervalo x:  ",
+                                    [f""])
+                    es = pedir_error(["Funcion: lnx(1+x)", xn])
+                    limpiar()
+                    print_final(f"Funcion: ln(1+x), XN: {xn}, ES: {es}",
+                                ejercicio9(xn, es))
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+            elif opcion == 9:
                 limpiar()
                 # imprimir ayuda
                 print("Aqui va la ayuda :v")
-            elif opcion == 8:
+            elif opcion == 10:
                 # Opcion terminar
                 break
 
