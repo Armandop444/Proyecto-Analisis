@@ -31,7 +31,7 @@ def pedir_valores():
         limpiar()
         print("Presione 'S' para terminar")
         print(f"\tXi ingresados: {xi}")
-        print(f"\tXi ingresados: {fi}")
+        print(f"\tFi ingresados: {fi}")
         dato = input(f"\tIngrese el valor de f{len(fi)}: ")
         if total==n:
             fi.append(float(dato))
@@ -133,6 +133,3 @@ def NewtonDD():
             punto=float(input("Ingrese el punto a interpolar"))
             px=float(eval(convertir_funcion(str(x.expr),var_n="punto")))
             print(f"Evaluacion en f({punto}):",px)
-    #return str(x.expr) 
-
-NewtonDD()

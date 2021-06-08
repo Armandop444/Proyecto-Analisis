@@ -170,4 +170,3 @@ def newton():
             punto=float(input("Ingrese el punto a interpolar"))
             px=float(eval(convertir_funcion(str(polisimple),var_n="punto")))
             print(f"Evaluacion en f({punto}):",px)
-newton()
