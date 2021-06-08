@@ -27,6 +27,7 @@ def pedir_valores():
                         print("fi:",fila)
                 else:
                     print("Presione 'S' para terminar de ingresar datos de la fila")
+                    print("Valores\nxi:",fila)
                 valor = input(f"\t Ingrese el valor de X{n} " if d == 0 else f"\t Ingrese el valor de la Fi(x{n})")
                 if (n/total)==1 and xn=="fi" :
                     if (n/total)==1:
