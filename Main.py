@@ -21,6 +21,7 @@ from Unidad2.bairstow import bairstow
 # Unidad 3
 from Unidad3.Lagrange import grange
 from Unidad3.NewtonRecursiva import newton
+from Unidad3.NewtonDiferencias import NewtonDD
 from Unidad3.HermiteDiferencias import HermiteD
 
 
@@ -539,7 +540,17 @@ while True:
                 while True:
                     opcion2=menu_mini.show()
                     if opcion2==0:#Newton Diferencias
-                        pass
+                        try:
+                            NewtonDD()
+                        except OperacionDetenida:
+                            limpiar()
+                            continue
+                        except MathError as e:
+                            print("MathError: " + e)
+                            input("Presione cualquier tecla para continuar")
+                        except Exception as e:
+                            print(f"Algo ha salido mal {e}")
+                            input("Presione cualquier tecla para continuar")
                     elif opcion2==1:#Hermite Diferencias
                         try:
                             HermiteD()
