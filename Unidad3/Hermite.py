@@ -79,8 +79,3 @@ def hermite():
     if punto!="":
         print("el valor del punto dado ({0}) en el polinomio de hermite es: ".format(punto))
         print((polhermite.subs(x,punto)).expand())
-
-xn=[1.3,1.6,1.9]
-fxn=[0.6200860,0.4554022,0.2818186]
-dfxn=[-0.5220232,-0.5698959,-0.5811571]
-hermite()

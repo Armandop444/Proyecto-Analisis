@@ -26,6 +26,7 @@ from Unidad2.bairstow import bairstow
 from Unidad3.Lagrange import grange
 from Unidad3.NewtonRecursiva import newton
 from Unidad3.NewtonDiferencias import NewtonDD
+from Unidad3.Hermite import hermite
 from Unidad3.HermiteDiferencias import HermiteD
 
 
@@ -648,7 +649,17 @@ while True:
                         # Opcion terminar
                         break
             elif opcion==3: #Hermite normal
-                pass
+                try:
+                    hermite()
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
             elif opcion == 4:
                 limpiar()
                 # imprimir ayuda
