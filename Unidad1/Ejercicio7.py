@@ -1,7 +1,7 @@
 # Ejercicio7 Unidad1
 # ch x
-from Utilidades import raiz, tablita
-from sympy import ln, exp, Pow, factorial
+from Utilidades import tablita
+from sympy import Pow, factorial
 def ejercicio7(x,Es):
     tabla=tablita(["xn1","Ea"])
     Ea = 100000

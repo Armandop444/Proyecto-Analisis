@@ -1,7 +1,7 @@
 # Ejercicio2 Unidad1
 # e^x^2
-from Utilidades import raiz, tablita
-from sympy import exp, Pow, factorial
+from Utilidades import tablita
+from sympy import Pow, factorial
 def ejercicio2(x,Es):
     tabla=tablita(["xn","ea"])
     #print(Es)

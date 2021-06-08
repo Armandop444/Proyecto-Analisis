@@ -1,7 +1,7 @@
 # Ejercicio1 Unidad1
 # Ln(e+x)
-from Utilidades import raiz, tablita
-from sympy import ln, exp, Pow
+from Utilidades import tablita
+from sympy import exp, Pow
 def ejercicio1(xn,Es):
     tabla =tablita(["xn","EA"])
     x = xn

@@ -1,7 +1,7 @@
 #Ejercicio4
 #e^x Serie de Taylor
-from Utilidades import raiz, tablita
-from sympy import ln, exp, Pow, factorial
+from Utilidades import tablita
+from sympy import Pow, factorial
 def ejercicio5(x,Es):
     #x=float(input("Introduzca el valor del argumento: "))
     #n=int(input("Introduzca el numero de cifras significativas: "))

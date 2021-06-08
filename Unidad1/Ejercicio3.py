@@ -1,7 +1,7 @@
 #Ejercicio3
 #Sen(x) Serie de Taylor
-from Utilidades import raiz, tablita
-from sympy import ln, exp, Pow, factorial
+from Utilidades import tablita
+from sympy import Pow, factorial
 from math import radians
 def ejercicio3(x,Es):
     tabla=tablita(["Xn1,Ea"])

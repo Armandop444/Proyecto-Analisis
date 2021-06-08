@@ -1,6 +1,6 @@
 #Ejercicio 4 coseno por series de taylor por metodos numericos
-from Utilidades import raiz, tablita
-from sympy import ln, exp, Pow, factorial
+from Utilidades import tablita
+from sympy import Pow, factorial
 from math import radians
 def ejercicio4(x,es):
     tabla=tablita(["Raiz","Ea"])
