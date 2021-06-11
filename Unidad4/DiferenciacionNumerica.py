@@ -24,7 +24,7 @@ def pedir_valores(f,max):
 
 
 x=Symbol("x")
-def diffforwardfunc(funcion, xo, h, nivelderivada,shoutput):
+def diffforwardfunc(funcion, xo, h, nivelderivada,shoutput=True):
     #añadir convertir funciones
     error=0.0
     funcion=parse_expr(funcion)
@@ -51,7 +51,7 @@ def diffforwardfunc(funcion, xo, h, nivelderivada,shoutput):
         print("error en la seleccion de nivel de derivada")
     return float(respuesta)
 
-def diffbackwardfunc(funcion,xo,h,nivelderivada,shoutput):
+def diffbackwardfunc(funcion,xo,h,nivelderivada,shoutput=True):
     #añadir convertir funciones
     respuesta=0
     error=0.0
@@ -84,7 +84,7 @@ def diffbackwardfunc(funcion,xo,h,nivelderivada,shoutput):
 #2=centradacuartoorden
 #3=3puntos
 #4=5puntos
-def diffcentralfunc(funcion,xo,h,opcionmetodo,shoutput):
+def diffcentralfunc(funcion,xo,h,opcionmetodo,shoutput=True):
     #añadir convertir funciones
     respuesta=0
     error=0.0
