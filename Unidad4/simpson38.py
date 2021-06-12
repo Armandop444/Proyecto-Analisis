@@ -1,6 +1,7 @@
 import numpy as np
 from sympy import *
-
+from FormulaEngine import convertir_funcion
+x = symbols('x')  # declaramos que x es un simbolo
 def prod(A):
     a = 1
     for i in range(len(A)):
@@ -49,46 +50,41 @@ def simpson38(f,a,b):
     integral=(b-a)/8*(f.subs(x,a)+3*f.subs(x,m1)+3*f.subs(x,m2)+f.subs(x,b))
     return integral
 
-option=int(input("como desea utilizar el metodo de simpson 3/8\n1.ingresando tabla\n2.complejo\n3.simple\n"))
-if(option==1):
+def simp3():
 
-    simpsonTabla()
-if(option==2):
-    ecuacion = input("ingrese la funcion\n")
-    x = symbols('x')  # declaramos que x es un simbolo
+    option=int(input("como desea utilizar el metodo de simpson 3/8\n1.ingresando tabla\n2.complejo\n3.simple\n"))
+    if(option==1):
 
-    # esto es del ccodigo de alejandro
-    if "^" in ecuacion:
-        ecuacion = ecuacion.replace("^", "**")
-    # aqui termina el codigo del ale
+        simpsonTabla()
+    if(option==2):
+        ecuacion = input("ingrese la funcion\n")
+        x = symbols('x')  # declaramos que x es un simbolo
 
-    fx = parse_expr(ecuacion)  # funcion que evaluaremos
-    a = float(input("Ingrese el intervalo inferior\n"))
-    b = float(input("Ingrese el intervalo superior\n"))
-    n = int(input("ingrese el numero de tramos\n"))
-    h = (b - a) / n
-    suma = 0
-    for i in range(n):
-        b = a + h
-        area = simpson38(fx, a, b)
-        suma = suma + area
-        a = b
+        ecuacion=convertir_funcion(ecuacion)
 
-    print(suma)
-if(option==3):
-    ecuacion = input("ingrese la funcion\n")
-    x = symbols('x')  # declaramos que x es un simbolo
+        fx = parse_expr(ecuacion)  # funcion que evaluaremos
+        a = float(input("Ingrese el intervalo inferior\n"))
+        b = float(input("Ingrese el intervalo superior\n"))
+        n = int(input("ingrese el numero de tramos\n"))
+        h = (b - a) / n
+        suma = 0
+        for i in range(n):
+            b = a + h
+            area = simpson38(fx, a, b)
+            suma = suma + area
+            a = b
 
-    # esto es del ccodigo de alejandro
-    if "^" in ecuacion:
-        ecuacion = ecuacion.replace("^", "**")
-    # aqui termina el codigo del ale
+        print(suma)
+    if(option==3):
+        ecuacion = input("ingrese la funcion\n")
+        x = symbols('x')  # declaramos que x es un simbolo
 
-    fx = parse_expr(ecuacion)  # funcion que evaluaremos
-    a = float(input("Ingrese el intervalo inferior\n"))
-    b = float(input("Ingrese el intervalo superior\n"))
+        ecuacion=convertir_funcion(ecuacion)
 
-    area=simpson38(fx, a, b)
-    print(area)
+        fx = parse_expr(ecuacion)  # funcion que evaluaremos
+        a = float(input("Ingrese el intervalo inferior\n"))
+        b = float(input("Ingrese el intervalo superior\n"))
 
-
+        area=simpson38(fx, a, b)
+        print(area)
+simp3()
