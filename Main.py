@@ -1,7 +1,7 @@
 from os import name, system
 import Menu
 
-from FormulaEngine import validar_parentesis
+from FormulaEngine import validar_parentesis,reconvertir_funcion, convertir_funcion
 from Utilidades import cifras_significativas, ValueError, OperacionDetenida, MathError
 # Unidad 1
 from Unidad1.Ejercicio1 import ejercicio1
@@ -729,8 +729,10 @@ while True:
                                 funcion = str(px.expand())
                             else:
                                 funcion=pedir_funcion("[Diferencia Hacia Adelante]")
-                            xo=pedir_valores("Ingrese el valor de x", [f"Funcion {funcion}"])
-                            h=pedir_valores("Ingrese el valor de h", [f"Funcion {funcion}",
+                                funcion=convertir_funcion(funcion)
+                                funcion=convertir_funcion(funcion)
+                            xo=pedir_valores("Ingrese el valor de x", [f"Funcion {reconvertir_funcion(funcion)}"])
+                            h=pedir_valores("Ingrese el valor de h", [f"Funcion {reconvertir_funcion(funcion)}",
                                             f"X0: {xo}"])
                             if opcion3 == 0:  # primera
                                 diffforwardfunc(funcion, xo, h, 1)
@@ -763,8 +765,9 @@ while True:
                                 funcion = str(px.expand())
                             else:
                                 funcion=pedir_funcion("[Diferencia Hacia Atras]")
-                            xo=pedir_valores("Ingrese el valor de x", [f"Funcion {funcion}"])
-                            h=pedir_valores("Ingrese el valor de h", [f"Funcion {funcion}",
+                                funcion=convertir_funcion(funcion)
+                            xo=pedir_valores("Ingrese el valor de x", [f"Funcion {reconvertir_funcion(funcion)}"])
+                            h=pedir_valores("Ingrese el valor de h", [f"Funcion {reconvertir_funcion(funcion)}",
                                             f"X0: {xo}"])
                             if opcion3 == 0:  # primera
                                 diffbackwardfunc(funcion, xo, h, 1)
@@ -811,8 +814,9 @@ while True:
                                 funcion = str(px.expand())
                             else:
                                 funcion=pedir_funcion("[Diferencia Centrada]")
-                            xo=pedir_valores("Ingrese el valor de x", [f"Funcion {funcion}"])
-                            h=pedir_valores("Ingrese el valor de h", [f"Funcion {funcion}",
+                                funcion=convertir_funcion(funcion)
+                            xo=pedir_valores("Ingrese el valor de x", [f"Funcion {reconvertir_funcion(funcion)}"])
+                            h=pedir_valores("Ingrese el valor de h", [f"Funcion {reconvertir_funcion(funcion)}",
                                             f"X0: {xo}"])
                             if opcion3 == 0:  # orden2
                                 diffcentralfunc(funcion, xo, h, 1)
@@ -872,11 +876,12 @@ while True:
                                             px = px+l
                                 funcion = str(px.expand())
                             else:
-                                funcion=pedir_funcion("[Diferencia Adelante]")
-                            xo=pedir_valores("Ingrese el valor de x", [f"Funcion {funcion}"])
-                            h=pedir_valores("Ingrese el valor de h", [f"Funcion {funcion}",
+                                funcion=pedir_funcion("[Diferencia Hacia Adelante]")
+                                funcion=convertir_funcion(funcion)
+                            xo=pedir_valores("Ingrese el valor de x", [f"Funcion {reconvertir_funcion(funcion)}"])
+                            h=pedir_valores("Ingrese el valor de h", [f"Funcion {reconvertir_funcion(funcion)}",
                                             f"X0: {xo}"])
-                            orden=pedir_valores("Ingrese el orden de derivada (orden 2 a 4)", [f"Funcion {funcion}",
+                            orden=pedir_valores("Ingrese el orden de derivada (orden 2 a 4)", [f"Funcion {reconvertir_funcion(funcion)}",
                                             f"X0: {xo}",
                                             f"H: {h}"])
                             if opcion3 == 0:  # primera
@@ -909,11 +914,12 @@ while True:
                                             px = px+l
                                 funcion = str(px.expand())
                             else:
-                                funcion=pedir_funcion("[Diferencia Adelante]")
-                            xo=pedir_valores("Ingrese el valor de x", [f"Funcion {funcion}"])
-                            h=pedir_valores("Ingrese el valor de h", [f"Funcion {funcion}",
+                                funcion=pedir_funcion("[Diferencia Hacia Atras]")
+                                funcion=convertir_funcion(funcion)
+                            xo=pedir_valores("Ingrese el valor de x", [f"Funcion {reconvertir_funcion(funcion)}"])
+                            h=pedir_valores("Ingrese el valor de h", [f"Funcion {reconvertir_funcion(funcion)}",
                                             f"X0: {xo}"])
-                            orden=pedir_valores("Ingrese el orden de derivada (orden 2 a 4)", [f"Funcion {funcion}",
+                            orden=pedir_valores("Ingrese el orden de derivada (orden 2 a 4)", [f"Funcion {reconvertir_funcion(funcion)}",
                                             f"X0: {xo}",
                                             f"H: {h}"])
                             if opcion3 == 0:  # primera
@@ -947,11 +953,12 @@ while True:
                                             px = px+l
                                 funcion = str(px.expand())
                             else:
-                                funcion=pedir_funcion("[Diferencia Adelante]")
-                            xo=pedir_valores("Ingrese el valor de x", [f"Funcion {funcion}"])
-                            h=pedir_valores("Ingrese el valor de h", [f"Funcion {funcion}",
+                                funcion=pedir_funcion("[Diferencia Centrada]")
+                                funcion=convertir_funcion(funcion)
+                            xo=pedir_valores("Ingrese el valor de x", [f"Funcion {reconvertir_funcion(funcion)}"])
+                            h=pedir_valores("Ingrese el valor de h", [f"Funcion {reconvertir_funcion(funcion)}",
                                             f"X0: {xo}"])
-                            orden=pedir_valores("Ingrese el orden de derivada (orden 2 a 4)", [f"Funcion {funcion}",
+                            orden=pedir_valores("Ingrese el orden de derivada (orden 2 a 4)", [f"Funcion {reconvertir_funcion(funcion)}",
                                             f"X0: {xo}",
                                             f"H: {h}"])
                             if opcion3 == 0:  # primera
