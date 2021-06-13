@@ -24,6 +24,7 @@ def diffnumsupfor(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         elif ordenderivada==3:
             #derivadaorden3
             funcdiff=(-(funcion.subs(x,xo))+3*(funcion.subs(x,(xo+h)))-3*(funcion.subs(x,(xo+2*h)))+(funcion.subs(x,(xo+3*h))))/(h**3)
@@ -33,6 +34,7 @@ def diffnumsupfor(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         elif ordenderivada==4:
             #derivadaorden4
             funcdiff=((funcion.subs(x,(xo)))-4*(funcion.subs(x,(xo+h)))+6*(funcion.subs(x,(xo+2*h)))-4*(funcion.subs(x,(xo+3*h)))+(funcion.subs(x,(xo+4*h))))/(h**4)
@@ -42,6 +44,7 @@ def diffnumsupfor(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         else:
             print("error en la seleccion de un orden de derivada superior (de 2 a 4)")
     elif nivelderivada==2:
@@ -54,6 +57,7 @@ def diffnumsupfor(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         elif ordenderivada==3:
             #derivadaorden3
             funcdiff=(-5*(funcion.subs(x,(xo)))+18*(funcion.subs(x,(xo+h)))-24*(funcion.subs(x,(xo+2*h)))+14*(funcion.subs(x,(xo+3*h)))-3*(funcion.subs(x,(xo+4*h))))/(2*(h**3))
@@ -63,6 +67,7 @@ def diffnumsupfor(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         elif ordenderivada==4:
             #derivadaorden4
             funcdiff=(-2*(funcion.subs(x,(xo+5*h)))+11*(funcion.subs(x,(xo+4*h)))-24*(funcion.subs(x,(xo+3*h)))+26*(funcion.subs(x,(xo+2*h)))-14*(funcion.subs(x,(xo+h)))+3*(funcion.subs(x,(xo))))/(h**4)
@@ -72,6 +77,7 @@ def diffnumsupfor(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         else:
             print("error en la seleccion de un orden de derivada superior (de 2 a 4)")
     else:
@@ -97,6 +103,7 @@ def diffnumsupcentral(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
             #derivadaorden2
         elif ordenderivada==3:
             #derivadaorden3
@@ -107,6 +114,7 @@ def diffnumsupcentral(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         elif ordenderivada==4:
             #derivadaorden4
             funcdiff=((funcion.subs(x,(xo+2*h)))-4*(funcion.subs(x,(xo+h)))+6*(funcion.subs(x,(xo)))-4*(funcion.subs(x,(xo-h)))+(funcion.subs(x,(xo-2*h))))/(h**4)
@@ -116,6 +124,7 @@ def diffnumsupcentral(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         else:
             print("error en la seleccion de un orden de derivada superior (de 2 a 4)")
     elif nivelderivada==2:
@@ -128,6 +137,7 @@ def diffnumsupcentral(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         elif ordenderivada==3:
             #derivadaorden3
             funcdiff=((funcion.subs(x,(xo-3*h)))-8*(funcion.subs(x,(xo-2*h)))+13*(funcion.subs(x,(xo-h)))-13*(funcion.subs(x,(xo+h)))+8*(funcion.subs(x,(xo+2*h)))-(funcion.subs(x,(xo+3*h))))/(8*(h**3))
@@ -137,6 +147,7 @@ def diffnumsupcentral(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         elif ordenderivada==4:
             #derivadaorden4
             funcdiff=(-(funcion.subs(x,(xo+3*h)))+12*(funcion.subs(x,(xo+2*h)))-39*(funcion.subs(x,(xo+h)))+56*(funcion.subs(x,(xo)))-39*(funcion.subs(x,(xo-h)))+12*(funcion.subs(x,(xo-2*h)))-(funcion.subs(x,(xo-3*h))))/(6*(h**4))
@@ -146,6 +157,7 @@ def diffnumsupcentral(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         else:
             print("error en la seleccion de un orden de derivada superior (de 2 a 4)")
     else:
@@ -172,6 +184,7 @@ def diffnumsupback(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         elif ordenderivada==3:
             #derivadaorden3
             funcdiff=((funcion.subs(x,(xo)))-3*(funcion.subs(x,(xo-h)))+3*(funcion.subs(x,(xo-2*h)))-(funcion.subs(x,(xo-3*h))))/(h**3)
@@ -181,6 +194,7 @@ def diffnumsupback(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         elif ordenderivada==4:
             #derivadaorden4
             funcdiff=((funcion.subs(x,(xo)))-4*(funcion.subs(x,(xo-h)))+6*(funcion.subs(x,(xo-2*h)))-4*(funcion.subs(x,(xo-3*h)))+(funcion.subs(x,(xo-4*h))))/(h**4)
@@ -190,6 +204,7 @@ def diffnumsupback(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         else:
             print("error en la seleccion de un orden de derivada superior (de 2 a 4)")
     elif nivelderivada==2:
@@ -202,6 +217,7 @@ def diffnumsupback(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         elif ordenderivada==3:
             #derivadaorden3
             funcdiff=(5*(funcion.subs(x,(xo)))-18*(funcion.subs(x,(xo-h)))+24*(funcion.subs(x,(xo-2*h)))-14*(funcion.subs(x,(xo-3*h)))+3*(funcion.subs(x,(xo-4*h))))/(2*(h**3))
@@ -211,6 +227,7 @@ def diffnumsupback(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         elif ordenderivada==4:
             #derivadaorden4
             funcdiff=(3*(funcion.subs(x,(xo)))-14*(funcion.subs(x,(xo-h)))+26*(funcion.subs(x,(xo-2*h)))-24*(funcion.subs(x,(xo-3*h)))+11*(funcion.subs(x,(xo-4*h)))-2*(funcion.subs(x,(xo-5*h))))/(h**4)
@@ -220,6 +237,7 @@ def diffnumsupback(funcion,xo,h,nivelderivada,ordenderivada):
             print("el error de la respuesta es: {0}%".format(error))
             print()
             print("la respuesta es:")
+            print(respuesta)
         else:
             print("error en la seleccion de un orden de derivada superior (de 2 a 4)")
     else:
