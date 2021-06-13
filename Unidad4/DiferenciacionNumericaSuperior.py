@@ -244,6 +244,6 @@ def diffnumsupback(funcion,xo,h,nivelderivada,ordenderivada):
         print("error en el nivel de derivada (1 o 2)")
     return float(respuesta)
 
-fx="cos(x)"
-uwu=diffnumsupcentral(fx,2,0.1,1,4)
-print(uwu)
+#fx="cos(x)"
+#uwu=diffnumsupcentral(fx,2,0.1,1,4)
+#print(uwu)

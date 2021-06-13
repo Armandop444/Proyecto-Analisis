@@ -1,5 +1,5 @@
 from sympy import *
-from Utilidades import limpiar
+from Utilidades import limpiar,tablita
 #si desean meter una tabla, pueden interpolar la tabla con un metodo como por ejemplo, lagrange, y la funcion resultante ponerla aqui, si jala xd
 #aunque el error depende del grado de la funcion, seguro 
 
@@ -179,9 +179,11 @@ def diffcentralfunc(funcion,xo,h,opcionmetodo,shoutput=True):
 
         respuesta=valoreslista[posicionenlista]
         if shoutput==True:
-            print(valoreslista)
-            print(errorlista)
-            print("el valor con mejor aproximacion (error: {0}%) es:".format(valor1))
+            tabla=tablita(["xi","error"],show_iteracion=False)
+            for i in range(5):
+                tabla.add_fila([valoreslista[i],errorlista[i]])
+            tabla.print_table()
+            print("\nEl valor con mejor aproximacion (error: {0}%) es:".format(valor1))
             print(respuesta)
         
     else:
@@ -191,9 +193,9 @@ def diffcentralfunc(funcion,xo,h,opcionmetodo,shoutput=True):
 
 
 
-funcion="-0.0474999999994452*x**4 + 91.346625000011*x**3 - 272.858983333339*x**2 + 287.144158749992*x - 97.4646539166665 "
-xo=1.3
-h=0.1
-uwu=diffcentralfunc(funcion,xo,h,1,True)
-print(uwu)
+#funcion="-0.0474999999994452*x**4 + 91.346625000011*x**3 - 272.858983333339*x**2 + 287.144158749992*x - 97.4646539166665 "
+#xo=1.3
+#h=0.1
+#uwu=diffcentralfunc(funcion,xo,h,4,True)
+#print(uwu)
 

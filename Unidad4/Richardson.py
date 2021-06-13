@@ -4,7 +4,7 @@ import numpy as np
 from sympy.solvers.diophantine.diophantine import length
 from FormulaEngine import convertir_funcion, reconvertir_funcion
 from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan, Symbol,factorial, diff, parse_expr, Abs
-from DiferenciacionNumerica import *
+from Unidad4.DiferenciacionNumerica import *
 from Utilidades import tablita, limpiar
 
 
@@ -142,8 +142,3 @@ def Richardson():
         
     else:#------------------------------------------------------------------------------------
         print("Error en la eleccion del metodo")
-
-Richardson()
-
-
-
