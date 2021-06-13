@@ -1,8 +1,9 @@
 from sympy import *
+from Utilidades import limpiar
 #si desean meter una tabla, pueden interpolar la tabla con un metodo como por ejemplo, lagrange, y la funcion resultante ponerla aqui, si jala xd
 #aunque el error depende del grado de la funcion, seguro 
 
-def pedir_valores(f,max):
+def pedirValores(f,max):
     lista=[]
     total=1
     while True:
@@ -178,9 +179,9 @@ def diffcentralfunc(funcion,xo,h,opcionmetodo,shoutput=True):
 
 
 
-funcion="0.108833333333166*(x**3) - 0.399499999999307*(x**2) - 0.152778333333345*x + 2.94344499999988 "
+funcion="-0.0474999999994452*x**4 + 91.346625000011*x**3 - 272.858983333339*x**2 + 287.144158749992*x - 97.4646539166665 "
 xo=1.3
 h=0.1
-uwu=diffforwardfunc(funcion,xo,h,1,True)
+uwu=diffcentralfunc(funcion,xo,h,1,True)
 print(uwu)
 
