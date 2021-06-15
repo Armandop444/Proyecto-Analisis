@@ -1,7 +1,9 @@
 from sympy import *
-#hacia delante
+from Utilidades import limpiar,tablita
+#si desean meter una tabla, pueden interpolar la tabla con un metodo como por ejemplo, lagrange, y la funcion resultante ponerla aqui, si jala xd
+#aunque el error depende del grado de la funcion, seguro 
 
-def pedir_valores(f,max):
+def pedirValores(f,max):
     lista=[]
     total=1
     while True:
@@ -23,7 +25,7 @@ def pedir_valores(f,max):
 
 
 x=Symbol("x")
-def diffforwardfunc(funcion, xo, h, nivelderivada):
+def diffforwardfunc(funcion, xo, h, nivelderivada,shoutput=True):
     #añadir convertir funciones
     error=0.0
     funcion=parse_expr(funcion)
@@ -34,21 +36,25 @@ def diffforwardfunc(funcion, xo, h, nivelderivada):
         funcdiff=((funcion.subs(x,(xo+h)))-(funcion.subs(x,(xo))))/(h)
         respuesta=funcdiff
         error=(Abs(((dfunc.subs(x,xo))-float(respuesta))/(dfunc.subs(x,xo))))*100
-        print("el error de la respuesta es: {0}%".format(error))
-        print()
-        print("la respuesta es:")
+        if shoutput==True:
+            print("el error de la respuesta es: {0}%".format(error))
+            print()
+            print("la respuesta es:")
+            print(respuesta)
     elif nivelderivada==2:
         funcdiff=(-(funcion.subs(x,(xo+2*h)))+4*(funcion.subs(x,(xo+h)))-3*(funcion.subs(x,xo)))/(2*h)
         respuesta=funcdiff
         error=(Abs(((dfunc.subs(x,xo))-float(respuesta))/(dfunc.subs(x,xo))))*100
-        print("el error de la respuesta es: {0}%".format(error))
-        print()
-        print("la respuesta es:")
+        if shoutput==True:
+            print("el error de la respuesta es: {0}%".format(error))
+            print()
+            print("la respuesta es:")
+            print(respuesta)
     else:
         print("error en la seleccion de nivel de derivada")
     return float(respuesta)
 
-def diffbackwardfunc(funcion,xo,h,nivelderivada):
+def diffbackwardfunc(funcion,xo,h,nivelderivada,shoutput=True):
     #añadir convertir funciones
     respuesta=0
     error=0.0
@@ -59,16 +65,20 @@ def diffbackwardfunc(funcion,xo,h,nivelderivada):
         funcdiff=(-(funcion.subs(x,(xo-h)))+(funcion.subs(x,(xo))))/(h)
         respuesta=funcdiff
         error=(Abs(((dfunc.subs(x,xo))-float(respuesta))/(dfunc.subs(x,xo))))*100
-        print("el error de la respuesta es: {0}%".format(error))
-        print()
-        print("la respuesta es:")
+        if shoutput==True:
+            print("el error de la respuesta es: {0}%".format(error))
+            print()
+            print("la respuesta es:")
+            print(respuesta)
     elif nivelderivada==2:
         funcdiff=((funcion.subs(x,(xo-2*h)))-4*(funcion.subs(x,(xo-h)))+3*(funcion.subs(x,xo)))/(2*h)
         respuesta=funcdiff
         error=(Abs(((dfunc.subs(x,xo))-float(respuesta))/(dfunc.subs(x,xo))))*100
-        print("el error de la respuesta es: {0}%".format(error))
-        print()
-        print("la respuesta es:")
+        if shoutput==True:
+            print("el error de la respuesta es: {0}%".format(error))
+            print()
+            print("la respuesta es:")
+            print(respuesta)
     else:
         print("error en la seleccion de nivel de derivada")
     return float(respuesta)
@@ -79,7 +89,7 @@ def diffbackwardfunc(funcion,xo,h,nivelderivada):
 #2=centradacuartoorden
 #3=3puntos
 #4=5puntos
-def diffcentralfunc(funcion,xo,h,opcionmetodo):
+def diffcentralfunc(funcion,xo,h,opcionmetodo,shoutput=True):
     #añadir convertir funciones
     respuesta=0
     error=0.0
@@ -92,18 +102,22 @@ def diffcentralfunc(funcion,xo,h,opcionmetodo):
         respuesta=funcdiff
         error=(Abs(((dfunc.subs(x,xo))-float(respuesta))/(dfunc.subs(x,xo))))*100
         error=float(error)
-        print("el error de la respuesta es: {0}%".format(error))
-        print()
-        print("la respuesta es:")
+        if shoutput==True:
+            print("el error de la respuesta es: {0}%".format(error))
+            print()
+            print("la respuesta es:")
+            print(respuesta)
     elif opcionmetodo==2:
         #codigo orden 4
         funcdiff=(-(funcion.subs(x,(xo+2*h)))+8*(funcion.subs(x,(xo+h)))-8*(funcion.subs(x,(xo-h)))+(funcion.subs(x,(xo-2*h))))/(12*h)
         respuesta=funcdiff
         error=(Abs(((dfunc.subs(x,xo))-float(respuesta))/(dfunc.subs(x,xo))))*100
         error=float(error)
-        print("el error de la respuesta es: {0}%".format(error))
-        print()
-        print("la respuesta es:")
+        if shoutput==True:
+            print("el error de la respuesta es: {0}%".format(error))
+            print()
+            print("la respuesta es:")
+            print(respuesta)
     elif opcionmetodo==3:
         #codigo3puntos
         error1=0.0
@@ -118,13 +132,19 @@ def diffcentralfunc(funcion,xo,h,opcionmetodo):
         error2=float(error2)
         if error1>error2:
             respuesta=funcdiff2
-            print("la mejor aproximacion con error: {0}% es:".format(error2))
+            if shoutput==True:
+                print("la mejor aproximacion con error: {0}% es:".format(error2))
+                print(respuesta)
         elif error2>error1:
             respuesta=funcdiff1
-            print("la mejor aproximacion con error {0}% es: ".format(error1))
+            if shoutput==True:
+                print("la mejor aproximacion con error {0}% es: ".format(error1))
+                print(respuesta)
         else:
             respuesta=funcdiff1
-            print("la mejor aproximacion con error {0}% es: ".format(error1))
+            if shoutput==True:
+                print("la mejor aproximacion con error {0}% es: ".format(error1))
+                print(respuesta)
     elif opcionmetodo==4:
         #codigo5puntos
         contador=0
@@ -156,10 +176,16 @@ def diffcentralfunc(funcion,xo,h,opcionmetodo):
                     valor1=errorlista[i]
                     posicionenlista=i
             contador=contador+1
-        print(valoreslista)
-        print(errorlista)
-        print("el valor con mejor aproximacion (error: {0}%) es:".format(valor1))
+
         respuesta=valoreslista[posicionenlista]
+        if shoutput==True:
+            tabla=tablita(["xi","error"],show_iteracion=False)
+            for i in range(5):
+                tabla.add_fila([valoreslista[i],errorlista[i]])
+            tabla.print_table()
+            print("\nEl valor con mejor aproximacion (error: {0}%) es:".format(valor1))
+            print(respuesta)
+        
     else:
         print("error en opcion de metodo")
     return float(respuesta)
@@ -167,9 +193,9 @@ def diffcentralfunc(funcion,xo,h,opcionmetodo):
 
 
 
-funcion="log(x)*tan(x)"
-xo=4.2
-h=0.1
-uwu=diffcentralfunc(funcion,xo,h,4)
-print(uwu)
+#funcion="-0.0474999999994452*x**4 + 91.346625000011*x**3 - 272.858983333339*x**2 + 287.144158749992*x - 97.4646539166665 "
+#xo=1.3
+#h=0.1
+#uwu=diffcentralfunc(funcion,xo,h,4,True)
+#print(uwu)
 
