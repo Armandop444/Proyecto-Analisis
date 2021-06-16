@@ -33,6 +33,7 @@ from Unidad4.DiferenciacionNumericaSuperior import *
 from Unidad4.trapecio import trapecio
 from Unidad4.simpson13 import simp
 from Unidad4.simpson38 import simp3
+from Unidad4.cuadraturaGauss import gauss
 from Unidad4.Richardson import Richardson
 from Unidad4.rosemberg import Rosemberg
 
@@ -1025,6 +1026,18 @@ while True:
                 elif opcion2 == 2 :#Simpson 3/8
                     try:
                         simp3()
+                    except OperacionDetenida:
+                        limpiar()
+                        continue
+                    except MathError as e:
+                        print("MathError: " + e)
+                        input("Presione cualquier tecla para continuar")
+                    except Exception as e:
+                        print(f"Algo ha salido mal {e}")
+                        input("Presione cualquier tecla para continuar")
+                elif opcion2 == 3 :#Cuadratura Gauss
+                    try:
+                        gauss()
                     except OperacionDetenida:
                         limpiar()
                         continue
