@@ -32,20 +32,32 @@ def calcularDerivadas(dy,tamanio):
         if "Derivative(f(x), x)" in d:
             dy=dy.replace("f(x)", "y")
             d=d.replace("Derivative(f(x), x)",dy)
+        if "f(x)" in d:
+            dy=dy.replace("f(x)", "y")
+            d=d.replace("f(x)",dy)
         derivadas.append(str(d))
     return derivadas
 
-def taylor(dy,x0,y0,h,tamanio,fx):
+def taylor():
+
+    dy=input("Ingrese el valor de y' ")
+    dy=convertir_funcion(dy)
+    x0 = float(input("Ingrese el valor de x0 "))
+    y0 = float(input("Ingrese el valor de y0 "))
+    h = float(input("Ingrese el valor de H "))
+    orden = int(input("Ingrese el numero de orden que desea "))
+    fx=float(input("Ingrese el valor f(x) que desea evaluar "))
     derivadas=[]
 
-    derivadas=calcularDerivadas(dy, tamanio)
+    derivadas=calcularDerivadas(dy, orden)
     derivadas.insert(0, dy)
-    tamanio = tamanio + 1
+    tamanio = orden + 1
     i=x0
     a=0
     while i <= fx:
         a = a+1
         i += h
+    a=a+1
     estimado = zeros(shape=(a,2))
     estimado[0] = [x0,y0]
     x = x0
@@ -56,6 +68,7 @@ def taylor(dy,x0,y0,h,tamanio,fx):
         for j in range(1,tamanio,1):
             if j>0:
                 d2y= derivadas[j-1]
+                print(d2y)
                 y= y + f(x,y0,d2y)*(h**j/factorial(j))
                 if i==1:
                     estimado[i]= [f(x,y,dy),f(x,y,dy)]
@@ -66,13 +79,3 @@ def taylor(dy,x0,y0,h,tamanio,fx):
         estimado[i] = [x,y]
     imprimir(estimado, muestras)
 
-dy="y-x"
-dy=convertir_funcion(dy)
-x0 = 1
-y0 = 3
-h = 0.5
-orden = 3
-fx=5
-
-# PROCEDIMIENTO
-puntos = taylor(dy,x0,y0,h,orden,fx)
