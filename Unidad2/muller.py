@@ -1,7 +1,7 @@
 from numpy import sign
 from numpy.lib.scimath import sqrt
-from FormulaEngine import convertir_funcion
-from Utilidades import raiz, tablita
+from FormulaEngine import convertir_funcion, raiz
+from Utilidades import tablita
 from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan
 
 def muller(f, x0, x1, x2, tol):

@@ -1,8 +1,7 @@
-from os import name, system
 import Menu
+from FormulaEngine import validar_parentesis,reconvertir_funcion, convertir_funcion, MathError, ValueError
+from Utilidades import cifras_significativas, OperacionDetenida, Graficadora, limpiar
 
-from FormulaEngine import validar_parentesis,reconvertir_funcion, convertir_funcion
-from Utilidades import cifras_significativas, ValueError, OperacionDetenida, MathError
 # Unidad 1
 from Unidad1.Ejercicio1 import ejercicio1
 from Unidad1.Ejercicio2 import ejercicio2
@@ -32,11 +31,6 @@ from Unidad3.HermiteDiferencias import HermiteD
 from Unidad4.DiferenciacionNumerica import *
 from Unidad4.DiferenciacionNumericaSuperior import *
 from Unidad4.Richardson import Richardson
-
-
-# Permite limpiar la pantalla
-def limpiar():
-    system('cls' if name == 'nt' else 'clear')
 
 
 def pedir_valores(mensaje: str, historial: list):
@@ -384,6 +378,8 @@ while True:
                                       f"X2: {x2}"
                                       ])
                     limpiar()
+                    grafica = Graficadora(funcion,"Biseccion")
+                    grafica.render()
                     print_final(f"Funcion: {funcion},  X1: {x1},  X2: {x2},  ES: {es}",
                                 Bisec(funcion, x1, x2, es))
                 except OperacionDetenida:
@@ -425,12 +421,14 @@ while True:
                 try:
                     funcion = pedir_funcion("[Punto Fijo]")
                     x = pedir_valores("[Punto Fijo] Ingrese el valor de x: ",
-                                      [f"Funcion: {funcion}"])
+                                        [f"Funcion: {funcion}"])
                     es = pedir_error([f"Funcion: {funcion}",
-                                      f"X: {x}"])
+                                        f"X: {x}"])
+                    grafica = Graficadora(funcion, "Punto Fijo")
+                    grafica.render()
                     limpiar()
-                    print_final(
-                        f"Funcion: {funcion}, X: {x} ES: {es}", PuntoFijo(funcion, es, x))
+                    print_final(f"Funcion: {funcion}, X: {x} ES: {es}", 
+                                PuntoFijo(funcion, es, x))
                 except OperacionDetenida:
                     limpiar()
                     continue
