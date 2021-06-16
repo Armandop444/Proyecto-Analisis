@@ -1,6 +1,8 @@
 import numpy as np
 from sympy import *
 from FormulaEngine import convertir_funcion
+from Utilidades import limpiar
+
 x = symbols('x')  # declaramos que x es un simbolo
 def prod(A):
     a = 1

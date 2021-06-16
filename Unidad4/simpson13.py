@@ -58,6 +58,7 @@ def simpson13(f, a, b):
 
 def simp():
     option=int(input("Como desea usar el metodo del simpson 1/3 \n1.Ingresando tabla \n2.Ingresando funcion( compuesto) \n3.Ingresando funcion( simple) \n"))
+    limpiar()
     if(option==1):
 
         simpsonTabla()
