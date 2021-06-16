@@ -31,6 +31,7 @@ from Unidad3.HermiteDiferencias import HermiteD
 from Unidad4.DiferenciacionNumerica import *
 from Unidad4.DiferenciacionNumericaSuperior import *
 from Unidad4.Richardson import Richardson
+from Unidad4.rosemberg import Rosemberg
 
 
 def pedir_valores(mensaje: str, historial: list):
@@ -736,7 +737,6 @@ while True:
                             else:
                                 funcion=pedir_funcion("[Diferencia Hacia Adelante]")
                                 funcion=convertir_funcion(funcion)
-                                funcion=convertir_funcion(funcion)
                             xo=pedir_valores("Ingrese el valor de x", [f"Funcion {reconvertir_funcion(funcion)}"])
                             h=pedir_valores("Ingrese el valor de h", [f"Funcion {reconvertir_funcion(funcion)}",
                                             f"X0: {xo}"])
@@ -1008,7 +1008,17 @@ while True:
                             print(f"Algo ha salido mal {e}")
                             input("Presione cualquier tecla para continuar")
             elif opcion==4:#Rosemberg
-                pass
+                        try:
+                            Rosemberg()
+                        except OperacionDetenida:
+                            limpiar()
+                            continue
+                        except MathError as e:
+                            print("MathError: " + e)
+                            input("Presione cualquier tecla para continuar")
+                        except Exception as e:
+                            print(f"Algo ha salido mal {e}")
+                            input("Presione cualquier tecla para continuar")
             elif opcion==5:#aiuda
                 pass
             elif opcion==6:

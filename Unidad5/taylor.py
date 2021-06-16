@@ -47,8 +47,8 @@ def taylor():
     h = float(input("Ingrese el valor de H "))
     orden = int(input("Ingrese el numero de orden que desea "))
     fx=float(input("Ingrese el valor f(x) que desea evaluar "))
+    limpiar()
     derivadas=[]
-
     derivadas=calcularDerivadas(dy, orden)
     derivadas.insert(0, dy)
     tamanio = orden + 1
@@ -78,4 +78,3 @@ def taylor():
         x = x+h
         estimado[i] = [x,y]
     imprimir(estimado, muestras)
-
