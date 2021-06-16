@@ -57,15 +57,14 @@ def simpson13(f, a, b):
     return f
 
 def simp():
-    option=int(input("como desea usar el metodo del simpson 1/3 \n1.Ingresando tabla \n2.Ingresando funcion( compuesto) \n3.Ingresando funcion( simple) \n"))
-    limpiar()
+    option=int(input("Como desea usar el metodo del simpson 1/3 \n1.Ingresando tabla \n2.Ingresando funcion( compuesto) \n3.Ingresando funcion( simple) \n"))
     if(option==1):
 
         simpsonTabla()
 
 
     if(option==2):
-        ecuacion = input("ingrese la funcion\n")
+        ecuacion = input("Ingrese la funcion\n")
 
         ecuacion=convertir_funcion(ecuacion)
 
@@ -74,7 +73,7 @@ def simp():
         # intervalo de integración
         a = float(input("Ingrese el intervalo inferior\n"))
         b = float(input("Ingrese el intervalo superior\n"))
-        n = int(input("ingrese el numero de tramos\n"))
+        n = int(input("Ingrese el numero de tramos\n"))
         h = (b - a) / n
         suma = 0
         for i in range(n):
@@ -84,11 +83,11 @@ def simp():
             suma = suma + area
             a = b
 
-        print(suma)
+        print(suma,"\n")
 
 
     if(option==3):
-        ecuacion = input("ingrese la funcion\n")
+        ecuacion = input("Ingrese la funcion\n")
 
         x = symbols('x')  # declaramos que x es un simbolo
 

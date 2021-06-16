@@ -52,12 +52,12 @@ def simpson38(f,a,b):
 
 def simp3():
 
-    option=int(input("como desea utilizar el metodo de simpson 3/8\n1.ingresando tabla\n2.complejo\n3.simple\n"))
+    option=int(input("Como desea utilizar el metodo de simpson 3/8\n1.Ingresando tabla\n2.Complejo\n3.Simple\n"))
     if(option==1):
 
         simpsonTabla()
     if(option==2):
-        ecuacion = input("ingrese la funcion\n")
+        ecuacion = input("Ingrese la funcion\n")
         x = symbols('x')  # declaramos que x es un simbolo
 
         ecuacion=convertir_funcion(ecuacion)
@@ -65,7 +65,7 @@ def simp3():
         fx = parse_expr(ecuacion)  # funcion que evaluaremos
         a = float(input("Ingrese el intervalo inferior\n"))
         b = float(input("Ingrese el intervalo superior\n"))
-        n = int(input("ingrese el numero de tramos\n"))
+        n = int(input("Ingrese el numero de tramos\n"))
         h = (b - a) / n
         suma = 0
         for i in range(n):
@@ -76,7 +76,7 @@ def simp3():
 
         print(suma)
     if(option==3):
-        ecuacion = input("ingrese la funcion\n")
+        ecuacion = input("Ingrese la funcion\n")
         x = symbols('x')  # declaramos que x es un simbolo
 
         ecuacion=convertir_funcion(ecuacion)

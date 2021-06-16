@@ -20,11 +20,11 @@ def trapeciotabla():
         integs.append(integ)
     print("\nIntegral: ", sum(integs))
 def trapecio():
-    option=int(input("como desea usar el metodo del trapecio \n1.Ingresando tabla \n2.Ingresando funcion(trapecio compuesto) \n3.Ingresando funcion(trapecio simple \n)"))
+    option=int(input("Como desea usar el metodo del trapecio \n1.Ingresando tabla \n2.Ingresando funcion(trapecio compuesto) \n3.Ingresando funcion(trapecio simple)\n"))
     if(option==1):
         trapeciotabla()
     if(option==2):
-        ecuacion = input("ingrese la funcion\n")
+        ecuacion = input("Ingrese la funcion\n")
 
         x = symbols('x')  # declaramos que x es un simbolo
 
@@ -35,7 +35,7 @@ def trapecio():
         # intervalo de integración
         a = float(input("Ingrese el intervalo inferior\n"))
         b = float(input("Ingrese el intervalo superior\n"))
-        tramos = int(input("ingrese el numero de tramos\n"))
+        tramos = int(input("Ingrese el numero de tramos\n"))
 
 
         h = (b - a) / tramos
@@ -51,7 +51,7 @@ def trapecio():
         print('tramos: ', tramos)
         print('Integral: ', area)
     if(option==3):
-        ecuacion = input("ingrese la funcion\n")
+        ecuacion = input("Ingrese la funcion\n")
 
         x = symbols('x')  # declaramos que x es un simbolo
 

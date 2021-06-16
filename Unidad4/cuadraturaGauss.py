@@ -9,15 +9,15 @@ def integraCuadGaussp(fx,a,b,tramos,t,w):
     area=0
     for i in range(0, muestras - 1, 1):
         x0=((b+a)*(t[i])+(b-a))/2
-        print(w[i]*(fx.subs(x, x0)))
-        print(w[i]," *", (fx.subs(x, x0)))
+        #print(w[i]*(fx.subs(x, x0)))
+        #print(w[i]," *", (fx.subs(x, x0)))
         area =area+(w[i]*(fx.subs(x, x0)))
 
     return(((b-a)/2)*area)
 
 def gauss():
     # INGRESO
-    ecuacion = input("ingrese la funcion\n")
+    ecuacion = input("Ingrese la funcion\n")
 
     x = symbols('x')
 
@@ -25,13 +25,13 @@ def gauss():
 
     fx = parse_expr(ecuacion)
 
-    a = float(input("ingrese el punto a de la integral\n"))
-    b = float(input("ingrese el punto b de la integral\n"))
-    tramos = int(input("cuantos puntos desea evaluar\n"))
+    a = float(input("Ingrese el punto a de la integral\n"))
+    b = float(input("Ingrese el punto b de la integral\n"))
+    tramos = int(input("Cuantos puntos desea evaluar\n"))
 
     [t, w] = np.polynomial.legendre.leggauss(tramos)
-    print('w\n', w)
-    print('x\n', t)
+    #print('w\n', w)
+    #print('x\n', t)
     muestras = tramos+1
 
     area = 0
