@@ -378,10 +378,10 @@ while True:
                                       f"X2: {x2}"
                                       ])
                     limpiar()
-                    grafica = Graficadora(funcion,"Biseccion")
-                    grafica.render()
                     print_final(f"Funcion: {funcion},  X1: {x1},  X2: {x2},  ES: {es}",
                                 Bisec(funcion, x1, x2, es))
+                    grafica = Graficadora(funcion,"Biseccion")
+                    grafica.render()
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -407,6 +407,8 @@ while True:
                     limpiar()
                     print_final(f"Funcion: {funcion}, X1: {x1}, X2: {x2}, ES: {es}",
                                 FalsaP(funcion, x1, x2, es))
+                    grafica = Graficadora(funcion,"Falsa Posicion")
+                    grafica.render()
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -424,8 +426,6 @@ while True:
                                         [f"Funcion: {funcion}"])
                     es = pedir_error([f"Funcion: {funcion}",
                                         f"X: {x}"])
-                    grafica = Graficadora(funcion, "Punto Fijo")
-                    grafica.render()
                     limpiar()
                     print_final(f"Funcion: {funcion}, X: {x} ES: {es}", 
                                 PuntoFijo(funcion, es, x))
@@ -449,6 +449,8 @@ while True:
                     limpiar()
                     print_final(f"Funcion: {funcion}, XI: {xi} ES: {es}",
                                 NewtonRaphson(funcion, xi, es))
+                    grafica = Graficadora(funcion,"Newton Raphson")
+                    grafica.render()
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -468,6 +470,8 @@ while True:
                     limpiar()
                     print_final(f"Funcion: {funcion}, XI: {xi} ES: {es}",
                                 NewtonTuneado(funcion, xi, es))
+                    grafica = Graficadora(funcion,"Newton Raphson Modificado")
+                    grafica.render()
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -492,6 +496,8 @@ while True:
                     limpiar()
                     print_final(f"Funcion: {funcion}, Xn-1: {xnmenos}, Xn: {xn}, ES: {es}",
                                 Sec(funcion, xnmenos, xn, es))
+                    grafica = Graficadora(funcion,"Secante")
+                    grafica.render()
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -521,6 +527,8 @@ while True:
                     limpiar()
                     print_final(f"Funcion: {funcion}, X0: {x0}, X1: {x1}, X2: {x2}, ES: {es}",
                                 muller(funcion, x0, x1, x2, es))
+                    grafica = Graficadora(funcion,"Muller")
+                    grafica.render()
                 except OperacionDetenida:
                     limpiar()
                     continue
