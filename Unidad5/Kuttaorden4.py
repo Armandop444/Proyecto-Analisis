@@ -21,23 +21,8 @@ def imprimir(Matriz,nivel):
     tabla.print_table()
 
 
-def KuttaGrado4():
-    dy = input("Ingrese la y´")
-    dy=convertir_funcion(dy)
-    x0 = float(input("ingrese X0\n"))
-    y0 = float(input("ingrese Y0\n"))
-    h = float(input("ingrese h\n"))
-    i = x0
-    pregunta = input(
-        "Como quiere operar\n1.Con # de iteraciones\n2.Evaluacion en un punto de f(x)")
-    if pregunta == "2":
-        xF = float(input("Ingrese el punto de f(x)"))
-        muestras = 0
-        while i <= xF:
-            muestras = muestras+1
-            i += h
-    else:
-        muestras = int(input("Ingrese el # de iteraciones que desea hacer"))
+def KuttaGrado4(dy, x0, y0, h,muestras):
+
     tamano = muestras + 1
     estimado = zeros(shape=(tamano, 2), dtype=float)
 
@@ -55,4 +40,25 @@ def KuttaGrado4():
         xi = xi + h
 
         estimado[i] = [xi, yi]
-    imprimir(estimado, tamano-1)
+    return estimado
+
+def Kutta():
+    dy = input("Ingrese la y´")
+    dy=convertir_funcion(dy)
+    x0 = float(input("ingrese X0\n"))
+    y0 = float(input("ingrese Y0\n"))
+    h = float(input("ingrese h\n"))
+    i = x0
+    pregunta = input(
+        "Como quiere operar\n1.Con # de iteraciones\n2.Evaluacion en un punto de f(x)")
+    if pregunta == "2":
+        xF = float(input("Ingrese el punto de f(x)"))
+        muestras = 0
+        while i <= xF:
+            muestras = muestras+1
+            i += h
+    elif pregunta=="1":
+        muestras = int(input("Ingrese el # de iteraciones que desea hacer"))
+    estimado=KuttaGrado4(dy, x0, y0, h,muestras)
+    limpiar()
+    imprimir(estimado, muestras)
