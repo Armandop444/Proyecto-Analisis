@@ -43,6 +43,7 @@ def KuttaGrado4(dy, x0, y0, h,muestras):
     return estimado
 
 def Kutta():
+    print("Rungen Kutta")
     dy = input("Ingrese la y´")
     dy=convertir_funcion(dy)
     x0 = float(input("ingrese X0\n"))

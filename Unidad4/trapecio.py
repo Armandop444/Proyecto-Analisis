@@ -22,7 +22,7 @@ def trapeciotabla():
     print("\nIntegral: ", sum(integs))
 def trapecio():
     option=int(input("Como desea usar el metodo del trapecio \n1.Ingresando tabla \n2.Ingresando funcion(trapecio compuesto) \n3.Ingresando funcion(trapecio simple)\n"))
-    limpiar
+    limpiar()
     if(option==1):
         trapeciotabla()
     if(option==2):

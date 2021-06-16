@@ -1,4 +1,4 @@
-from Kuttaorden4 import KuttaGrado4
+from Unidad5.Kuttaorden4 import KuttaGrado4
 from sympy import factorial,diff,Symbol,cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan
 from FormulaEngine import convertir_funcion
 from Utilidades import tablita, limpiar
@@ -99,6 +99,7 @@ def moul3paso(funcion,h,lista):
 
 def main():
     limpiar()
+    print("Multipasos")
     opcion=int(input("Metodos de Adams-Bashforth:\n1.Con 2 pasos\n2.Con 3 pasos\n3.Con 4 pasos\n"))
     if opcion>0 and opcion<4:
         d=input("Ingrese y'\n")

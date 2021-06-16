@@ -55,6 +55,7 @@ def simpson38(f,a,b):
 def simp3():
 
     option=int(input("Como desea utilizar el metodo de simpson 3/8\n1.Ingresando tabla\n2.Complejo\n3.Simple\n"))
+    limpiar()
     if(option==1):
 
         simpsonTabla()
