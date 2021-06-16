@@ -12,6 +12,8 @@ from Unidad1.Ejercicio6 import ejercicio6
 from Unidad1.Ejercicio7 import ejercicio7
 from Unidad1.Ejercicio8 import ejercicio8
 from Unidad1.Ejercicio9 import ejercicio9
+from Unidad1.Ejercicio10 import ejercicio10
+from Unidad1.Ejercicio11 import ejercicio11
 # Unidad 2
 from Unidad2.biseccion import Bisec
 from Unidad2.falsaP import FalsaP
@@ -167,6 +169,8 @@ while True:
                 '[7] ch x',
                 '[8] arcsen(x)',
                 '[9] ln(1+x)',
+                '[10] 1/(1+x^2)',
+                '[11] arctan(x)',
                 Menu.Separador(),
                 '[a] Ayuda',
                 '[s] Volver al menu principal'
@@ -306,10 +310,13 @@ while True:
                 try:
                     xn = pedir_valores("[arcsen(x)] Ingrese el valor del intervalo x:  ",
                                        [f""])
-                    es = pedir_error(["Funcion: arcsen(x)", xn])
-                    limpiar()
-                    print_final(f"Funcion: arcsen(x), XN: {xn}, ES: {es}",
-                                ejercicio8(xn, es))
+                    if xn>=-1 and xn<1:
+                        es = pedir_error(["Funcion: arcsen(x)", xn])
+                        limpiar()
+                        print_final(f"Funcion: arcsen(x), XN: {xn}, ES: {es}",
+                                    ejercicio8(xn, es))
+                    else:
+                        print("El rango de xn no es el correcto para el ejercicio")
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -324,10 +331,13 @@ while True:
                 try:
                     xn = pedir_valores("[ln(1+x)] Ingrese el valor del intervalo x:  ",
                                        [f""])
-                    es = pedir_error(["Funcion: lnx(1+x)", xn])
-                    limpiar()
-                    print_final(f"Funcion: ln(1+x), XN: {xn}, ES: {es}",
-                                ejercicio9(xn, es))
+                    if xn>-1 and xn<1:
+                        es = pedir_error(["Funcion: lnx(1+x)", xn])
+                        limpiar()
+                        print_final(f"Funcion: ln(1+x), XN: {xn}, ES: {es}",
+                                    ejercicio9(xn, es))
+                    else:
+                        print("El rango de xn no es el correcto para el ejercicio")
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -338,11 +348,47 @@ while True:
                 except Exception as e:
                     print(f"Algo ha salido mal {e}")
                     input("Presione cualquier tecla para continuar")
-            elif opcion == 9:
+            elif opcion == 9:  # 1/(1+x^2)
+                try:
+                    xn = pedir_valores("1/(1+x^2)] Ingrese el valor del intervalo x:  ",
+                                       [f""])
+                    if xn>-1 and xn<1:
+                        es = pedir_error(["Funcion: 1/(1+x^2)", xn])
+                        limpiar()
+                        print_final(f"Funcion: 1/(1+x^2), XN: {xn}, ES: {es}",
+                                    ejercicio10(xn, es))
+                    else:
+                        print("El rango de xn no es el correcto para el ejercicio")
+
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+            elif opcion == 10:  # arctan(x)
+                try:
+                    xn = pedir_valores("[arctan(x)] Ingrese el valor del intervalo x:  ",
+                                       [f""])
+                    if xn>=-1 and xn<=1:
+                        es = pedir_error(["Funcion: arctan(x)", xn])
+                        limpiar()
+                        print_final(f"Funcion: arctan(x), XN: {xn}, ES: {es}",
+                                    ejercicio11(xn, es))
+                    else:
+                        print("El rango de xn no es el correcto para el ejercicio")
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+            elif opcion == 11:
                 limpiar()
                 # imprimir ayuda
                 print("Aqui va la ayuda :v")
-            elif opcion == 10:
+            elif opcion == 12:
                 # Opcion terminar
                 break
 
