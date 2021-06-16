@@ -30,6 +30,7 @@ from Unidad3.HermiteDiferencias import HermiteD
 # Unidad 4
 from Unidad4.DiferenciacionNumerica import *
 from Unidad4.DiferenciacionNumericaSuperior import *
+from Unidad4.trapecio import trapecio
 from Unidad4.Richardson import Richardson
 from Unidad4.rosemberg import Rosemberg
 
@@ -994,7 +995,19 @@ while True:
                     ],
                     titulo="Metodos para Integracion Numerica",
                     metodo_seleccion='atajo')
-            
+                opcion2 = menu_mini.show()
+                if opcion2 == 0: #Trapecio
+                        try:
+                            trapecio()
+                        except OperacionDetenida:
+                            limpiar()
+                            continue
+                        except MathError as e:
+                            print("MathError: " + e)
+                            input("Presione cualquier tecla para continuar")
+                        except Exception as e:
+                            print(f"Algo ha salido mal {e}")
+                            input("Presione cualquier tecla para continuar")
             elif opcion==3:#Richarson
                         try:
                             Richardson()
