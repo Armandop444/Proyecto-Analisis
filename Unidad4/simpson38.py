@@ -87,4 +87,3 @@ def simp3():
 
         area=simpson38(fx, a, b)
         print(area)
-simp3()

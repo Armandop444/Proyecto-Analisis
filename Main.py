@@ -31,6 +31,8 @@ from Unidad3.HermiteDiferencias import HermiteD
 from Unidad4.DiferenciacionNumerica import *
 from Unidad4.DiferenciacionNumericaSuperior import *
 from Unidad4.trapecio import trapecio
+from Unidad4.simpson13 import simp
+from Unidad4.simpson38 import simp3
 from Unidad4.Richardson import Richardson
 from Unidad4.rosemberg import Rosemberg
 
@@ -997,41 +999,65 @@ while True:
                     metodo_seleccion='atajo')
                 opcion2 = menu_mini.show()
                 if opcion2 == 0: #Trapecio
-                        try:
-                            trapecio()
-                        except OperacionDetenida:
-                            limpiar()
-                            continue
-                        except MathError as e:
-                            print("MathError: " + e)
-                            input("Presione cualquier tecla para continuar")
-                        except Exception as e:
-                            print(f"Algo ha salido mal {e}")
-                            input("Presione cualquier tecla para continuar")
+                    try:
+                        trapecio()
+                    except OperacionDetenida:
+                        limpiar()
+                        continue
+                    except MathError as e:
+                        print("MathError: " + e)
+                        input("Presione cualquier tecla para continuar")
+                    except Exception as e:
+                        print(f"Algo ha salido mal {e}")
+                        input("Presione cualquier tecla para continuar")
+                elif opcion2 == 1 :#Simpson 1/3
+                    try:
+                        simp()
+                    except OperacionDetenida:
+                        limpiar()
+                        continue
+                    except MathError as e:
+                        print("MathError: " + e)
+                        input("Presione cualquier tecla para continuar")
+                    except Exception as e:
+                        print(f"Algo ha salido mal {e}")
+                        input("Presione cualquier tecla para continuar")
+                elif opcion2 == 2 :#Simpson 3/8
+                    try:
+                        simp3()
+                    except OperacionDetenida:
+                        limpiar()
+                        continue
+                    except MathError as e:
+                        print("MathError: " + e)
+                        input("Presione cualquier tecla para continuar")
+                    except Exception as e:
+                        print(f"Algo ha salido mal {e}")
+                        input("Presione cualquier tecla para continuar")
             elif opcion==3:#Richarson
-                        try:
-                            Richardson()
-                        except OperacionDetenida:
-                            limpiar()
-                            continue
-                        except MathError as e:
-                            print("MathError: " + e)
-                            input("Presione cualquier tecla para continuar")
-                        except Exception as e:
-                            print(f"Algo ha salido mal {e}")
-                            input("Presione cualquier tecla para continuar")
+                try:
+                    Richardson()
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
             elif opcion==4:#Rosemberg
-                        try:
-                            Rosemberg()
-                        except OperacionDetenida:
-                            limpiar()
-                            continue
-                        except MathError as e:
-                            print("MathError: " + e)
-                            input("Presione cualquier tecla para continuar")
-                        except Exception as e:
-                            print(f"Algo ha salido mal {e}")
-                            input("Presione cualquier tecla para continuar")
+                try:
+                    Rosemberg()
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
             elif opcion==5:#aiuda
                 pass
             elif opcion==6:
