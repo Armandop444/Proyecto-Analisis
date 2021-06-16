@@ -1,7 +1,6 @@
 from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan
 from sympy import symbols, parse_expr
-from FormulaEngine import convertir_funcion
-from Utilidades import raiz
+from FormulaEngine import convertir_funcion,raiz
 
 def Rosemberg():
     # pedir datos
