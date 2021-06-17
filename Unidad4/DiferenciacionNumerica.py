@@ -1,5 +1,6 @@
 from sympy import *
 from Utilidades import limpiar,tablita
+from FormulaEngine import castear
 #si desean meter una tabla, pueden interpolar la tabla con un metodo como por ejemplo, lagrange, y la funcion resultante ponerla aqui, si jala xd
 #aunque el error depende del grado de la funcion, seguro 
 
@@ -11,14 +12,14 @@ def pedirValores(f,max):
         if max=="":
             print("Presione S para terminar de ingresar los datos en la lista")
         print("Valores \n",lista)
-        dato= input(f"Ingrese el valor de {f}({len(lista)}): ")
+        dato= castear(f"Ingrese el valor de {f}({len(lista)}): ")
         if dato.upper()=="S" or (max==total and max!=""):
             if dato.upper()!="S":
-                lista.append(float(dato))
+                lista.append(float(eval(dato)))
             return lista
         else:
             try:
-                lista.append(float(dato))
+                lista.append(float(eval(dato)))
                 total+=1
             except:
                 continue

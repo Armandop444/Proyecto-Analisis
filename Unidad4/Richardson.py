@@ -1,4 +1,3 @@
-#from Utilidades import limpiar, tablita
 from sympy import *
 import numpy as np
 from sympy.solvers.diophantine.diophantine import length

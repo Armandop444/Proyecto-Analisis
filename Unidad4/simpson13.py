@@ -1,6 +1,6 @@
 import numpy as np
 from sympy import *
-from FormulaEngine import convertir_funcion
+from FormulaEngine import convertir_funcion,castear
 from Utilidades import limpiar
 
 x = symbols('x')  # declaramos que x es un simbolo
@@ -33,8 +33,8 @@ def simpsonTabla():
     midPoints = [[],[]]
     for i in range(cantPoints):
         print ("\n( x",i,",y",i,")")
-        x = float(input("Ingrese 'x'> "))
-        y = float(input("Ingrese 'y'> "))
+        x = float(eval(castear("Ingrese 'x'> ")))
+        y = float(eval(castear("Ingrese 'y'> ")))
         points[0].append(x)
         points[1].append(y)
     for i in range(len(points[0])-1):
