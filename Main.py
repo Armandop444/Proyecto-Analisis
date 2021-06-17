@@ -27,7 +27,7 @@ from Unidad2.bairstow import bairstow
 from Unidad3.Lagrange import grange
 from Unidad3.NewtonRecursiva import newton
 from Unidad3.NewtonDiferencias import NewtonDD
-from Unidad3.Hermite import hermite
+from Unidad3.Hermite import hermiteNormal
 from Unidad3.HermiteDiferencias import HermiteD
 # Unidad 4
 from Unidad4.DiferenciacionNumerica import *
@@ -714,7 +714,7 @@ while True:
                     break
             elif opcion == 3:  # Hermite normal
                 try:
-                    hermite()
+                    hermiteNormal()
                 except OperacionDetenida:
                     limpiar()
                     continue

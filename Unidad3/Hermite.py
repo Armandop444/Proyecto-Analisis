@@ -1,4 +1,4 @@
-from sympy import *
+from sympy import parse_expr,Symbol
 from Utilidades import limpiar, tablita
 #el grado de una funcion mediante polinomios de hermite es dado por 2n+1
 
@@ -23,7 +23,7 @@ def pedir_valores(f,max):
                 continue
 
 
-def hermite():
+def hermiteNormal():
     xn=pedir_valores("x","")
     fxn=pedir_valores("fi",len((xn)))
     dfxn=pedir_valores("y'",len(fxn))
