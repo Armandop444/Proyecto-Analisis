@@ -28,7 +28,7 @@ def hermiteNormal():
     fxn=pedir_valores("fi",len((xn)))
     dfxn=pedir_valores("y'",len(fxn))
     limpiar()
-    punto=float(input("Ingrese el punto a evaluar: "))
+    punto=input("Ingrese el punto a evaluar: ")
     ls=[]
     lsdiff=[]
     h=[]
@@ -77,5 +77,6 @@ def hermiteNormal():
     print(polhermite)
     print("")
     if punto!="":
+        punto=float(punto)
         print("el valor del punto dado ({0}) en el polinomio de hermite es: ".format(punto))
         print((polhermite.subs(x,punto)).expand())
