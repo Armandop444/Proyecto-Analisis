@@ -1,6 +1,8 @@
 import numpy as np
 from sympy import *
 from FormulaEngine import convertir_funcion
+from Utilidades import limpiar
+
 x = symbols('x')  # declaramos que x es un simbolo
 def prod(A):
     a = 1
@@ -53,6 +55,7 @@ def simpson38(f,a,b):
 def simp3():
 
     option=int(input("Como desea utilizar el metodo de simpson 3/8\n1.Ingresando tabla\n2.Complejo\n3.Simple\n"))
+    limpiar()
     if(option==1):
 
         simpsonTabla()

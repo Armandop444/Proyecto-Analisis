@@ -39,7 +39,7 @@ def calcularDerivadas(dy,tamanio):
     return derivadas
 
 def taylor():
-
+    print("Metodo de Taylor")
     dy=input("Ingrese el valor de y' ")
     dy=convertir_funcion(dy)
     x0 = float(input("Ingrese el valor de x0 "))
@@ -68,7 +68,6 @@ def taylor():
         for j in range(1,tamanio,1):
             if j>0:
                 d2y= derivadas[j-1]
-                print(d2y)
                 y= y + f(x,y0,d2y)*(h**j/factorial(j))
                 if i==1:
                     estimado[i]= [f(x,y,dy),f(x,y,dy)]

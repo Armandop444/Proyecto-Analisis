@@ -38,7 +38,10 @@ from Unidad4.simpson38 import simp3
 from Unidad4.cuadraturaGauss import gauss
 from Unidad4.Richardson import Richardson
 from Unidad4.rosemberg import Rosemberg
-
+# Unidad 5
+from Unidad5.taylor import taylor
+from Unidad5.Kuttaorden4 import Kutta
+from Unidad5.Multipasos import main
 
 def pedir_valores(mensaje: str, historial: list):
     limpiar()
@@ -729,7 +732,7 @@ while True:
                 break
 
     elif opcion == 3:  # UNIDAD 4
-        menu_3 = Menu.Menu(
+        menu_4 = Menu.Menu(
             [
                 '[1] Derivacion Numerica',
                 '[2] Derivacion Numerica Superior',
@@ -744,7 +747,7 @@ while True:
             metodo_seleccion='atajo'
         )
         while True:
-            opcion = menu_3.show()
+            opcion = menu_4.show()
             if opcion == 0:  # Derivacion
                 menu_mini = Menu.Menu(
                     [
@@ -1123,7 +1126,74 @@ while True:
                 break
 
     elif opcion == 4:  # UNIDAD 5
-        pass
+        menu_5 = Menu.Menu(
+            [
+                '[1] Euler Modificado',
+                '[2] Metodo de Taylor',
+                '[3] Runge Kutta 4 orden',
+                '[4] Multipasos',
+                Menu.Separador(),
+                '[a] Ayuda',
+                '[s] Volver al menu principal'
+            ],
+            titulo="Metodos de la unidad 5",
+            metodo_seleccion='atajo'
+        )
+        while True:
+            opcion=menu_5.show()
+            if opcion==0:#Euler Mod
+                try:
+                    pass
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+            elif opcion==1:#Taylor
+                try:
+                    taylor()
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+            elif opcion==2:#kutta
+                try:
+                    Kutta()
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+            elif opcion==3:#Multipasos
+                try:
+                    main()
+                except OperacionDetenida:
+                    limpiar()
+                    continue
+                except MathError as e:
+                    print("MathError: " + e)
+                    input("Presione cualquier tecla para continuar")
+                except Exception as e:
+                    print(f"Algo ha salido mal {e}")
+                    input("Presione cualquier tecla para continuar")
+            elif opcion == 4:
+                print("Aqui va la ayuda :v")
+                input("Presione cualquier tecla para continuar")
+            elif opcion ==5:
+                break
 
     elif opcion == 5:
         print("Aqui va la ayuda :v")
