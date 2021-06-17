@@ -38,6 +38,18 @@ def nivel4(D1,D2):
     respuesta=((64/63)*D2)-((1/63)*D1)
     return respuesta
 
+def nivel5(D1,D2):
+    respuesta=((256/255)*D2)-((1/255)*D1)
+    return respuesta
+
+def nivel6(D1,D2):
+    respuesta=((1024/1023)*D2)-((1/1023)*D1)
+    return respuesta
+
+def nivel7(D1,D2):
+    respuesta=((4096/4095)*D2)-((1/4095)*D1)
+    return respuesta
+
 def imprimir(Matriz,nivel):
     cabeceros=[]
     cabeceros.append("H")
@@ -66,7 +78,7 @@ def Richardson():
     func=input("Ingrese la funcion a evaluar\n")
     x=float(input("Ingrese el punto a evaluar en la funcion\n"))
     h=input("Ingrese el valor de h\n")
-    nivel=int(input("Ingrese el nivel de la diferenciacion (Entre 2 y 4)\n"))
+    nivel=int(input("Ingrese el nivel de la diferenciacion (Entre 2 y 7)\n"))
     limpiar()
     #↓↓↓↓↓creando matriz↓↓↓↓↓
     Matriz = np.zeros((nivel, nivel+1))
@@ -94,6 +106,15 @@ def Richardson():
         #cuarto nivel
         for i in range(3,nivel,1):
             Matriz[i,4]=nivel3(Matriz[i-1,3],Matriz[i,3])
+        #quinto nivel
+        for i in range(4,nivel,1):
+            Matriz[i,5]=nivel5(Matriz[i-1,4],Matriz[i,4])
+        #sexto nivel
+        for i in range(5,nivel,1):
+            Matriz[i,6]=nivel6(Matriz[i-1,5],Matriz[i,5])
+        #septimo nivel
+        for i in range(6,nivel,1):
+            Matriz[i,7]=nivel7(Matriz[i-1,6],Matriz[i,6])
         imprimir(Matriz,nivel)
         print("El error calculado es:")
         print(CalcularError(func,x,Matriz,nivel))
@@ -115,6 +136,15 @@ def Richardson():
         #cuarto nivel
         for i in range(3,nivel,1):
             Matriz[i,4]=nivel3(Matriz[i-1,3],Matriz[i,3])
+        #quinto nivel
+        for i in range(4,nivel,1):
+            Matriz[i,5]=nivel5(Matriz[i-1,4],Matriz[i,4])
+        #sexto nivel
+        for i in range(5,nivel,1):
+            Matriz[i,6]=nivel6(Matriz[i-1,5],Matriz[i,5])
+        #septimo nivel
+        for i in range(6,nivel,1):
+            Matriz[i,7]=nivel7(Matriz[i-1,6],Matriz[i,6])
         imprimir(Matriz,nivel)
         print("El error calculado es:")
         print(CalcularError(func,x,Matriz,nivel))
@@ -136,6 +166,15 @@ def Richardson():
         #cuarto nivel
         for i in range(3,nivel,1):
             Matriz[i,4]=nivel3(Matriz[i-1,3],Matriz[i,3])
+        #quinto nivel
+        for i in range(4,nivel,1):
+            Matriz[i,5]=nivel5(Matriz[i-1,4],Matriz[i,4])
+        #sexto nivel
+        for i in range(5,nivel,1):
+            Matriz[i,6]=nivel6(Matriz[i-1,5],Matriz[i,5])
+        #septimo nivel
+        for i in range(6,nivel,1):
+            Matriz[i,7]=nivel7(Matriz[i-1,6],Matriz[i,6])
         imprimir(Matriz,nivel)
         print("El error calculado es:")
         print(CalcularError(func,x,Matriz,nivel))
