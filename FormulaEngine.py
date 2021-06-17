@@ -1,9 +1,19 @@
+import re
+from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan
+
 class MathError(Exception):
     pass
 
 
 class ValueError(Exception):
     pass
+
+def castear(mensaje="Sampo algun dato"):
+    valor = input(mensaje)
+    try:
+        return float(eval(convertir_funcion(valor)))
+    except:
+        return valor
 
 def separarRaiz(valor):
     valor = valor.lower()

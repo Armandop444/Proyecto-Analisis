@@ -1,7 +1,7 @@
 from os import name, system
 from FormulaEngine import convertir_funcion
 from tabulate import tabulate
-import re
+
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy import cos, sin, tan, log, exp, arcsin, arccos, arctan
