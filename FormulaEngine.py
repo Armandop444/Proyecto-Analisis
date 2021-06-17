@@ -11,7 +11,7 @@ class ValueError(Exception):
 def castear(mensaje="Sampo algun dato"):
     valor = input(mensaje)
     try:
-        return float(eval(convertir_funcion(valor)))
+        return convertir_funcion(valor)
     except:
         return valor
 
@@ -128,7 +128,7 @@ def raiz(radicando):
     else:
         return radicando
 
-def validar_parentesis(funcion: str):
+def validar_parentesis(funcion: str, graficar = False):
     if funcion.count("(") == funcion.count(")"):
         return True
     else:
@@ -147,13 +147,19 @@ def convertir_funcion(formula: str, var_o = "x", var_n = "x"):
         if "sen" in formula:
             formula = formula.replace("sen", "sin")
         if "asen" in formula:
-            formula = formula.replace("asen", "asin")
+            if graficar:
+                formula = formula.replace("asen", "asin")
+            else:
+                formula = formula.replace("asen", "arcsin")
             
         #convertir potencias
         if "e^" in formula:
             formula = formula.replace("e^", "exp")
         if "^" in formula:
             formula = formula.replace("^", "**")
+        
+        if graficar:
+            formula = formula.replace("ln", "log")
         
         return formula
     else:
