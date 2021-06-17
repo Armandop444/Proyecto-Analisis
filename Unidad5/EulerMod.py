@@ -56,4 +56,3 @@ def euler():
 
     # PROCEDIMIENTO
     eulermod(dy, x0, y0, h, muestras)
-euler()
