@@ -7,8 +7,8 @@ class MathError(Exception):
 class ValueError(Exception):
     pass
 
-def castear(mensaje="Sampo algun dato"):
-    valor = input(mensaje)
+def castear(mensaje = ""):
+    valor = input(mensaje + " ")
     return convertir_funcion(valor)
 
 def separarRaiz(valor):

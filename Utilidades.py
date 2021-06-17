@@ -41,7 +41,7 @@ class Graficadora:
     def render(self, funcion : str, titulo = "", inicio = -100.0, final = 100.0, paso = 0.1):
         #preparar datos
         x = np.arange(inicio,final,paso)
-        y = eval(convertir_funcion(funcion))
+        y = eval(convertir_funcion(funcion, graficar=True))
 
 
         fig, ax = plt.subplots()
