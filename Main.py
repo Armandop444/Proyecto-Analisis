@@ -39,6 +39,7 @@ from Unidad4.cuadraturaGauss import gauss
 from Unidad4.Richardson import Richardson
 from Unidad4.rosemberg import Rosemberg
 # Unidad 5
+from Unidad5.EulerMod import euler
 from Unidad5.taylor import taylor
 from Unidad5.Kuttaorden4 import Kutta
 from Unidad5.Multipasos import main
@@ -1143,7 +1144,7 @@ while True:
             opcion=menu_5.show()
             if opcion==0:#Euler Mod
                 try:
-                    pass
+                    euler()
                 except OperacionDetenida:
                     limpiar()
                     continue
