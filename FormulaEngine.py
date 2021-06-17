@@ -1,5 +1,4 @@
 import re
-from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan
 
 class MathError(Exception):
     pass
@@ -10,10 +9,7 @@ class ValueError(Exception):
 
 def castear(mensaje="Sampo algun dato"):
     valor = input(mensaje)
-    try:
-        return convertir_funcion(valor)
-    except:
-        return valor
+    return convertir_funcion(valor)
 
 def separarRaiz(valor):
     valor = valor.lower()
@@ -128,13 +124,13 @@ def raiz(radicando):
     else:
         return radicando
 
-def validar_parentesis(funcion: str, graficar = False):
+def validar_parentesis(funcion: str):
     if funcion.count("(") == funcion.count(")"):
         return True
     else:
         return False
     
-def convertir_funcion(formula: str, var_o = "x", var_n = "x"):
+def convertir_funcion(formula: str, var_o = "x", var_n = "x", graficar = False):
     if validar_parentesis(formula):
         #Cambiamos la variable original por la que se va a evaluar
         formula = formula.replace(var_o, var_n)
@@ -151,7 +147,12 @@ def convertir_funcion(formula: str, var_o = "x", var_n = "x"):
                 formula = formula.replace("asen", "asin")
             else:
                 formula = formula.replace("asen", "arcsin")
-            
+        if "acos" in formula:
+            if not graficar:
+                formula = formula.replace("acos", "arcsin")
+        if "atan" in formula:
+            if not graficar:
+                formula = formula.replace("atan", "arctan")
         #convertir potencias
         if "e^" in formula:
             formula = formula.replace("e^", "exp")

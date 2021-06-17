@@ -1,20 +1,16 @@
 from os import name, system
-from FormulaEngine import convertir_funcion
+from FormulaEngine import convertir_funcion, MathError
 from tabulate import tabulate
-
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy import cos, sin, tan, log, exp, arcsin, arccos, arctan
 
 
 # Excepciones necesarias para mostrar el tipo de error
-
 class OperacionDetenida(Exception):
     pass
 
 # clase para generar tablas chivas
-
-
 class tablita:
     def __init__(self, cabeceros, show_iteracion=True):
         self.contenido = []
@@ -37,26 +33,21 @@ class tablita:
         return tabulate(self.contenido, headers=self.cabeceros, tablefmt=estilo)
 
 # Para graficar
-
 class Graficadora:
 
-    def __init__(self, funcion : str, titulo = "", inicio = -100.0, final = 100.0, paso = 0.1) -> None:
-        self.funcion = funcion
-        self.titulo = titulo
-        self.inicio = inicio
-        self.final = final
-        self.paso = paso
+    def __init__(self) -> None:
+        pass
 
-    def render(self):
+    def render(self, funcion : str, titulo = "", inicio = -100.0, final = 100.0, paso = 0.1):
         #preparar datos
-        x = np.arange(self.inicio,self.final,self.paso)
-        y = eval(convertir_funcion(self.funcion))
+        x = np.arange(inicio,final,paso)
+        y = eval(convertir_funcion(funcion))
 
 
         fig, ax = plt.subplots()
 
-        ax.plot(x,y, label = f"y = {self.funcion}")
-        ax.set(xlabel = "Eje X", ylabel="Eje Y", title = self.titulo)
+        ax.plot(x,y, label = f"y = {funcion}")
+        ax.set(xlabel = "Eje X", ylabel="Eje Y", title = titulo)
         ax.grid(True, linestyle="-.")
         plt.axhline(y = 0, color="black")
         plt.axvline(x = 0, color="black")
@@ -71,8 +62,6 @@ def limpiar():
     system('cls' if name == 'nt' else 'clear')
 
 # funciones utiles
-
-
 def cifras_significativas(n: int):
     return 0.5*10**(2-n)
 
@@ -80,8 +69,6 @@ def cifras_significativas(n: int):
 
 
 # Recuerdame
-
-
 def raizA(radicando, indice=2):
     if not type(indice) == int:
         raise MathError(
