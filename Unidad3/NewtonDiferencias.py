@@ -1,6 +1,6 @@
 from Utilidades import limpiar, tablita
 from sympy import poly_from_expr
-from FormulaEngine import convertir_funcion, reconvertir_funcion
+from FormulaEngine import convertir_funcion, reconvertir_funcion,castear
 from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan, Symbol,factorial, diff, parse_expr, Abs
 
 def mul(b,n):
@@ -16,12 +16,12 @@ def pedir_valores():
         limpiar()
         print("Presione 'S' para pasar a ingresar los valores de fi")
         print(f"\tXi ingresados: {xi}")
-        dato = input(f"\tIngrese el valor de x{len(xi)}: ")
+        dato = castear(f"\tIngrese el valor de x{len(xi)}: ")
         if dato.upper() == "S":
             break
         else:
             try:
-                xi.append(str(float(dato)))
+                xi.append(float(eval(dato)))
                 total=total+1
             except:
                 continue
@@ -32,13 +32,13 @@ def pedir_valores():
         print("Presione 'S' para terminar")
         print(f"\tXi ingresados: {xi}")
         print(f"\tFi ingresados: {fi}")
-        dato = input(f"\tIngrese el valor de f{len(fi)}: ")
+        dato = castear(f"\tIngrese el valor de f{len(fi)}: ")
         if total==n:
-            fi.append(float(dato))
+            fi.append(float(eval(dato)))
             break
         else:
             try:
-                fi.append(float(dato))
+                fi.append(float(eval(dato)))
                 n=n+1
             except:
                 continue

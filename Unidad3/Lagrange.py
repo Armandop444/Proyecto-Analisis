@@ -1,6 +1,6 @@
 from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan, Symbol,factorial, diff, parse_expr, Abs
 from Utilidades import limpiar, tablita
-from FormulaEngine import convertir_funcion, reconvertir_funcion
+from FormulaEngine import convertir_funcion, reconvertir_funcion, castear
 
 def pedir_valores():
     valores = {}
@@ -17,7 +17,6 @@ def pedir_valores():
             valores["total"] = total_datos
             return valores
         else:
-            #xn = float(xn)
             n = 0
             while True:
                 limpiar()
@@ -28,10 +27,10 @@ def pedir_valores():
                 else:
                     print("Presione 'S' para terminar de ingresar datos de la fila")
                     print("Valores\nxi:",fila)
-                valor = input(f"\t Ingrese el valor de X{n} " if d == 0 else f"\t Ingrese el valor de la Fi(x{n})")
+                valor = castear(f"\t Ingrese el valor de X{n} " if d == 0 else f"\t Ingrese el valor de la Fi(x{n})")
                 if (n/total)==1 and xn=="fi" :
                     if (n/total)==1:
-                        fila.append(float(valor))
+                        fila.append(float(eval(valor)))
                         total_datos += 1
                     valores[str(xn)]=fila
                     valores["total"] = total_datos
@@ -42,7 +41,7 @@ def pedir_valores():
                     d = 1
                     break
                 else:
-                    fila.append(float(valor))
+                    fila.append(float(eval(valor)))
                     total_datos += 1
                     n += 1
 

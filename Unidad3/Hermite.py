@@ -1,5 +1,6 @@
-from sympy import parse_expr,Symbol
+from sympy import parse_expr,Symbol,cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan
 from Utilidades import limpiar, tablita
+from FormulaEngine import castear
 #el grado de una funcion mediante polinomios de hermite es dado por 2n+1
 
 def pedir_valores(f,max):
@@ -10,14 +11,14 @@ def pedir_valores(f,max):
         if max=="":
             print("Presione S para terminar de ingresar los datos en la lista")
         print("Valores \n",lista)
-        dato= input(f"Ingrese el valor de {f}({len(lista)}): ")
+        dato= castear(f"Ingrese el valor de {f}({len(lista)}): ")
         if dato.upper()=="S" or (max==total and max!=""):
             if dato.upper()!="S":
-                lista.append(float(dato))
+                lista.append(float(eval(dato)))
             return lista
         else:
             try:
-                lista.append(float(dato))
+                lista.append(float(eval(dato)))
                 total+=1
             except:
                 continue

@@ -1,5 +1,6 @@
 from Utilidades import limpiar, tablita
-from sympy import poly_from_expr
+from sympy import poly_from_expr,cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan
+from FormulaEngine import castear
 '''
 pedir los valores por fila
 |   x |   y |   y' |
@@ -14,20 +15,20 @@ def pedir_valores():
     while True:
         limpiar()
         print("Presione 'T' para terminar de ingresar valores")
-        xn = input(f"\t Ingrese el valor de X{n} ")
+        xn = castear(f"\t Ingrese el valor de X{n} ")
         fila = []
         if xn.upper() == "T":
             valores["total"] = total_datos
             return valores
         else:
-            xn = float(xn)
+            xn = float(eval(xn))
             d = 0
             while True:
                 limpiar()
                 
                 print("Presione 'T' para terminar de ingresar valores")
                 print("Presione 'S' para terminar de ingresar datos de la fila")
-                valor = input(f"\t Ingrese el valor de f(X{n}) " if d == 0 else f"\t Ingrese el valor de la {d}ª derivada para X{n} ")
+                valor = castear(f"\t Ingrese el valor de f(X{n}) " if d == 0 else f"\t Ingrese el valor de la {d}ª derivada para X{n} ")
                 if valor.upper() == "T":
                     valores[str(xn)]=fila
                     valores["total"] = total_datos
@@ -37,7 +38,7 @@ def pedir_valores():
                     valores[str(xn)]=fila
                     break
                 else:
-                    fila.append(float(valor))
+                    fila.append(float(eval(valor)))
                     total_datos += 1
                     d += 1
 
