@@ -9,20 +9,21 @@ def NewtonTuneado(funcion: str, xo: float, es: float):
     
     #Calcular derivadas
     x = symbols('xo')
+    fx = float(eval(funcion))
     df = diff(funcion,x)
     ddf = diff(df,x)
     ea = 100
-    
-    while ea > es:
-        fx = float(eval(funcion))
-        dfx = float(eval(str(df)))
-        ddfx = float(eval(str(ddf)))
-        xn = xo - ((fx*dfx) /((dfx**2)-fx*ddfx))
-        ea = abs((xn-xo)/xn) * 100
-        tabla.add_fila([xo,fx,dfx,ddfx,xn,ea])
-        xo=xn
-        
-    return tabla.get_tabla()
-        
-        
-    
+    convergencia=abs((fx*float(eval(str(ddf))))/(float(eval(str(df))))**2)#Encontrando el valor de la convergencia
+    if(convergencia<1):
+        while ea > es:
+            fx = float(eval(funcion))
+            dfx = float(eval(str(df)))
+            ddfx = float(eval(str(ddf)))
+            xn = xo - ((fx*dfx) /((dfx**2)-fx*ddfx))
+            ea = abs((xn-xo)/xn) * 100
+            tabla.add_fila([xo,fx,dfx,ddfx,xn,ea])
+            xo=xn
+            
+        return tabla.get_tabla()
+    else:
+        return "No existe raiz"
