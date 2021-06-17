@@ -423,6 +423,8 @@ while True:
             if opcion == 0:  # Biseccion
                 try:
                     funcion = pedir_funcion("[Biseccion]")
+                    grafica = Graficadora()
+                    grafica.render(funcion,"Biseccion")
                     x1 = pedir_valores("[Biseccion] Ingrese el valor del intervalo inferior x1:  ",
                                        [f"Funcion: {funcion}"])
                     x2 = pedir_valores("[Biseccion] Ingrese el valor del intervalo superior x2:  ",
@@ -435,8 +437,6 @@ while True:
                     limpiar()
                     print_final(f"Funcion: {funcion},  X1: {x1},  X2: {x2},  ES: {es}",
                                 Bisec(funcion, x1, x2, es))
-                    grafica = Graficadora(funcion,"Biseccion")
-                    grafica.render()
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -451,6 +451,8 @@ while True:
             elif opcion == 1:  # Falsa Posicion
                 try:
                     funcion = pedir_funcion("[Falsa Posicion]")
+                    grafica = Graficadora()
+                    grafica.render(funcion,"Falsa Posicion")
                     x1 = pedir_valores("[Falsa Posicion] Ingrese el valor del intervalo inferior x1:  ",
                                        [f"Funcion:{funcion}"])
                     x2 = pedir_valores("[Falsa Posicion] Ingrese el valor del intervalo superior x2:  ",
@@ -462,8 +464,6 @@ while True:
                     limpiar()
                     print_final(f"Funcion: {funcion}, X1: {x1}, X2: {x2}, ES: {es}",
                                 FalsaP(funcion, x1, x2, es))
-                    grafica = Graficadora(funcion,"Falsa Posicion")
-                    grafica.render()
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -497,6 +497,8 @@ while True:
             elif opcion == 3:  # Newton Raphson
                 try:
                     funcion = pedir_funcion("[Newton Raphson]")
+                    grafica = Graficadora()
+                    grafica.render(funcion,"Newton Raphson")
                     xi = pedir_valores("[Newton Raphson] Ingrese el valor de xi: ",
                                        [f"Funcion: {funcion}"])
                     es = pedir_error([f"Funcion: {funcion}",
@@ -504,8 +506,6 @@ while True:
                     limpiar()
                     print_final(f"Funcion: {funcion}, XI: {xi} ES: {es}",
                                 NewtonRaphson(funcion, xi, es))
-                    grafica = Graficadora(funcion,"Newton Raphson")
-                    grafica.render()
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -518,6 +518,8 @@ while True:
             elif opcion == 4:  # Newton Raphson Modificado
                 try:
                     funcion = pedir_funcion("[Newton Raphson M]")
+                    grafica = Graficadora()
+                    grafica.render(funcion,"Newton Raphson Modificado")
                     xi = pedir_valores("[Newton Raphson M] Ingrese el valor de xi: ",
                                        [f"Funcion: {funcion}"])
                     es = pedir_error([f"Funcion: {funcion}",
@@ -525,8 +527,6 @@ while True:
                     limpiar()
                     print_final(f"Funcion: {funcion}, XI: {xi} ES: {es}",
                                 NewtonTuneado(funcion, xi, es))
-                    grafica = Graficadora(funcion,"Newton Raphson Modificado")
-                    grafica.render()
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -540,6 +540,8 @@ while True:
             elif opcion == 5:  # Secante
                 try:
                     funcion = pedir_funcion("[Secante]")
+                    grafica = Graficadora()
+                    grafica.render(funcion,"Secante")
                     xnmenos = pedir_valores("[Secante] Ingrese el valor de xn-1: ",
                                             [f"Funcion: {funcion}"])
                     xn = pedir_valores("[Secante] Ingrese el valor de xn: ",
@@ -551,8 +553,6 @@ while True:
                     limpiar()
                     print_final(f"Funcion: {funcion}, Xn-1: {xnmenos}, Xn: {xn}, ES: {es}",
                                 Sec(funcion, xnmenos, xn, es))
-                    grafica = Graficadora(funcion,"Secante")
-                    grafica.render()
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -566,6 +566,8 @@ while True:
             elif opcion == 6:  # Muller
                 try:
                     funcion = pedir_funcion("[Muller]")
+                    grafica = Graficadora()
+                    grafica.render(funcion,"Muller")
                     x0 = pedir_valores("[Muller] Ingrese el valor de x0: ",
                                        [f"Funcion: {funcion}"])
                     x1 = pedir_valores("[Muller] Ingrese el valor de x1: ",
@@ -582,8 +584,6 @@ while True:
                     limpiar()
                     print_final(f"Funcion: {funcion}, X0: {x0}, X1: {x1}, X2: {x2}, ES: {es}",
                                 muller(funcion, x0, x1, x2, es))
-                    grafica = Graficadora(funcion,"Muller")
-                    grafica.render()
                 except OperacionDetenida:
                     limpiar()
                     continue
