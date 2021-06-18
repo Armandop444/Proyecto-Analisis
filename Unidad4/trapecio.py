@@ -53,7 +53,7 @@ def trapecio():
 
         # SALIDA
         print('tramos: ', tramos)
-        print('Integral: ', area)
+        print('Integral: ', float(eval(str(area))))
     if(option==3):
         ecuacion = input("Ingrese la funcion\n")
 
@@ -68,4 +68,4 @@ def trapecio():
         bb = input("Ingrese el intervalo superior\n")
         b=comprobarpunto(bb)
         trapecio=(b-a)*((fx.subs(x,a)+fx.subs(x,b)/2))
-        print("la proximacion es :",trapecio)
+        print("la proximacion es :",float(eval(str(trapecio))))

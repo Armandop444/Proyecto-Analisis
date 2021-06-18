@@ -86,7 +86,7 @@ def simp():
             suma = suma + area
             a = b
 
-        print(suma,"\n")
+        print("Integral : ",float(eval(str(suma))),"\n")
 
 
     if(option==3):
@@ -102,4 +102,4 @@ def simp():
         bb = input("Ingrese el intervalo superior\n")
         b=comprobarpunto(bb)
 
-        print(simpson(fx,a,b))
+        print("Integral : ",float(eval(str(simpson(fx,a,b)))))

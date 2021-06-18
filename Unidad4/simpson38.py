@@ -79,7 +79,7 @@ def simp3():
             suma = suma + area
             a = b
 
-        print(suma)
+        print("Integral: ",float(eval(str(suma))))
     if(option==3):
         ecuacion = input("Ingrese la funcion\n")
         x = symbols('x')  # declaramos que x es un simbolo
@@ -93,4 +93,4 @@ def simp3():
         b=comprobarpunto(bb)
 
         area=simpson38(fx, a, b)
-        print(area)
+        print("Integral: ",float(eval(str(area))))

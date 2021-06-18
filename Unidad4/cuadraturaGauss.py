@@ -37,4 +37,4 @@ def gauss():
     area = 0
     area= integraCuadGaussp(fx,a,b,tramos,t,w)
 
-    print('Integral: ', area)
+    print('Integral: ', float(eval(str(area))))
