@@ -1,6 +1,6 @@
 import numpy as np
 from sympy import symbols, parse_expr, Subs
-from FormulaEngine import convertir_funcion
+from FormulaEngine import convertir_funcion,comprobarpunto
 
 def integraCuadGaussp(fx,a,b,tramos,t,w):
     x = symbols('x')
@@ -25,8 +25,8 @@ def gauss():
 
     fx = parse_expr(ecuacion)
 
-    a = float(input("Ingrese el punto a de la integral\n"))
-    b = float(input("Ingrese el punto b de la integral\n"))
+    a = comprobarpunto(input("Ingrese el punto a de la integral\n"))
+    b = comprobarpunto(input("Ingrese el punto b de la integral\n"))
     tramos = int(input("Cuantos puntos desea evaluar\n"))
 
     [t, w] = np.polynomial.legendre.leggauss(tramos)

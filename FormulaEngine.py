@@ -1,5 +1,6 @@
 import re
-
+from numpy import pi
+import fractions
 class MathError(Exception):
     pass
 
@@ -10,6 +11,19 @@ class ValueError(Exception):
 def castear(mensaje = ""):
     valor = input(mensaje + " ")
     return convertir_funcion(valor)
+
+def comprobarpunto(temp_string):
+    posible_numero = temp_string
+    try:
+        entero = float(posible_numero)
+
+        return entero
+    except :
+        print(temp_string)
+        for s in re.findall(r'-?\d+[/.]?\d*', temp_string):
+            
+            return (float(fractions.Fraction(s)) * pi)
+
 
 def separarRaiz(valor):
     valor = valor.lower()

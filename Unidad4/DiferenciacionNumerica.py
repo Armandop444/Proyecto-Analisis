@@ -1,6 +1,6 @@
 from sympy import *
 from Utilidades import limpiar,tablita
-from FormulaEngine import castear
+from FormulaEngine import castear,comprobarpunto
 #si desean meter una tabla, pueden interpolar la tabla con un metodo como por ejemplo, lagrange, y la funcion resultante ponerla aqui, si jala xd
 #aunque el error depende del grado de la funcion, seguro 
 

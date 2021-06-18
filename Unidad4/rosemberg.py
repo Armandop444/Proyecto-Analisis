@@ -1,6 +1,6 @@
 from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan
 from sympy import symbols, parse_expr
-from FormulaEngine import convertir_funcion,raiz
+from FormulaEngine import convertir_funcion,castear,comprobarpunto
 from Utilidades import limpiar
 
 def Rosemberg():
@@ -10,8 +10,9 @@ def Rosemberg():
         funcion = input("Ingrese la funcion ")
         funcion = parse_expr(convertir_funcion(funcion))
         nivel = int(input("Ingrese el nivel "))
-        lim_inf =float(input("Ingrese el limite inferior "))
-        lim_sup = float(input("Ingrese el limite superior "))
+        lim_inf =comprobarpunto(input("Ingrese el limite inferior "))
+
+        lim_sup = comprobarpunto(input("Ingrese el limite superior "))
     except Exception as error:
         print("No has introducio correctamente los datos, vuelve a intentar")
         print(error)

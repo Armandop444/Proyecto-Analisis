@@ -1,6 +1,6 @@
 import numpy as np
 from sympy import symbols, parse_expr, Subs,cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan
-from FormulaEngine import convertir_funcion,castear
+from FormulaEngine import convertir_funcion,castear,comprobarpunto
 from Utilidades import limpiar
 
 def trapeciotabla():
@@ -35,10 +35,10 @@ def trapecio():
         fx = parse_expr(ecuacion)  # funcion que evaluaremos
 
         # intervalo de integración
-        a = float(input("Ingrese el intervalo inferior\n"))
-
-        b = float(input("Ingrese el intervalo superior\n"))
-
+        aa = input("Ingrese el intervalo inferior\n")
+        a=comprobarpunto(aa)
+        bb = input("Ingrese el intervalo superior\n")
+        b=comprobarpunto(bb)
         tramos = int(input("Ingrese el numero de tramos\n"))
 
 
@@ -63,8 +63,9 @@ def trapecio():
 
         fx = parse_expr(ecuacion)  # funcion que evaluaremos
         # intervalo de integración
-        a = float(input("Ingrese el intervalo inferior\n"))
-        b = float(input("Ingrese el intervalo superior\n"))
-
+        aa = input("Ingrese el intervalo inferior\n")
+        a=comprobarpunto(aa)
+        bb = input("Ingrese el intervalo superior\n")
+        b=comprobarpunto(bb)
         trapecio=(b-a)*((fx.subs(x,a)+fx.subs(x,b)/2))
         print("la proximacion es :",trapecio)

@@ -1,6 +1,6 @@
 import numpy as np
 from sympy import *
-from FormulaEngine import convertir_funcion,castear
+from FormulaEngine import convertir_funcion,castear,comprobarpunto
 from Utilidades import limpiar
 
 x = symbols('x')  # declaramos que x es un simbolo
@@ -72,8 +72,10 @@ def simp():
         fx = parse_expr(ecuacion)  # funcion que evaluaremos
 
         # intervalo de integración
-        a = float(input("Ingrese el intervalo inferior\n"))
-        b = float(input("Ingrese el intervalo superior\n"))
+        aa = input("Ingrese el intervalo inferior\n")
+        a=comprobarpunto(aa)
+        bb = input("Ingrese el intervalo superior\n")
+        b=comprobarpunto(bb)
         n = int(input("Ingrese el numero de tramos\n"))
         h = (b - a) / n
         suma = 0
@@ -95,7 +97,9 @@ def simp():
         ecuacion=convertir_funcion(ecuacion)
 
         fx = parse_expr(ecuacion)  # funcion que evaluaremos
-        a = float(input("Ingrese el intervalo inferior\n"))
-        b = float(input("Ingrese el intervalo superior\n"))
+        aa = input("Ingrese el intervalo inferior\n")
+        a=comprobarpunto(aa)
+        bb = input("Ingrese el intervalo superior\n")
+        b=comprobarpunto(bb)
 
         print(simpson(fx,a,b))
