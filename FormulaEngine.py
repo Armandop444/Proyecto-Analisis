@@ -78,11 +78,23 @@ def unirRaiz(original, convertido=[]):
                         original[inicioBuscar:posicionInicio] + \
                         convertido[posicionConvertido]
                 bandera = 1
+                if  bandera==1 and original.count("raiz") <= 1:
+                    salida = salida + \
+                            original[(posicion+1):]
+                
                 inicioBuscar = posicion+1
                 posicionConvertido = posicionConvertido+1
-
+                
             posicion = posicion+1
         cuantasRaices = cuantasRaices-1
+        falta=0
+        for i in range(len(salida)):
+            if salida[i]=="(":
+                falta+=1
+            elif salida[i]==")":
+                falta-=1
+        if bandera==1 and original.count("raiz") > 1 and cuantasRaices==0 and falta!=0:
+                    salida = salida + ")"
         bandera = 0
     return salida
 
