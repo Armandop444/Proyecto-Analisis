@@ -1,6 +1,6 @@
 from FormulaEngine import convertir_funcion, raiz
 from Utilidades import tablita
-from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan, diff, symbols, parse_expr
+from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan, diff, symbols, parse_expr,sqrt
 
 
 

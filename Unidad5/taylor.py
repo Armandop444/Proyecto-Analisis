@@ -1,5 +1,5 @@
 from numpy import zeros
-from sympy import factorial,diff,Symbol,cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan
+from sympy import factorial,diff,Symbol,cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan,sqrt
 from FormulaEngine import convertir_funcion
 from Utilidades import tablita, limpiar
 x=Symbol("x")
