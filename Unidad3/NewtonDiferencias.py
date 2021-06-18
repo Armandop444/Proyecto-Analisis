@@ -98,7 +98,7 @@ def NewtonDD():
     for fila in matriz:
         tabla.add_fila(fila)
         
-    print(f"{'*'*5} Resultado del polinomio de Hermite {'*'*5} \n")
+    print(f"{'*'*5} Resultado del polinomio de Newton {'*'*5} \n")
     tabla.print_table()
     print(f"\nPolinomio: {str(x.expr).replace('**','^')}")
     print("\n","*"*50)
