@@ -1,6 +1,7 @@
 from sympy import parse_expr,Symbol,cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan
+from sympy import *
 from Utilidades import limpiar, tablita
-from FormulaEngine import castear
+from FormulaEngine import castear, convertir_funcion, reconvertir_funcion
 #el grado de una funcion mediante polinomios de hermite es dado por 2n+1
 
 def pedir_valores(f,max):
@@ -25,11 +26,45 @@ def pedir_valores(f,max):
 
 
 def hermiteNormal():
+    x=symbols("x")
     xn=pedir_valores("x","")
-    fxn=pedir_valores("fi",len((xn)))
-    dfxn=pedir_valores("y'",len(fxn))
     limpiar()
-    punto=input("Ingrese el punto a evaluar: ")
+    opcionfuncion=int(input("desea ingresar una función para f(x) (1.Si  2.No)\n"))
+    limpiar()
+    if opcionfuncion==1:
+        funcionpedida=input("ingrese la funcion:")
+        limpiar()
+        print(reconvertir_funcion(funcionpedida))
+        funcionpedida=convertir_funcion(funcionpedida)
+        funcionpedida=parse_expr(funcionpedida)
+        fxn=[]
+        for i in range(len(xn)):
+            fxn.append(float(funcionpedida.subs(x,(xn[i]))))
+        #print(fxn)
+    else:
+        fxn=pedir_valores("fi",len((xn)))
+    #fxn=pedir_valores("fi",len((xn)))
+    if opcionfuncion==1:
+        opcionfuncion2=int(input("desea usar la misma funcion para df(x) (1.Si, hazlo  2.No, quiero ingresar valores)\n"))
+    else:
+        opcionfuncion2=2
+    
+    if opcionfuncion2==1:
+        limpiar()
+        funcionpedidaderivada=diff(funcionpedida,x)
+        print(reconvertir_funcion(str(funcionpedidaderivada)))
+        dfxn=[]
+        for i in range(len(xn)):
+            dfxn.append(float(funcionpedidaderivada.subs(x,(xn[i]))))
+    else:
+        dfxn=pedir_valores("y'",len(fxn))
+    #dfxn=pedir_valores("y'",len(fxn))
+    input("Presione cualquier tecla para continuar")
+    limpiar()
+    punto=""
+    preguntapunto=int(input("Ingresará un punto? (1.Si  2.No)\n"))
+    if preguntapunto==1:
+        punto=input("Ingrese el punto a evaluar: ")
     ls=[]
     lsdiff=[]
     h=[]
