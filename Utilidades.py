@@ -38,7 +38,7 @@ class Graficadora:
     def __init__(self) -> None:
         pass
 
-    def render(self, funcion : str, titulo = "", inicio = -100.0, final = 100.0, paso = 0.1):
+    def render(self, funcion : str, titulo = "", inicio = -50.0, final = 50.0, paso = 0.01):
         #preparar datos
         x = np.arange(inicio,final,paso)
         y = eval(convertir_funcion(funcion, graficar=True))
