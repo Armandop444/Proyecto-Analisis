@@ -2,6 +2,8 @@ import Menu
 from FormulaEngine import validar_parentesis,reconvertir_funcion, convertir_funcion, MathError, ValueError
 from Utilidades import cifras_significativas, OperacionDetenida, Graficadora, limpiar
 
+#Ayuda
+from Ayuda import ayuda
 # Unidad 1
 from Unidad1.Ejercicio1 import ejercicio1
 from Unidad1.Ejercicio2 import ejercicio2
@@ -390,8 +392,9 @@ while True:
                     continue
             elif opcion == 11:
                 limpiar()
-                # imprimir ayuda
-                print("Aqui va la ayuda :v")
+                ayuda()
+                input("Presione cualquier tecla para continuar")
+                limpiar()
             elif opcion == 12:
                 # Opcion terminar
                 break
@@ -625,8 +628,9 @@ while True:
                     input("Presione cualquier tecla para continuar")
             elif opcion == 8:
                 limpiar()
-                # imprimir ayuda
-                print("Aqui va la ayuda :v")
+                ayuda()
+                input("Presione cualquier tecla para continuar")
+                limpiar()
             elif opcion == 9:
                 # Opcion terminar
                 break
@@ -726,8 +730,9 @@ while True:
                     input("Presione cualquier tecla para continuar")
             elif opcion == 4:
                 limpiar()
-                # imprimir ayuda
-                print("Aqui va la ayuda :v")
+                ayuda()
+                input("Presione cualquier tecla para continuar")
+                limpiar()
             elif opcion == 5:
                 # Opcion terminar
                 break
@@ -1122,7 +1127,10 @@ while True:
                     print(f"Algo ha salido mal {e}")
                     input("Presione cualquier tecla para continuar")
             elif opcion==5:#aiuda
-                pass
+                limpiar()
+                ayuda()
+                input("Presione cualquier tecla para continuar")
+                limpiar()
             elif opcion==6:
                 break
 
@@ -1137,7 +1145,7 @@ while True:
                 '[a] Ayuda',
                 '[s] Volver al menu principal'
             ],
-            titulo="Metodos de la unidad 5",
+            titulo="Metodos de la Unidad 5",
             metodo_seleccion='atajo'
         )
         while True:
@@ -1191,13 +1199,16 @@ while True:
                     print(f"Algo ha salido mal {e}")
                     input("Presione cualquier tecla para continuar")
             elif opcion == 4:
-                print("Aqui va la ayuda :v")
+                limpiar()
+                ayuda()
                 input("Presione cualquier tecla para continuar")
+                limpiar()
             elif opcion ==5:
                 break
 
     elif opcion == 5:
-        print("Aqui va la ayuda :v")
+        limpiar()
+        ayuda()
         input("Presione cualquier tecla para continuar")
 
     elif opcion == 6:

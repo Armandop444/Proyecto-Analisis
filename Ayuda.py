@@ -17,4 +17,3 @@ def ayuda():
     "Para ocupar raices ocupar: raiz(funcion,radicando) o funcion^(1/radicando)\n"
     "Ejemplo1 raiz cubica de x : raiz(x,3) o x^(1/3)\n"
     "Ejemplo2 raiz cuadrada de x+2: raiz(x+2) o (x+2)^(1/2)\n\n")
-ayuda()
