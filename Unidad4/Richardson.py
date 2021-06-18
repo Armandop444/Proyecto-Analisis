@@ -117,7 +117,7 @@ def Richardson():
             Matriz[i,7]=nivel7(Matriz[i-1,6],Matriz[i,6])
         imprimir(Matriz,nivel)
         print("El error calculado es:")
-        print(CalcularError(func,x,Matriz,nivel))
+        print(f"{CalcularError(func,x,Matriz,nivel)}%")
         
     elif metodo==2:#------------------------------------------------------------------------------------
         print("Eliga el orden de la diferencia hacia atras: \n1.Primer orden \n2.Segundo orden")
@@ -147,7 +147,7 @@ def Richardson():
             Matriz[i,7]=nivel7(Matriz[i-1,6],Matriz[i,6])
         imprimir(Matriz,nivel)
         print("El error calculado es:")
-        print(CalcularError(func,x,Matriz,nivel))
+        print(f"{CalcularError(func,x,Matriz,nivel)}%")
         
     elif metodo==3:#------------------------------------------------------------------------------------
         print("Eliga el orden de la diferencia centrada: \n1.Segundo orden\n2.cuarto orden\n3.De 3 puntos\n4.De 5 puntos")
@@ -177,7 +177,7 @@ def Richardson():
             Matriz[i,7]=nivel7(Matriz[i-1,6],Matriz[i,6])
         imprimir(Matriz,nivel)
         print("El error calculado es:")
-        print(CalcularError(func,x,Matriz,nivel))
+        print(f"{CalcularError(func,x,Matriz,nivel)}%")
         
     else:#------------------------------------------------------------------------------------
         print("Error en la eleccion del metodo")
