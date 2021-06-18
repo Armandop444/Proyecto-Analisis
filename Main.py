@@ -913,7 +913,7 @@ while True:
                     titulo="Metodos para Derivacion Numerica Superior",
                     metodo_seleccion='atajo')
                 opcion2 = menu_mini.show()
-                if opcion2 == 0 or opcion2 == 1:  # Adelante o Atras
+                if opcion2 == 0 or opcion2 == 1 or opcion2==2:  # Adelante o Atras
                     menu_mini2 = Menu.Menu(
                         [
                             '[1] Primera Diferencia',
@@ -1001,44 +1001,44 @@ while True:
                             print(f"Algo ha salido mal {e}")
                             input("Presione cualquier tecla para continuar")
 
-                elif opcion2 == 2:  # centrada
-                    try:
-                        # Pedir los valores
-                        funcion=""
-                        tipo=input("Ingresara:\n1.Funcion\n2.Tabla")
-                        if tipo=="2":
-                            px=0
-                            xi = pedirValores("xi", "")
-                            yi = pedirValores("fi", len(xi))
-                            for i in range(len(xi)):
-                                l = yi[i]
-                                for k in range(len(xi)):
-                                    if k != i:
-                                        l = l*((x-xi[k])/(xi[i]-xi[k]))
-                                        px = px+l
-                            funcion = str(px.expand())
-                        else:
-                            funcion=pedir_funcion("[Diferencia Centrada]")
-                            funcion=convertir_funcion(funcion)
-                        xo=pedir_valores("Ingrese el valor de x", [f"Funcion {reconvertir_funcion(funcion)}"])
-                        h=pedir_valores("Ingrese el valor de h", [f"Funcion {reconvertir_funcion(funcion)}",
-                                        f"X0: {xo}"])
-                        orden=pedir_valores("Ingrese el orden de derivada (orden 2 a 4)", [f"Funcion {reconvertir_funcion(funcion)}",
-                                        f"X0: {xo}",
-                                        f"H: {h}"])
-                        if opcion3 == 0:  # primera
-                            diffnumsupcentral(funcion, xo, h, 1, orden)
-                        else:  # segunda
-                            diffnumsupcentral(funcion, xo, h, 2, orden)
-                    except OperacionDetenida:
-                        limpiar()
-                        continue
-                    except MathError as e:
-                        print("MathError: " + e)
-                        input("Presione cualquier tecla para continuar")
-                    except Exception as e:
-                        print(f"Algo ha salido mal {e}")
-                        input("Presione cualquier tecla para continuar")
+                    elif opcion2 == 2:  # centrada
+                        try:
+                            # Pedir los valores
+                            funcion=""
+                            tipo=input("Ingresara:\n1.Funcion\n2.Tabla")
+                            if tipo=="2":
+                                px=0
+                                xi = pedirValores("xi", "")
+                                yi = pedirValores("fi", len(xi))
+                                for i in range(len(xi)):
+                                    l = yi[i]
+                                    for k in range(len(xi)):
+                                        if k != i:
+                                            l = l*((x-xi[k])/(xi[i]-xi[k]))
+                                            px = px+l
+                                funcion = str(px.expand())
+                            else:
+                                funcion=pedir_funcion("[Diferencia Centrada]")
+                                funcion=convertir_funcion(funcion)
+                            xo=pedir_valores("Ingrese el valor de x", [f"Funcion {reconvertir_funcion(funcion)}"])
+                            h=pedir_valores("Ingrese el valor de h", [f"Funcion {reconvertir_funcion(funcion)}",
+                                            f"X0: {xo}"])
+                            orden=pedir_valores("Ingrese el orden de derivada (orden 2 a 4)", [f"Funcion {reconvertir_funcion(funcion)}",
+                                            f"X0: {xo}",
+                                            f"H: {h}"])
+                            if opcion3 == 0:  # primera
+                                diffnumsupcentral(funcion, xo, h, 1, orden)
+                            else:  # segunda
+                                diffnumsupcentral(funcion, xo, h, 2, orden)
+                        except OperacionDetenida:
+                            limpiar()
+                            continue
+                        except MathError as e:
+                            print("MathError: " + e)
+                            input("Presione cualquier tecla para continuar")
+                        except Exception as e:
+                            print(f"Algo ha salido mal {e}")
+                            input("Presione cualquier tecla para continuar")
 
 
             elif opcion == 2:  # Integracion
