@@ -2,8 +2,10 @@
 def ayuda():
     print("\nSintaxis: (Tener en cuenta la escritura de parentesis)\n"
     "Simbolos: para elevacion puede ocupar el simbolo circunflejo ^ en caso de no tener el simbolo puede ocupar **\n"
+    "Para el simbolo de pi puede poner la palabra pi\n"
     "Ejemplo1 x elevado al cuadrado: x^(2) o x**(2)\n"
-    "Ejemplo2 x elevado a la dos tercios: x^(2/3) o x**(2/3)\n\n"
+    "Ejemplo2 x elevado a la dos tercios: x^(2/3) o x**(2/3)\n"
+    "Ejemplo3 pi por x: pi*x \n\n"
     "Para funciones trigonometricas ocupar: cos(), sen() o sin(), tan()\n"
     "Para funciones trigonometricas inversar ocupar: acos,asen() o asin(), atan()\n"
     "Ejemplo1 para decir arcoseno de x: acos(x)\n"

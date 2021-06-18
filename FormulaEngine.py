@@ -171,6 +171,9 @@ def convertir_funcion(formula: str, var_o = "x", var_n = "x", graficar = False):
         if "^" in formula:
             formula = formula.replace("^", "**")
         
+        if "pi" in formula:
+            formula = formula.replace("pi","3.141592")
+
         if graficar:
             formula = formula.replace("ln", "log")
         
