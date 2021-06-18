@@ -36,7 +36,9 @@ def trapecio():
 
         # intervalo de integración
         a = float(input("Ingrese el intervalo inferior\n"))
+
         b = float(input("Ingrese el intervalo superior\n"))
+
         tramos = int(input("Ingrese el numero de tramos\n"))
 
 
