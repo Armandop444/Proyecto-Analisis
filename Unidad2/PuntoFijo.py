@@ -13,7 +13,7 @@ def PuntoFijo(funcion: str, es: float, x: float):
     deveval=float(eval(str(derivada)))#evaluando en el punto x de la primer derivada
     if(deveval<1):#convergencia
         while ea > es:
-            xn = eval(funcion)
+            xn = float(eval(funcion))
             ea = abs((xn-x)/xn) * 100
             tabla.add_fila([x,xn,ea])
             x = xn
