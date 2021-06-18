@@ -67,7 +67,7 @@ def imprimir(Matriz,nivel):
 def CalcularError(func,x,Matriz,nivel):
     #(f(x)-f(xn))/f(x)
     d=diff(func)
-    error=float(((eval(convertir_funcion(str(d),var_n="x")))-(Matriz[nivel-1,nivel]))/(eval(convertir_funcion(str(d),var_n="x"))))*100
+    error=abs(float(((eval(convertir_funcion(str(d),var_n="x")))-(Matriz[nivel-1,nivel]))/(eval(convertir_funcion(str(d),var_n="x")))))*100
     #print(Matriz[nivel-1,nivel])
     #print(eval(convertir_funcion(str(d),var_n="x")))
     return error
