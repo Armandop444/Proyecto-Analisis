@@ -75,6 +75,7 @@ def CalcularError(func,x,Matriz,nivel):
 def Richardson():
     texto=False
     func=input("Ingrese la funcion a evaluar\n")
+    func=convertir_funcion(func)
     x=float(input("Ingrese el punto a evaluar en la funcion\n"))
     h=input("Ingrese el valor de h\n")
     nivel=int(input("Ingrese el nivel de la diferenciacion (Entre 2 y 7)\n"))
