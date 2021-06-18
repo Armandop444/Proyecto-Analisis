@@ -14,6 +14,6 @@ def ayuda():
     "Para euler o exponencial ocupar : e^(funcion o numero)\n"
     "Ejemplo1 e elevado a x al cuadrado: e^(x^(2))\n"
     "Ejemplo2 2 por e: 2*e\n\n"
-    "Para ocupar raices ocupar: raiz(funcion,radicando) o funcion^(1/radicando)\n"
+    "Para ocupar raices ocupar (radicando <= 9): raiz(funcion,radicando) o funcion^(1/radicando)\n"
     "Ejemplo1 raiz cubica de x : raiz(x,3) o x^(1/3)\n"
     "Ejemplo2 raiz cuadrada de x+2: raiz(x+2) o (x+2)^(1/2)\n\n")
