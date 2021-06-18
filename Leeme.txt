@@ -1,0 +1,7 @@
+Ejecutar Main.py
+
+Librerias:
+pip install tabulate
+pip install sympy
+pip install numpy
+pip install matplotlib
