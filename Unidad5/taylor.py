@@ -57,8 +57,7 @@ def taylor():
     while i <= fx:
         a = a+1
         i += h
-    a=a+1
-    estimado = zeros(shape=(a,2))
+    estimado = zeros(shape=(a+1,2))
     estimado[0] = [x0,y0]
     x = x0
     y = y0
