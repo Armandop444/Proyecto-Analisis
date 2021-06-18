@@ -21,7 +21,7 @@ def comprobarpunto(temp_string):
     except :
         print(temp_string)
         for s in re.findall(r'-?\d+[/.]?\d*', temp_string):
-            
+
             return (float(fractions.Fraction(s)) * pi)
 
 
