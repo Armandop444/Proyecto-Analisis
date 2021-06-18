@@ -156,8 +156,6 @@ def convertir_funcion(formula: str, var_o = "x", var_n = "x", graficar = False):
         #convertir potencias
         if "e^" in formula:
             formula = formula.replace("e^", "exp")
-        if "e" in formula:
-            formula = formula.replace("e", "exp(1)")
         if "^" in formula:
             formula = formula.replace("^", "**")
         
