@@ -1,6 +1,7 @@
 from sympy import cos, sin, tan, log, ln, exp, cot, sec, csc, asin, acos, atan
 from sympy import symbols, parse_expr
 from FormulaEngine import convertir_funcion,raiz
+from Utilidades import limpiar
 
 def Rosemberg():
     # pedir datos
@@ -74,6 +75,7 @@ def Rosemberg():
             subnivel.append(suma)
         niveles.append(subnivel)
     
+    limpiar()
     print(f"{'*' * 10} Resultados { '*' * 10}")
     for i in range(1,nivel + 1 ):
         print(f"Nivel {i}")
