@@ -1,5 +1,5 @@
 import Menu
-from FormulaEngine import validar_parentesis,reconvertir_funcion, convertir_funcion, MathError, ValueError
+from FormulaEngine import validar_parentesis,reconvertir_funcion, convertir_funcion, MathError, ValueError,comprobarpunto
 from Utilidades import cifras_significativas, OperacionDetenida, Graficadora, limpiar
 
 #Ayuda
@@ -57,7 +57,7 @@ def pedir_valores(mensaje: str, historial: list):
             raise OperacionDetenida("Cancelado")
         else:
             try:
-                return float(valor)
+                return float(comprobarpunto(valor))
             except:
                 limpiar()
                 print("No es un numero")
