@@ -13,9 +13,9 @@ def Rosemberg():
         lim_inf =comprobarpunto(input("Ingrese el limite inferior "))
         lim_sup = comprobarpunto(input("Ingrese el limite superior "))
         if lim_inf > lim_sup :
-            return "No has introducio correctamente los datos, vuelve a intentar"
+            return "No has introducio correctamente los datos, vuelve a intentar\n"
     except Exception as error:
-        return "No has introducio correctamente los datos, vuelve a intentar"
+        return "No has introducio correctamente los datos, vuelve a intentar\n"
 
     # generar los valores hn
     hn = [
