@@ -1105,6 +1105,7 @@ while True:
             elif opcion==3:#Richarson
                 try:
                     Richardson()
+                    input()
                 except OperacionDetenida:
                     limpiar()
                     continue
@@ -1116,7 +1117,7 @@ while True:
                     input("Presione cualquier tecla para continuar")
             elif opcion==4:#Rosemberg
                 try:
-                    Rosemberg()
+                    print(Rosemberg())
                 except OperacionDetenida:
                     limpiar()
                     continue
