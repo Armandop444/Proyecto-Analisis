@@ -25,8 +25,19 @@ def gauss():
 
     fx = parse_expr(ecuacion)
 
-    a = comprobarpunto(input("Ingrese el punto a de la integral\n"))
-    b = comprobarpunto(input("Ingrese el punto b de la integral\n"))
+    i = 1
+    while i == 1:
+        aa = input("Ingrese el intervalo inferior\n")
+        a = comprobarpunto(aa)
+        bb = input("Ingrese el intervalo superior\n")
+        b = comprobarpunto(bb)
+        if a > b:
+            a = 0
+            print("el intervalo inferior no puede ser mayor que el superior")
+        else:
+            a = 1
+            break
+
     tramos = int(input("Cuantos puntos desea evaluar\n"))
 
     [t, w] = np.polynomial.legendre.leggauss(tramos)

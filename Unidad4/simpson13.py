@@ -76,6 +76,19 @@ def simp():
         a=comprobarpunto(aa)
         bb = input("Ingrese el intervalo superior\n")
         b=comprobarpunto(bb)
+        i = 1
+        while i == 1:
+            aa = input("Ingrese el intervalo inferior\n")
+            a = comprobarpunto(aa)
+            bb = input("Ingrese el intervalo superior\n")
+            b = comprobarpunto(bb)
+            if a > b:
+                a=0
+                print("el intervalo inferior no puede ser mayor que el superior")
+            else:
+                a=1
+                break
+
         n = int(input("Ingrese el numero de tramos\n"))
         h = (b - a) / n
         suma = 0
@@ -97,9 +110,19 @@ def simp():
         ecuacion=convertir_funcion(ecuacion)
 
         fx = parse_expr(ecuacion)  # funcion que evaluaremos
-        aa = input("Ingrese el intervalo inferior\n")
-        a=comprobarpunto(aa)
-        bb = input("Ingrese el intervalo superior\n")
+
         b=comprobarpunto(bb)
+        i = 1
+        while i == 1:
+            aa = input("Ingrese el intervalo inferior\n")
+            a = comprobarpunto(aa)
+            bb = input("Ingrese el intervalo superior\n")
+            b = comprobarpunto(bb)
+            if a > b:
+                a=0
+                print("el intervalo inferior no puede ser mayor que el superior")
+            else:
+                a=1
+                break
 
         print("Integral : ",float(eval(str(simpson(fx,a,b)))))
