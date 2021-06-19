@@ -11,11 +11,11 @@ def Rosemberg():
         funcion = parse_expr(convertir_funcion(funcion))
         nivel = int(input("Ingrese el nivel "))
         lim_inf =comprobarpunto(input("Ingrese el limite inferior "))
-
         lim_sup = comprobarpunto(input("Ingrese el limite superior "))
+        if lim_inf > lim_sup :
+            return "No has introducio correctamente los datos, vuelve a intentar"
     except Exception as error:
-        print("No has introducio correctamente los datos, vuelve a intentar")
-        print(error)
+        return "No has introducio correctamente los datos, vuelve a intentar"
 
     # generar los valores hn
     hn = [
@@ -83,3 +83,4 @@ def Rosemberg():
         for j in niveles[i-1]:
             print(f"\t{j}")
     print("*"*35)
+    return ""
