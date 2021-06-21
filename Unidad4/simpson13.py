@@ -111,7 +111,7 @@ def simp():
 
         fx = parse_expr(ecuacion)  # funcion que evaluaremos
 
-        b=comprobarpunto(bb)
+
         i = 1
         while i == 1:
             aa = input("Ingrese el intervalo inferior\n")
