@@ -29,7 +29,7 @@ def hermiteNormal():
     x=symbols("x")
     xn=pedir_valores("x","")
     limpiar()
-    opcionfuncion=int(input("desea ingresar una función para f(x) (1.Si  2.No)\n"))
+    opcionfuncion=int(input("desea ingresar una función para f(x) (1.Si | Cualquier otro numero.No)\n"))
     limpiar()
     if opcionfuncion==1:
         funcionpedida=input("ingrese la funcion:")
@@ -45,7 +45,7 @@ def hermiteNormal():
         fxn=pedir_valores("fi",len((xn)))
     #fxn=pedir_valores("fi",len((xn)))
     if opcionfuncion==1:
-        opcionfuncion2=int(input("desea usar la misma funcion para df(x) (1.Si, hazlo  2.No, quiero ingresar valores)\n"))
+        opcionfuncion2=int(input("desea usar la misma funcion para df(x) (1.Si, hazlo | Otro numero. No, quiero ingresar valores)\n"))
     else:
         opcionfuncion2=2
     
@@ -72,7 +72,7 @@ def hermiteNormal():
     hgorritovar=parse_expr("1")
     hgorrito=[]
     x=Symbol("x")
-    grado=int(input("Ingrese el grado que quiere encontrar"))
+    grado=int(input("Ingrese los n-puntos de la tabla que desea evaluar (iniciando de 0)\nsegun la cantidad de puntos será el grado de la funcion (el grado será 2n+1 como máximo)\n"))
     grado=grado+1
     polhermite=0
     l=parse_expr("1")
