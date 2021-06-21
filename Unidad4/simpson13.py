@@ -72,10 +72,7 @@ def simp():
         fx = parse_expr(ecuacion)  # funcion que evaluaremos
 
         # intervalo de integración
-        aa = input("Ingrese el intervalo inferior\n")
-        a=comprobarpunto(aa)
-        bb = input("Ingrese el intervalo superior\n")
-        b=comprobarpunto(bb)
+
         i = 1
         while i == 1:
             aa = input("Ingrese el intervalo inferior\n")
