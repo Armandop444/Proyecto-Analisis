@@ -754,6 +754,7 @@ while True:
         while True:
             opcion = menu_4.show()
             if opcion == 0:  # Derivacion
+
                 menu_mini = Menu.Menu(
                     [
                         '[1] Adelante',
@@ -782,15 +783,17 @@ while True:
                             funcion=""
                             tipo=input("Ingresara:\n1.Funcion\n2.Tabla")
                             if tipo=="2":
+                                
                                 px=0
                                 xi = pedirValores("xi", "")
                                 yi = pedirValores("fi", len(xi))
-                                for i in range(len(xi)):
-                                    l = yi[i]
-                                    for k in range(len(xi)):
-                                        if k != i:
-                                            l = l*((x-xi[k])/(xi[i]-xi[k]))
-                                            px = px+l
+                               
+                                for i in range(len(xi)-1):
+                                    l=yi[i]
+                                    for k in range(len(xi)-1):
+                                        if k!=i:
+                                            l=l*((x-xi[k])/(xi[i]-xi[k]))
+                                    px=px+l
                                 funcion = str(px.expand())
                             else:
                                 funcion=pedir_funcion("[Diferencia Hacia Adelante]")
@@ -820,12 +823,12 @@ while True:
                                 px=0
                                 xi = pedirValores("xi", "")
                                 yi = pedirValores("fi", len(xi))
-                                for i in range(len(xi)):
-                                    l = yi[i]
-                                    for k in range(len(xi)):
-                                        if k != i:
-                                            l = l*((x-xi[k])/(xi[i]-xi[k]))
-                                            px = px+l
+                                for i in range(len(xi)-1):
+                                    l=yi[i]
+                                    for k in range(len(xi)-1):
+                                        if k!=i:
+                                            l=l*((x-xi[k])/(xi[i]-xi[k]))
+                                    px=px+l
                                 funcion = str(px.expand())
                             else:
                                 funcion=pedir_funcion("[Diferencia Hacia Atras]")
@@ -869,12 +872,12 @@ while True:
                                 px=0
                                 xi = pedirValores("xi", "")
                                 yi = pedirValores("fi", len(xi))
-                                for i in range(len(xi)):
-                                    l = yi[i]
-                                    for k in range(len(xi)):
-                                        if k != i:
-                                            l = l*((x-xi[k])/(xi[i]-xi[k]))
-                                            px = px+l
+                                for i in range(len(xi)-1):
+                                    l=yi[i]
+                                    for k in range(len(xi)-1):
+                                        if k!=i:
+                                            l=l*((x-xi[k])/(xi[i]-xi[k]))
+                                    px=px+l
                                 funcion = str(px.expand())
                             else:
                                 funcion=pedir_funcion("[Diferencia Centrada]")
@@ -932,12 +935,12 @@ while True:
                                 px=0
                                 xi = pedirValores("xi", "")
                                 yi = pedirValores("fi", len(xi))
-                                for i in range(len(xi)):
-                                    l = yi[i]
-                                    for k in range(len(xi)):
-                                        if k != i:
-                                            l = l*((x-xi[k])/(xi[i]-xi[k]))
-                                            px = px+l
+                                for i in range(len(xi)-1):
+                                    l=yi[i]
+                                    for k in range(len(xi)-1):
+                                        if k!=i:
+                                            l=l*((x-xi[k])/(xi[i]-xi[k]))
+                                    px=px+l
                                 funcion = str(px.expand())
                             else:
                                 funcion=pedir_funcion("[Diferencia Hacia Adelante]")
@@ -970,12 +973,12 @@ while True:
                                 px=0
                                 xi = pedirValores("xi", "")
                                 yi = pedirValores("fi", len(xi))
-                                for i in range(len(xi)):
-                                    l = yi[i]
-                                    for k in range(len(xi)):
-                                        if k != i:
-                                            l = l*((x-xi[k])/(xi[i]-xi[k]))
-                                            px = px+l
+                                for i in range(len(xi)-1):
+                                    l=yi[i]
+                                    for k in range(len(xi)-1):
+                                        if k!=i:
+                                            l=l*((x-xi[k])/(xi[i]-xi[k]))
+                                    px=px+l
                                 funcion = str(px.expand())
                             else:
                                 funcion=pedir_funcion("[Diferencia Hacia Atras]")
@@ -1009,12 +1012,12 @@ while True:
                                 px=0
                                 xi = pedirValores("xi", "")
                                 yi = pedirValores("fi", len(xi))
-                                for i in range(len(xi)):
-                                    l = yi[i]
-                                    for k in range(len(xi)):
-                                        if k != i:
-                                            l = l*((x-xi[k])/(xi[i]-xi[k]))
-                                            px = px+l
+                                for i in range(len(xi)-1):
+                                    l=yi[i]
+                                    for k in range(len(xi)-1):
+                                        if k!=i:
+                                            l=l*((x-xi[k])/(xi[i]-xi[k]))
+                                    px=px+l
                                 funcion = str(px.expand())
                             else:
                                 funcion=pedir_funcion("[Diferencia Centrada]")
