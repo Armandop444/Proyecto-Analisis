@@ -91,7 +91,7 @@ def unirRaiz(original, convertido=[]):
                         original[inicioBuscar:posicionInicio] + \
                         convertido[posicionConvertido]
                 bandera = 1
-                if  bandera==1 and original.count("raiz") <= 1:
+                if  bandera==1 and original.count("raiz") <= 1 and posicionConvertido!=posicionInicio:
                     salida = salida + \
                             original[(posicion+1):]
                 
