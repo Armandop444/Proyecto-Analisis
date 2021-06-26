@@ -84,4 +84,3 @@ def trapecio():
                 break
         trapecio=(b-a)*((fx.subs(x,a)+fx.subs(x,b))/2)
         print("la proximacion es :",float(eval(str(trapecio))))
-trapecio()
