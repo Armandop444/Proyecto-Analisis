@@ -42,10 +42,8 @@ def trapecio():
             bb = input("Ingrese el intervalo superior\n")
             b = comprobarpunto(bb)
             if a > b:
-                a=0
                 print("el intervalo inferior no puede ser mayor que el superior")
             else:
-                a=1
                 break
 
 
@@ -86,3 +84,4 @@ def trapecio():
                 break
         trapecio=(b-a)*((fx.subs(x,a)+fx.subs(x,b))/2)
         print("la proximacion es :",float(eval(str(trapecio))))
+trapecio()
